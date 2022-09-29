@@ -4,6 +4,7 @@
     /* Auto layout */
     display: flex;
     flex-direction: column;
+    justify-content: end;
     align-items: center;
     padding: 0px 10px;
 
@@ -21,7 +22,6 @@
     font-family: 'Noto Serif KR';
     font-style: normal;
     color: var(--c-black-100);
-
 }
 
 .Brand .TopText {
