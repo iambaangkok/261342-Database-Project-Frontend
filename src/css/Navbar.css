@@ -18,16 +18,15 @@
     flex-grow: 0;
 }
 
-.Navbar-solidblack {
+.Navbar-solid-black {
     /* White 100% */
     background: var(--c-white-100);
-    /* Drop Shadow blur6 */
-    box-shadow: var(--drop-shadow-blur-6);
 }
 
-.Navbar-transparentwhite {
-    /* Drop Shadow blur6 */
-    box-shadow: var(--drop-shadow-blur-6);
+.Navbar-transparent-white {
+    /* Transparent */
+    background: transparent;
+    background-color: transparent;
 }
 
 .NavbarLeft {

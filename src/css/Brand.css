@@ -21,7 +21,14 @@
     /* Inside Text */
     font-family: 'Noto Serif KR';
     font-style: normal;
+}
+
+.Brand-black{
     color: var(--c-black-100);
+}
+
+.Brand-white{
+    color: var(--c-white-100);
 }
 
 .Brand .TopText {
