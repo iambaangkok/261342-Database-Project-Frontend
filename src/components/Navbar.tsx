@@ -1,19 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from 'react';
+import axios from 'axios'
+import '../css/Navbar.css'
+import Brand from './Brand';
+import Button from './Button';
 
-function Navbar() {
-    
+function Navbar(){
 
+    useEffect(() => {
+    }, [])
 
-    return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                HELLO M
-            </header>
+    return(
+        <div className='Navbar Navbar-solidblack'>
+            <div className='NavbarLeft'>
+                <Button text={"home"}></Button>
+                <Button text={"products"}></Button>
+                <Button text={"my cart"}></Button>
+            </div>
+            <Brand></Brand>
+            <div className='NavbarRight'>
+
+            </div>
         </div>
-    );
+    )
 }
 
-export default Navbar;
+export default Navbar

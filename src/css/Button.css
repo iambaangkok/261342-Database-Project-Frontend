@@ -1,0 +1,35 @@
+@import "GlobalStyles.css";
+
+.Button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+
+    width: 54px;
+    height: 37px;
+
+    /* White 100% */
+    background: var(--c-white-100);
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-basis: fit-content;
+
+    /* Text */
+    width: 34px;
+    height: 17px;
+
+    font-family: 'Noto Serif KR';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 17px;
+
+    /* Black 100% */
+
+    color: var(--c-black-100);
+}

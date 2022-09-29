@@ -1,0 +1,45 @@
+@import 'GlobalStyles.css';
+
+.Brand {
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 10px;
+
+    width: 226px;
+    height: 48px;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+
+
+    /* Inside Text */
+    font-family: 'Noto Serif KR';
+    font-style: normal;
+    color: var(--c-black-100);
+
+}
+
+.Brand .TopText {
+    width: 206px;
+    height: 40px;
+
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 40px;
+
+    margin: -9px 0px;
+}
+
+.Brand .BottomText {
+    width: 91px;
+    height: 17px;
+
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 17px;
+}

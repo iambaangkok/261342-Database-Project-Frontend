@@ -1,0 +1,73 @@
+@import 'GlobalStyles.css';
+
+
+.Navbar {
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+    gap: 10px;
+
+    position: absolute;
+    width: 1440px;
+    height: 80px;
+    left: 20px;
+    top: 20px;
+}
+
+.Navbar-solidblack {
+    /* White 100% */
+    background: var(--c-white-100);
+    /* Drop Shadow blur6 */
+    box-shadow: var(--drop-shadow-blur-6);
+}
+
+.Navbar-transparentwhite {
+    /* Drop Shadow blur6 */
+    box-shadow: var(--drop-shadow-blur-6);
+}
+
+.NavbarLeft {
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px 20px;
+    gap: 10px;
+
+    width: 588px;
+    height: 80px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.NavbarRight {
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0px 20px;
+    gap: 10px;
+
+    width: 588px;
+    height: 80px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    align-self: stretch;
+    flex-grow: 0;
+}
