@@ -1,0 +1,24 @@
+/* This CSS file is where all figma styles are kept */
+
+/* Noto Serif KR */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&display=swap');
+
+:root{
+
+    /* Colors */
+    --c-white-100: #FFFFFF;
+    --c-black-100: #000000;
+    --c-gray-70: #4E4E4E;
+    --c-gray-10: #EFEFEF;
+    --c-gray-disabled: #818181;
+
+    --c-yellow: #F2C629;
+    --c-yellow-disabled: #F2D776;
+
+    /* Effect Styles */
+    --drop-shadow-blur-6: 0px 4px 6px rgba(0, 0, 0, 0.25);
+    --drop-shadow-sharp-1: 0px 3px 4px #000000;
+    --pressed-inner-shadow-1: inset 0px 4px 0px rgba(0, 0, 0, 0.25);
+    --hover-drop-shadow-1:  0px 3px 2px rgba(0, 0, 0, 0.25);
+}
+
