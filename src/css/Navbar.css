@@ -3,18 +3,19 @@
 
 .Navbar {
     /* Auto layout */
+
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 0px 10px;
+    padding: 16px 10px;
     gap: 10px;
 
-    position: absolute;
-    width: 1440px;
-    height: 80px;
-    left: 20px;
-    top: 20px;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
 }
 
 .Navbar-solidblack {
@@ -31,19 +32,14 @@
 
 .NavbarLeft {
     /* Auto layout */
-
     display: flex;
     flex-direction: row;
+    justify-content: flex-end;
     align-items: center;
     padding: 0px 20px;
     gap: 10px;
 
-    width: 588px;
-    height: 80px;
-
-
     /* Inside auto layout */
-
     flex: none;
     order: 0;
     align-self: stretch;
@@ -52,22 +48,60 @@
 
 .NavbarRight {
     /* Auto layout */
-
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: center;
     padding: 0px 20px;
     gap: 10px;
 
-    width: 588px;
-    height: 80px;
-
-
     /* Inside auto layout */
-
     flex: none;
     order: 2;
     align-self: stretch;
     flex-grow: 0;
+}
+
+.Line {
+    box-sizing: border-box;
+
+    width: 100%;
+    height: 1px;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 1;
+}
+
+.Line-black {
+    /* Black 100% */
+    background: var(--c-black-100);
+}
+
+.Line-white {
+    /* White 100% */
+    background: var(--c-white-100);
+}
+
+.Divider {
+    box-sizing: border-box;
+
+    width: 1px;
+    height: 100%;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.Divider-black {
+    /* Black 100% */
+    background: var(--c-black-100);
+}
+
+.Divider-white {
+    /* White 100% */
+    background: var(--c-white-100);
 }
