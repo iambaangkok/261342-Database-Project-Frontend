@@ -1,35 +1,60 @@
 @import "GlobalStyles.css";
+@import "Icon.css";
 
 .Button {
+    /* Auto layout */
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 10px 10px;
     gap: 10px;
 
-    width: 54px;
-    height: 37px;
+    border-radius: 30px;
 
-    /* White 100% */
-    background: var(--c-white-100);
+    transition: 0.075s;
 
     /* Inside auto layout */
     flex: none;
     order: 1;
-    flex-basis: fit-content;
+    flex-grow: 0;
+    align-self: fit-content;
+}
 
-    /* Text */
-    width: 34px;
-    height: 17px;
+.Button-white {
+    /* White 100% */
+    background: var(--c-white-100);
+}
 
-    font-family: 'Noto Serif KR';
+.Button .Text {
+    font-family: 'Quicksand';
     font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 17px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    /* identical to box height */
 
-    /* Black 100% */
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
 
+.Button .Text-black {
     color: var(--c-black-100);
+}
+
+.Button .Text-yellow {
+    text-decoration-line: underline;
+    color: var(--c-yellow);
+}
+
+
+.Button:hover .Text{
+    text-decoration-line: underline;
+    color: var(--c-yellow);
+}
+
+.Button:hover .InnerIcon {
+    fill: var(--c-yellow);
 }

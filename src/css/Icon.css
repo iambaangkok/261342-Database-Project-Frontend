@@ -1,0 +1,25 @@
+@import "GlobalStyles.css";
+
+
+.Icon {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+    width: 22px;
+    height: 22px;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.InnerIcon {
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+

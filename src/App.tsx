@@ -6,7 +6,9 @@ import Navbar from './components/Navbar';
 function App() {
   return (
     <div className="App">
-      <Navbar variant="solid-black"></Navbar>
+      <div className="Container">
+        <Navbar></Navbar>
+      </div>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         HELLO M

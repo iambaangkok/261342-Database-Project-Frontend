@@ -1,6 +1,28 @@
 .App {
+  flex-direction: row;
+  align-items: center;
   text-align: center;
   background-color: #5a6273;
+}
+
+.App .Container {
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+
+  width: 100%;
+  height: 100%;
+
+  /* White 100% */
+  background: var(--c-white-100);
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
 }
 
 .App-logo {
@@ -32,6 +54,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

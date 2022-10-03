@@ -1,7 +1,7 @@
 /* This CSS file is where all figma styles are kept */
 
-/* Noto Serif KR */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&display=swap');
+/* Quicksand & Righteous */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Righteous&display=swap');
 
 :root {
 
@@ -12,7 +12,7 @@
     --c-gray-10: #EFEFEF;
     --c-gray-disabled: #818181;
 
-    --c-yellow: #F2C629;
+    --c-yellow: #F3BE00;
     --c-yellow-disabled: #F2D776;
 
 }
@@ -20,20 +20,16 @@
 /* Effect Styles */
 .ES-drop-shadow-blur-6{
     filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.25));
-    border-radius: 5px;
 }
 
 .ES-drop-shadow-sharp-1{
     box-shadow: 0px 3px 4px #000000;
-    border-radius: 5px;
 }
 
 .ES-hover-drop-shadow-1{
     box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
 }
 
 .ES-pressed-inner-shadow-1 {
     box-shadow: inset 0px 4px 0px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
 }
