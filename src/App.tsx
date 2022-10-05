@@ -2,6 +2,9 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar';
+import { Routes,Route } from 'react-router-dom';
+import Login from './page/Login';
+
 
 function App() {
   return (
@@ -9,10 +12,16 @@ function App() {
       <div className="Container">
         <Navbar></Navbar>
       </div>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        HELLO M
-      </header>
+      
+      <Routes>
+        <Route path="/" element={
+          <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+            HELLO M
+          </header>
+        }/>
+        <Route path="/login" element={<Login/>}/>
+      </Routes>
     </div>
   );
 }
