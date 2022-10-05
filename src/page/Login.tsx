@@ -1,15 +1,29 @@
-import InputBar from "../components/InputBar";
+import InputField from "../components/InputField";
+import '../css/Navbar.css'
+import '../css/Login.css'
+import Button from "../components/Button";
 
-function Login(){
+function Login() {
     return (
-        <div className="flex-col">
-            <div className="justify-center">
-                <h1>Login</h1>
-            </div> 
-            <InputBar text1="email" text2=" " text3=" "/>
-            <InputBar text1="password" text2=" " text3="forgot password?"/>
+        <div className={"Login"}>
+            <div className={"LoginContainer"}>
+                <div className="Body">
+                    <div className="HeaderContainer">
+                        <div className="Text">
+                            Login
+                        </div>
+                    </div>
+                    <InputField textL="email" textR="" />
+                    <InputField textL="password" textR="forgot password?" />
+                    <div className="SignInButtonContainer">
+                        <Button text={"Sign in"} icon={""} buttonColor={"yellow"} textColor={"black"} ></Button>
+                    </div>
+                    <div className="CreateAccContainer">
+                        <Button text={"Create an Account"} icon={""} buttonColor={"yellow"} textColor={"black"} ></Button>
+                    </div>
+                </div>
+            </div>
         </div>
-        
     );
 }
 
