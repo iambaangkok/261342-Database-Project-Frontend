@@ -23,6 +23,8 @@
 
     /* Black 100% */
     color: var(--c-black-100);
+
+    user-select: none;
 }
 
 .Brand .Text {

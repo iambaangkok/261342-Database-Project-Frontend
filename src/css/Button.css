@@ -19,6 +19,8 @@
     order: 1;
     flex-grow: 0;
     align-self: fit-content;
+
+    user-select: none;
 }
 
 .Button-white {

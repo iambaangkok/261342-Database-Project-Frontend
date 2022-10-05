@@ -7,9 +7,9 @@ function SearchBar() {
     return (
         <div className={"SearchBar"}>
             <div className="SearchBoxContainer">
-                <div className="SearchBox">
+                <input className="SearchBox" >
                     
-                </div>
+                </input>
             </div>
             <Button text={""} icon={"search_outline"} buttonColor={"white"} textColor={"black"} ></Button>
         </div >
