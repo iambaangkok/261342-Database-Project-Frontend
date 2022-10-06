@@ -21,26 +21,33 @@ function App() {
                 <Router>
                     <Navbar></Navbar>
                     <Routes>
-                        <Route path="/products">
-                            PRODUCT    
+                        <Route path="/products" element={
+                            "PRODUCT"
+                        }>
                         </Route>
-                        <Route path="/orders">
-                            ORDERS
+                        <Route path="/orders" element={
+                            "ORDERS"
+                        }>
                         </Route>
-                        <Route path="/search">
-                            SEARCH
+                        <Route path="/search" element={
+                            "SEARCH"
+                        }>
                         </Route>
-                        <Route path="/login">
-                            <Login/>
+                        <Route path="/login" element={
+                            <Login />
+                        }>
                         </Route>
-                        <Route path="/signup">
-                            <Register/>
+                        <Route path="/signup" element={
+                            <Register />
+                        }>
                         </Route>
-                        <Route path="/cart">
-                            CART
+                        <Route path="/cart" element={
+                            "CART"
+                        }>
                         </Route>
-                        <Route path="/">
-                            HOME
+                        <Route path="/" element={
+                            "HOME"
+                        }>
                         </Route>
                     </Routes>
                 </Router>
