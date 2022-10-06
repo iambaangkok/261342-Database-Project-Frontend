@@ -1,0 +1,253 @@
+@import 'GlobalStyles.css';
+
+.Register {
+    /* Desktop - Sign up */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 10px;
+
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.RegisterContainer {
+    /* Container */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+
+    width: 100%;
+    height: 100%;
+
+    /* White 100% */
+
+    background: var(--c-white-100);
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.Register .Body {
+    /* Body */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 140px 0px;
+
+    width: 1024px;
+    height: fit-content;
+
+     /* White 100% */
+     background: var(--c-white-100);
+     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.Register .Body .HeadContainer {
+    /* HeaderContainer */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 17px 0px;
+    gap: 10px;
+
+    width: fit-content;
+    height: fit-content;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.Register .Body .HeadContainer .Text {
+    /* Text */
+
+
+    width: 313px;
+    height: 45px;
+
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 45px;
+    /* identical to box height */
+
+
+    color: var(--c-black-100);
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.Register .Body .InputContainer {
+    /* InputFields */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: px;
+    gap: 30px;
+
+    width: fit-content;
+    height: fit-content;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.InputContainer .InputField {
+    /* Top */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+
+    width: fit-content;
+    height: fit-content;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.InputField .HeadText {
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 14px 0px;
+
+    width: fit-content;
+    height: fit-content;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.HeadText .Text {
+    /* HeadText */
+
+
+    width: fit-content;
+    height: fit-content;
+
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 25px;
+    /* identical to box height */
+
+
+    /* Black 100% */
+
+    color: #000000;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.Body .CreateAccContainer {
+    /* Container */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 0px;
+    gap: 10px;
+
+    width: fit-content;
+    height: fit-content;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 3;
+    flex-grow: 0;
+}
+
+.Body .LoginAccContainer {
+    /* Container */
+
+
+/* Auto layout */
+
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 10px;
+
+width: fit-content;
+height: fit-content;
+
+
+/* Inside auto layout */
+
+flex: none;
+order: 3;
+flex-grow: 0;
+}

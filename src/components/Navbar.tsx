@@ -26,6 +26,7 @@ function Navbar(){
                     <Link to="/orders">
                         <Button text={"My Orders"} icon={""} buttonColor={"white"} textColor={"black"} ></Button>
                     </Link>
+
                 </div>
                 <div className="Right">
                     <SearchBar></SearchBar>
@@ -35,6 +36,7 @@ function Navbar(){
                     <Link to="/cart">
                         <Button text={""} icon={"shopping_cart_outline"} buttonColor={"white"} textColor={"black"} ></Button>
                     </Link>
+
 
                 </div>
             </div>

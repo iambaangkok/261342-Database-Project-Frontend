@@ -1,8 +1,6 @@
 import React from 'react';
-
-import logo from './logo.svg';
 import './App.css';
-import Navbar from './components/Navbar';
+
 import {
     BrowserRouter as Router,
     Routes,
@@ -11,6 +9,10 @@ import {
     RouteMatch,
     useParams
 } from 'react-router-dom';
+
+import Navbar from './components/Navbar';
+import Login from './page/Login';
+import Register from './page/Register';
 
 function App() {
     return (
@@ -29,7 +31,10 @@ function App() {
                             SEARCH
                         </Route>
                         <Route path="/login">
-                            ACCOUNT
+                            <Login/>
+                        </Route>
+                        <Route path="/signup">
+                            <Register/>
                         </Route>
                         <Route path="/cart">
                             CART
