@@ -2,6 +2,7 @@ import InputField from "../components/InputField";
 import '../css/Navbar.css'
 import '../css/Login.css'
 import Button from "../components/Button";
+import { Link } from "react-router-dom";
 
 function Login() {
     return (
@@ -19,7 +20,9 @@ function Login() {
                         <Button text={"Sign in"} icon={""} buttonColor={"yellow"} textColor={"black"} ></Button>
                     </div>
                     <div className="CreateAccContainer">
-                        <Button text={"Create an Account"} icon={""} buttonColor={"yellow"} textColor={"black"} ></Button>
+                        <Link to="/register">
+                            <Button text={"Create an Account"} icon={""} buttonColor={"yellow"} textColor={"black"} ></Button>
+                        </Link>
                     </div>
                 </div>
             </div>
