@@ -59,7 +59,7 @@
     align-items: flex-start;
     padding: 0px;
 
-    width: 50px;
+    width: fit-content;
     height: 25px;
 
 
