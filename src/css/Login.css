@@ -26,22 +26,27 @@
     top: 0px;
 
     /* White 100% */
-    background: #FFFFFF;
+    background: var(--c-white-100);
+
 }
 
 .Login .Body {
     /* Body */
+
+
     /* Auto layout */
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 110px 0px;
+    padding: 141px 0px;
 
     width: 1024px;
     height: fit-content;
 
     /* White 100% */
-    background: #FFFFFF;
+
+    background: var(--c-white-100);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
     /* Inside auto layout */
@@ -89,7 +94,7 @@
     /* identical to box height */
 
 
-    color: #000000;
+    color: var(--c-black-100);
 
 
     /* Inside auto layout */
