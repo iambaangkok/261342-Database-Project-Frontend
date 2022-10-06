@@ -11,8 +11,8 @@ import {
 } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
-import Login from './page/Login';
-import Register from './page/Register';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 function App() {
     return (

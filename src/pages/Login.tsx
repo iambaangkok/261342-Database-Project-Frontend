@@ -20,7 +20,7 @@ function Login() {
                         <Button text={"Sign in"} icon={""} buttonColor={"yellow"} textColor={"black"} ></Button>
                     </div>
                     <div className="CreateAccContainer">
-                        <Link to="/register">
+                        <Link to="/signup">
                             <Button text={"Create an Account"} icon={""} buttonColor={"yellow"} textColor={"black"} ></Button>
                         </Link>
                     </div>
