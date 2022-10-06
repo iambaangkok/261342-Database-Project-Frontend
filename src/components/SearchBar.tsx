@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import '../css/SearchBar.css'
 import Button from './Button'
 
@@ -5,13 +6,18 @@ import Button from './Button'
 function SearchBar() {
 
     return (
-        <div className={"SearchBar"}>
-            <div className="SearchBoxContainer">
-                <input className="SearchBox" >
-                    
-                </input>
-            </div>
-            <Button text={""} icon={"search_outline"} buttonColor={"white"} textColor={"black"} ></Button>
+        <div >
+            <form className={"SearchBar"}
+            action="submit" method="get">
+                <div className="SearchBoxContainer">
+                    <input className="SearchBox" >
+
+                    </input>
+                </div>
+                <Link to="/search">
+                    <Button text={""} icon={"search_outline"} buttonColor={"white"} textColor={"black"} ></Button>
+                </Link>
+            </form>
         </div >
     )
 }

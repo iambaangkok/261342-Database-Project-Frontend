@@ -21,6 +21,8 @@
     align-self: fit-content;
 
     user-select: none;
+
+    cursor: pointer;
 }
 
 .Button-white {
