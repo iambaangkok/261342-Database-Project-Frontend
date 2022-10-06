@@ -4,6 +4,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import { Routes,Route } from 'react-router-dom';
 import Login from './page/Login';
+import Register from './page/Register';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           </header>
         }/>
         <Route path="/login" element={<Login/>}/>
+        <Route path="/register" element={<Register/>}/>
       </Routes>
     </div>
   );
