@@ -30,6 +30,11 @@
     background: var(--c-white-100);
 }
 
+.Button-black {
+    /* White 100% */
+    background: var(--c-black-100);
+}
+
 .Button .Text {
     font-family: 'Quicksand';
     font-style: normal;
@@ -42,6 +47,10 @@
     flex: none;
     order: 1;
     flex-grow: 0;
+}
+
+.Button .Text-white {
+    color: var(--c-white-100);
 }
 
 .Button .Text-black {

@@ -12,7 +12,7 @@ import '../css/Icon.css'
 
 type IconProps = {
     type: string,
-    iconColor: "black" | "yellow"
+    iconColor: "white" | "black" | "yellow"
 }
 
 function Icon({ type, iconColor }: IconProps) {

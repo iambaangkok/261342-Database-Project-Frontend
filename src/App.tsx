@@ -13,11 +13,12 @@ import {
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Home from './pages/Home';
 
 function App() {
     return (
         <div className="App">
-            <div className="Container">
+            <div className="AppContainer">
                 <Router>
                     <Navbar></Navbar>
                     <Routes>
@@ -46,7 +47,7 @@ function App() {
                         }>
                         </Route>
                         <Route path="/" element={
-                            "HOME"
+                            <Home />
                         }>
                         </Route>
                     </Routes>

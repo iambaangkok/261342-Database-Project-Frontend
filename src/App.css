@@ -5,7 +5,7 @@
   background-color: #5a6273;
 }
 
-.App .Container {
+.App .AppContainer {
   /* Auto layout */
   display: flex;
   flex-direction: column;
