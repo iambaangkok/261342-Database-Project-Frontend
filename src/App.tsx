@@ -7,10 +7,12 @@ import {
     Route,
     Link,
     RouteMatch,
-    useParams
+    useParams,
+    useLocation,
 } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
+
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './pages/Home';
