@@ -111,7 +111,6 @@ function Products() {
                         navigate(String(prevPageUrl).replace("http://127.0.0.1:8000/products",""));
                     }}></Button>
                 :""}
-
                 {nextPageUrl !== null ?
                     <Button text={""} icon={"arrow_forward"} buttonColor={"white"} textColor={"black"} func={()=>{
                         setApiurl(nextPageUrl)
