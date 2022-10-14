@@ -84,3 +84,18 @@
     align-self: stretch;
     flex-grow: 0;
 }
+
+.ProductsPageNav {
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 50px 10px;
+    gap: 27px;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}

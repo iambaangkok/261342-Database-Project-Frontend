@@ -15,7 +15,7 @@ function SearchBar() {
                     </input>
                 </div>
                 <Link to="/search">
-                    <Button text={""} icon={"search_outline"} buttonColor={"white"} textColor={"black"} ></Button>
+                    <Button text={""} icon={"search_outline"} buttonColor={"white"} textColor={"black"} func={()=>{}}></Button>
                 </Link>
             </form>
         </div >

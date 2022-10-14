@@ -64,7 +64,7 @@ function Cart(){
                         </div>
                         <div className='Bottom'>
                             <div className='Frame'>
-                                <Button text={"Check Out"} icon={""} buttonColor={"yellow"} textColor={"black"} ></Button>
+                                <Button text={"Check Out"} icon={""} buttonColor={"yellow"} textColor={"black"} func={()=>{}}></Button>
                             </div>
                         </div>
                     </div>

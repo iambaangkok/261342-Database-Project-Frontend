@@ -45,8 +45,8 @@ function ProductsProductCard({name, scale, vendor, quantity, price} : ProductsPr
                     </div>
                 </div>
                 <div className={"ProductCardButtons"}>
-                    <Button text={"See details"} icon={""} buttonColor={"whiteBorder"} textColor={"black"} ></Button>
-                    <Button text={"Add to cart"} icon={"shopping_cart_outline"} buttonColor={"yellow"} textColor={"black"} ></Button>
+                    <Button text={"See details"} icon={""} buttonColor={"whiteBorder"} textColor={"black"} func={()=>{}}></Button>
+                    <Button text={"Add to cart"} icon={"shopping_cart_outline"} buttonColor={"yellow"} textColor={"black"} func={()=>{}}></Button>
                 </div>
             </div>
         </div>

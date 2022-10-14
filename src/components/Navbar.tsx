@@ -34,23 +34,23 @@ function Navbar() {
             <div className="ButtonContainer">
                 <div className="Left">
                     <Link to="/">
-                        <Button text={"Home"} icon={""} buttonColor={"white"} textColor={useMatchPathExact("/") ? "yellow" : "black"} ></Button>
+                        <Button text={"Home"} icon={""} buttonColor={"white"} textColor={useMatchPathExact("/") ? "yellow" : "black"} func={()=>{}}></Button>
                     </Link>
                     <Link to="/products">
-                        <Button text={"Products"} icon={""} buttonColor={"white"} textColor={useMatchPath("/products") ? "yellow" : "black"} ></Button>
+                        <Button text={"Products"} icon={""} buttonColor={"white"} textColor={useMatchPath("/products") ? "yellow" : "black"} func={()=>{}}></Button>
                     </Link>
                     <Link to="/orders">
-                        <Button text={"My Orders"} icon={""} buttonColor={"white"} textColor={useMatchPath("/orders") ? "yellow" : "black"} ></Button>
+                        <Button text={"My Orders"} icon={""} buttonColor={"white"} textColor={useMatchPath("/orders") ? "yellow" : "black"} func={()=>{}}></Button>
                     </Link>
 
                 </div>
                 <div className="Right">
                     <SearchBar></SearchBar>
                     <Link to="/login">
-                        <Button text={""} icon={"person"} buttonColor={"white"} textColor={useMatchPath("/login") ? "yellow" : "black"} ></Button>
+                        <Button text={""} icon={"person"} buttonColor={"white"} textColor={useMatchPath("/login") ? "yellow" : "black"} func={()=>{}}></Button>
                     </Link>
                     <Link to="/cart">
-                        <Button text={""} icon={"shopping_cart_outline"} buttonColor={"white"} textColor={useMatchPath("/cart") ? "yellow" : "black"} ></Button>
+                        <Button text={""} icon={"shopping_cart_outline"} buttonColor={"white"} textColor={useMatchPath("/cart") ? "yellow" : "black"} func={()=>{}}></Button>
                     </Link>
                 </div>
             </div>

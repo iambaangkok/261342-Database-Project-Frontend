@@ -34,7 +34,7 @@ function CartProductCards ({name,scale,vendor,quantity,price,total}:CartProductC
                 <div className='Text'>{total}</div>
             </div>
             <div className='RightFrame'>
-                <Button text={"Remove"} icon={"remove"} buttonColor={"white"} textColor={"red"} ></Button>
+                <Button text={"Remove"} icon={"remove"} buttonColor={"white"} textColor={"red"} func={()=>{}}></Button>
             </div>
         </div>
     </div>

@@ -17,11 +17,11 @@ function Login() {
                     <InputField textL="email" textR="" />
                     <InputField textL="password" textR="forgot password?" />
                     <div className="SignInButtonContainer">
-                        <Button text={"Sign in"} icon={""} buttonColor={"black"} textColor={"white"} ></Button>
+                        <Button text={"Sign in"} icon={""} buttonColor={"black"} textColor={"white"} func={()=>{}}></Button>
                     </div>
                     <div className="CreateAccContainer">
                         <Link to="/signup">
-                            <Button text={"Create an Account"} icon={""} buttonColor={"whiteBorder"} textColor={"gray"} ></Button>
+                            <Button text={"Create an Account"} icon={""} buttonColor={"whiteBorder"} textColor={"gray"} func={()=>{}}></Button>
                         </Link>
                     </div>
                 </div>
