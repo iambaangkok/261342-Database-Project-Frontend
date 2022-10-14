@@ -44,9 +44,9 @@ function ProductsProductCard({name, scale, vendor, quantity, price} : ProductsPr
                         </div>
                     </div>
                 </div>
-                <div className={""}>
-                    <div className={""}>
-                    </div>
+                <div className={"ProductCardButtons"}>
+                    <Button text={"See details"} icon={""} buttonColor={"whiteBorder"} textColor={"black"} ></Button>
+                    <Button text={"Add to cart"} icon={"shopping_cart_outline"} buttonColor={"yellow"} textColor={"black"} ></Button>
                 </div>
             </div>
         </div>

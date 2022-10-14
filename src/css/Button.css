@@ -17,7 +17,7 @@
     /* Inside auto layout */
     flex: none;
     order: 1;
-    flex-grow: 0;
+    flex-grow: 1;
     align-self: fit-content;
 
     user-select: none;

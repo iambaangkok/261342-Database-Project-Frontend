@@ -216,3 +216,21 @@
     order: 1;
     flex-grow: 0;
 }
+
+.ProductCardButtons {
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    /* width: 222px;
+    height: 40px; */
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
