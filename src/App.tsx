@@ -16,6 +16,7 @@ import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './pages/Home';
+import Cart from './pages/Cart';
 
 function App() {
     return (
@@ -45,7 +46,7 @@ function App() {
                         }>
                         </Route>
                         <Route path="/cart" element={
-                            "CART"
+                            <Cart />
                         }>
                         </Route>
                         <Route path="/" element={
