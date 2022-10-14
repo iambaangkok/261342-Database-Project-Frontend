@@ -31,7 +31,7 @@ function Home() {
     }
 
     useEffect(() => {
-        fetchData().catch(console.error);
+        // fetchData().catch(console.error);
     }, [])
 
 
