@@ -1,7 +1,20 @@
 import '../css/Cart.css'
+import axios from 'axios'
 import Button from '../components/Button';
+import { useEffect } from 'react';
 
 function Cart(){
+    var apiurl = ""
+    const fetchData = async () => {
+        const resp = await axios.get(apiurl);
+        const data = resp.data;
+
+    }
+
+    useEffect(() => {
+        // fetchData().catch(console.error);
+    }, [])
+
     return(
         <div className="CartContainer">
             <div className="CartBody">
@@ -42,10 +55,10 @@ function Cart(){
                     
                     <div className='SubTotal'>
                         <div className='Top'>
-                            <div className='SubtotalText'>
+                            <div className='SubTotalText'>
                                 SubTotal: 
                             </div>
-                            <div className="SubtotalNumber">
+                            <div className="SubTotalNumber">
                                 $ 455555
                             </div>
                         </div>

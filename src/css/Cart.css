@@ -188,7 +188,7 @@
 
     /* Black 100% */
 
-    color: #000000;
+    color: var(--c-black-100);
 
 
     /* Inside auto layout */
@@ -262,7 +262,7 @@
 
     /* Black 100% */
 
-    color: #000000;
+    color: var(--c-black-100);
 
 
     /* Inside auto layout */
@@ -328,7 +328,7 @@
     /* Sub Total: */
 
 
-    width: 161px;
+    width: fit-content;
     height: 45px;
 
     font-family: 'Quicksand';
@@ -355,7 +355,7 @@
     /* $4560.27 */
 
 
-    width: 145px;
+    width: fit-content;
     height: 45px;
 
     font-family: 'Quicksand';
