@@ -1,5 +1,6 @@
 import {BsPersonFill} from 'react-icons/bs'
 import {BiSearch, BiCart} from 'react-icons/bi'
+import {AiOutlinePlus} from 'react-icons/ai'
 
 import '../css/Icon.css'
 // import arrow_ios_back from '../icons/arrow ios back.svg'
@@ -58,6 +59,8 @@ function Icon({ type, iconColor }: IconProps) {
         case "shopping_cart_outline":
             ico = <BiCart className="InnerIcon" fill={iconColor} size="100%"></BiCart>
             break;
+        case "outline_plus":
+            ico = <AiOutlinePlus className="InnerIcon" fill={iconColor} size="100%"></AiOutlinePlus>
     }
 
     
