@@ -1,5 +1,6 @@
 import {BsPersonFill} from 'react-icons/bs'
 import {BiSearch, BiCart} from 'react-icons/bi'
+import {AiOutlinePlus} from 'react-icons/ai'
 
 import {GrFormClose} from 'react-icons/gr'
 import '../css/Icon.css'
@@ -59,9 +60,9 @@ function Icon({ type, iconColor }: IconProps) {
         case "shopping_cart_outline":
             ico = <BiCart className="InnerIcon" fill={iconColor} size="100%"></BiCart>
             break;
-
-
-
+        case "outline_plus":
+            ico = <AiOutlinePlus className="InnerIcon" fill={iconColor} size="100%"></AiOutlinePlus>
+            break;
         case "remove":
             ico = <GrFormClose className="InnerIcon" fill={iconColor} size="100%"></GrFormClose>
             break;

@@ -8,44 +8,51 @@ import img1 from '../images/cc_01.jpg';
 import ProductsProductCard from '../components/ProductsProductCard';
 
 type ProductsProductCardProps = {
-    id:number,
-    name: string,
-    scale: string,
-    vendor: string,
-    quantity: number,
-    price:number,
+    productCode: number,
+    productName: string,
+    productLine: string,
+    productScale: string,
+    productVendor: string,
+    productDescription: string,
+    quantityInStock: number,
+    buyPrice: number,
+    MSRP: number,
 }
 
 const COL = 3;
 
-function Products() {   
+function Products() {
 
-    var apiurl = ""
-    var productsData: ProductsProductCardProps[] = [
-        {id:0,name:"1969 Ford Falcon", scale:"1:12", vendor:"Second Gear Diecast", quantity:1093, price:173.02},
-        {id:1,name:"1969 Ford Falcon", scale:"1:12", vendor:"Second Gear Diecast", quantity:1093, price:173.02},
-        {id:2,name:"1969 Ford Falcon", scale:"1:12", vendor:"Second Gear Diecast", quantity:1093, price:173.02},
-        {id:3,name:"1969 Ford Falcon", scale:"1:12", vendor:"Second Gear Diecast", quantity:1093, price:173.02},
-        {id:4,name:"1969 Ford Falcon", scale:"1:12", vendor:"Second Gear Diecast", quantity:1093, price:173.02},
-        {id:5,name:"1969 Ford Falcon", scale:"1:12", vendor:"Second Gear Diecast", quantity:1093, price:173.02},
-        {id:6,name:"1969 Ford Falcon", scale:"1:12", vendor:"Second Gear Diecast", quantity:1093, price:173.02},
-        {id:7,name:"1969 Ford Falcon", scale:"1:12", vendor:"Second Gear Diecast", quantity:1093, price:173.02},
-        {id:8,name:"1969 Ford Falcon", scale:"1:12", vendor:"Second Gear Diecast", quantity:1093, price:173.02},
-        {id:9,name:"1969 Ford Falcon", scale:"1:12", vendor:"Second Gear Diecast", quantity:1093, price:173.02},
-        {id:10,name:"1969 Ford Falcon", scale:"1:12", vendor:"Second Gear Diecast", quantity:1093, price:173.02},
-        {id:11,name:"1969 Ford Falcon", scale:"1:12", vendor:"Second Gear Diecast", quantity:1093, price:173.02},
-    ];
+    var apiurl = "http://127.0.0.1:8000/products?page=1"
+    const [productsData, setProductsData] = useState([
+        { productCode: 0,  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
+        { productCode: 1,  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
+        { productCode: 2,  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
+        { productCode: 3,  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
+        { productCode: 4,  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
+        { productCode: 5,  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
+        { productCode: 6,  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
+        { productCode: 7,  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
+        { productCode: 8,  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
+        { productCode: 9,  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
+        { productCode: 10,  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
+        { productCode: 11,  productName: "NAME  ",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0}
+    ])
 
     const fetchData = async () => {
         const resp = await axios.get(apiurl);
         const data = resp.data;
 
         // Assign value to productsData
-        // productsData = resp.data;
+        var tProductsData = data.data
+        // for (var i = 0; i < 12; ++i) {
+        //     tProductsData[0] = data
+        // }
+        setProductsData(tProductsData);
     }
 
     useEffect(() => {
-        // fetchData().catch(console.error);
+        fetchData().catch(console.error);
     }, [])
 
 
@@ -56,23 +63,23 @@ function Products() {
             </div>
             <div className={"ProductsProductsContainer"}>
                 <div className={"ProductsProductsRow"}>
-                    {productsData.slice(0,1*COL).map((x) => {
-                        return <ProductsProductCard key={x.id} name={x.name} scale={x.scale} vendor={x.vendor} quantity={x.quantity} price={x.price}/>
+                    {productsData.slice(0, 1 * COL).map((x) => {
+                        return <ProductsProductCard key={x.productCode} name={x.productName} scale={x.productScale} vendor={x.productVendor} quantity={x.quantityInStock} price={x.MSRP} />
                     })}
                 </div>
                 <div className={"ProductsProductsRow"}>
-                    {productsData.slice(1*COL,2*COL).map((x) => {
-                        return <ProductsProductCard key={x.id} name={x.name} scale={x.scale} vendor={x.vendor} quantity={x.quantity} price={x.price}/>
+                    {productsData.slice(1 * COL, 2 * COL).map((x) => {
+                        return <ProductsProductCard key={x.productCode} name={x.productName} scale={x.productScale} vendor={x.productVendor} quantity={x.quantityInStock} price={x.MSRP} />
                     })}
                 </div>
                 <div className={"ProductsProductsRow"}>
-                    {productsData.slice(2*COL,3*COL).map((x) => {
-                        return <ProductsProductCard key={x.id} name={x.name} scale={x.scale} vendor={x.vendor} quantity={x.quantity} price={x.price}/>
+                    {productsData.slice(2 * COL, 3 * COL).map((x) => {
+                        return <ProductsProductCard key={x.productCode} name={x.productName} scale={x.productScale} vendor={x.productVendor} quantity={x.quantityInStock} price={x.MSRP} />
                     })}
                 </div>
                 <div className={"ProductsProductsRow"}>
-                    {productsData.slice(3*COL,4*COL).map((x) => {
-                        return <ProductsProductCard key={x.id} name={x.name} scale={x.scale} vendor={x.vendor} quantity={x.quantity} price={x.price}/>
+                    {productsData.slice(3 * COL, 4 * COL).map((x) => {
+                        return <ProductsProductCard key={x.productCode} name={x.productName} scale={x.productScale} vendor={x.productVendor} quantity={x.quantityInStock} price={x.MSRP} />
                     })}
                 </div>
             </div>

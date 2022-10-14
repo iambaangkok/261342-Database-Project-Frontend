@@ -12,26 +12,31 @@ import img3 from '../images/cc_02.jpg';
 
 function Home() {   
 
-    var apiurl = ""
-    var names = ["1952 Alpine Renault 1300", "1929 Texaco Curtiss Robin", "1936 Mercedes 500K Roadster"]
-    var prices = [134.99, 61.99, 50.99]
+    var apiurl = "http://127.0.0.1:8000/Random_product_3"
+    const [names, setNames] = useState(["1952 Alpine Renault 1300", "1929 Texaco Curtiss Robin", "1936 Mercedes 500K Roadster"]) 
+    const [prices, setPrices] = useState([134.99, 61.99, 50.99])
 
     const fetchData = async () => {
         const resp = await axios.get(apiurl);
         const data = resp.data;
-
+        console.log(resp)
+        console.log(data)
         // un-comment these once API is ready to be fetched
-        // names[0] = data.products[0].name
-        // names[1] = data.products[1].name
-        // names[2] = data.products[2].name
+        var tNames = ["","",""]
+        tNames[0] = data[0].productName
+        tNames[1] = data[1].productName
+        tNames[2] = data[2].productName
+        setNames(tNames)
 
-        // prices[0] = data.products[0].price
-        // prices[1] = data.products[1].price
-        // prices[2] = data.products[2].price
+        var tPrices = [0,0,0]
+        tPrices[0] = data[0].MSRP
+        tPrices[1] = data[1].MSRP
+        tPrices[2] = data[2].MSRP
+        setPrices(tPrices)
     }
 
     useEffect(() => {
-        // fetchData().catch(console.error);
+        fetchData().catch(console.error);
     }, [])
 
 
