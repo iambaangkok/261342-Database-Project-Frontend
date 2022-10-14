@@ -16,6 +16,7 @@ import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './pages/Home';
+import Products from './pages/Products';
 
 function App() {
     return (
@@ -25,7 +26,7 @@ function App() {
                     <Navbar></Navbar>
                     <Routes>
                         <Route path="/products" element={
-                            "PRODUCT"
+                            <Products/>
                         }>
                         </Route>
                         <Route path="/orders" element={

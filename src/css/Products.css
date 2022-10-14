@@ -1,0 +1,86 @@
+@import 'GlobalStyles.css';
+
+.ProductsBody {
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 140px 0px;
+
+    width: 1024px;
+    height: 2068px;
+
+    /* White 100% */
+
+    background: var(--c-white-100);
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.ProductsHeaderContainer {
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 17px 56px;
+    gap: 10px;
+
+    width: 305px;
+    height: 79px;
+
+    /* Text */
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 45px;
+    /* identical to box height */
+
+    color: var(--c-black-100);
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.ProductsProductsContainer {
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 17px 56px;
+    gap: 10px;
+
+    /* width: 100%;
+    height: 1589px; */
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.ProductsProductsRow {
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0px;
+
+    /* width: 912px;
+    height: 303px; */
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
