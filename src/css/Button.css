@@ -93,3 +93,7 @@
 .Button:hover .InnerIcon {
     fill: var(--c-yellow);
 }
+
+.Button-yellow:hover .InnerIcon {
+    fill: var(--c-white-100);
+}
