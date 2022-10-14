@@ -5,7 +5,7 @@ type ButtonProps = {
     text: string,
     icon: string
     buttonColor: "white" | "black" | "yellow" |"whiteBorder",
-    textColor: "white" | "black" | "yellow" | "gray",
+    textColor: "white" | "black" | "yellow" | "gray"| "red",
 }
 
 function Button({ text, icon, buttonColor, textColor }: ButtonProps) {
