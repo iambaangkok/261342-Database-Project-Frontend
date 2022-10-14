@@ -11,7 +11,8 @@ type ButtonProps = {
 
 function Button({ text, icon, buttonColor, textColor, func}: ButtonProps) {
     return (
-        <div className={"Button Button-" + buttonColor}>
+        <div className={"Button Button-" + buttonColor}
+            onClick={() => {func()}}>
             {icon !== "" ? 
                 <Icon type={icon} iconColor={textColor}></Icon> 
             :""}

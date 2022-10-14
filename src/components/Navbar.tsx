@@ -4,10 +4,11 @@ import '../css/Navbar.css'
 import Brand from './Brand';
 import Button from './Button';
 import SearchBar from './SearchBar';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 
 function Navbar() {
+    let navigate = useNavigate();
 
     const useMatchPath = (path:string) =>{
         let location = useLocation();
@@ -34,13 +35,16 @@ function Navbar() {
             <div className="ButtonContainer">
                 <div className="Left">
                     <Link to="/">
-                        <Button text={"Home"} icon={""} buttonColor={"white"} textColor={useMatchPathExact("/") ? "yellow" : "black"} func={()=>{}}></Button>
+                        <Button text={"Home"} icon={""} buttonColor={"white"} textColor={useMatchPathExact("/") ? "yellow" : "black"} 
+                        func={()=>{}}></Button>
                     </Link>
                     <Link to="/products">
-                        <Button text={"Products"} icon={""} buttonColor={"white"} textColor={useMatchPath("/products") ? "yellow" : "black"} func={()=>{}}></Button>
+                        <Button text={"Products"} icon={""} buttonColor={"white"} textColor={useMatchPath("/products") ? "yellow" : "black"}
+                        func={()=>{}}></Button>
                     </Link>
                     <Link to="/orders">
-                        <Button text={"My Orders"} icon={""} buttonColor={"white"} textColor={useMatchPath("/orders") ? "yellow" : "black"} func={()=>{}}></Button>
+                        <Button text={"My Orders"} icon={""} buttonColor={"white"} textColor={useMatchPath("/orders") ? "yellow" : "black"}
+                        func={()=>{}}></Button>
                     </Link>
 
                 </div>

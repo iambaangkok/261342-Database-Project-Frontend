@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios'
 import '../css/Products.css'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
 
 import img1 from '../images/cc_01.jpg';
@@ -23,8 +23,9 @@ const COL = 3;
 
 function Products() {
 
-    var apiurl = "http://127.0.0.1:8000/products?page=1"
-    const [pageData, setPageData] = useState();
+    var location = useLocation();
+    var navigate = useNavigate();
+
     const [productsData, setProductsData] = useState([
         { productCode: 0,  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
         { productCode: 1,  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
@@ -40,11 +41,25 @@ function Products() {
         { productCode: 11,  productName: "NAME  ",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0}
     ])
 
+    const [apiurl, setApiurl] = useState("http://127.0.0.1:8000/products?page=1");
+
+    const [prevPageUrl, setPrevPageUrl] = useState("");
+    const [pageUrl, setPageUrl] = useState("http://127.0.0.1:3000/products?page=1");
+    const [nextPageUrl, setNextPageUrl] = useState("");
+
+    const [links, setLinks] = useState();
+
     const fetchData = async () => {
         const resp = await axios.get(apiurl);
-        const data = resp.data;
+        const data = await resp.data;
 
-        setPageData(data);
+        setPrevPageUrl(data.prev_page_url);
+        setNextPageUrl(data.next_page_url);
+
+        console.log("prev " + data.prev_page_url)
+        console.log("next " + data.next_page_url)
+
+        setLinks(data.links);
 
         console.log(data)
 
@@ -53,10 +68,14 @@ function Products() {
         setProductsData(tProductsData);
     }
 
-    useEffect(() => {
+    useEffect(() =>{
         fetchData().catch(console.error);
-    }, [])
+    },[apiurl])
 
+    useEffect(() => {
+        console.log(prevPageUrl)
+        console.log(nextPageUrl)
+    }, [apiurl, prevPageUrl, nextPageUrl])
 
     return (
         <div className={"ProductsBody"}>
@@ -86,9 +105,20 @@ function Products() {
                 </div>
             </div>
             <div className="ProductsPageNav">
-                <Button text={""} icon={"arrow_back"} buttonColor={"white"} textColor={"black"} func={()=>{}}></Button>
+                {prevPageUrl !== null ?
+                    <Button text={""} icon={"arrow_back"} buttonColor={"white"} textColor={"black"} func={()=>{
+                        setApiurl(prevPageUrl)
+                        navigate(String(prevPageUrl).replace("http://127.0.0.1:8000/products",""));
+                    }}></Button>
+                :""}
 
-                <Button text={""} icon={"arrow_forward"} buttonColor={"white"} textColor={"black"} func={()=>{}}></Button>
+                {nextPageUrl !== null ?
+                    <Button text={""} icon={"arrow_forward"} buttonColor={"white"} textColor={"black"} func={()=>{
+                        setApiurl(nextPageUrl)
+                        navigate(String(nextPageUrl).replace("http://127.0.0.1:8000/products",""));
+                    }}></Button>
+                    
+                :""}
             </div>
         </div>
     )
