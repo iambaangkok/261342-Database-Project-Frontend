@@ -47,11 +47,11 @@ function Register() {
                     </div>
 
                     <div className='CreateAccContainer'>
-                        <Button text={"Create Account"} icon={""} buttonColor={"yellow"} textColor={"black"} ></Button>
+                        <Button text={"Create Account"} icon={""} buttonColor={"black"} textColor={"white"} ></Button>
                     </div>
                     <div className='LoginAccContainer'>
                         <Link to='/login'>
-                            <Button text={"Login"} icon={""} buttonColor={"yellow"} textColor={"black"} ></Button>
+                            <Button text={"Login"} icon={""} buttonColor={"whiteBorder"} textColor={"gray"} ></Button>
                         </Link>
                     </div>
                 </div>
