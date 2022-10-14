@@ -64,6 +64,8 @@
     padding: 0px;
     gap: 39px;
 
+    width:100%;
+
     /* Inside auto layout */
     flex: none;
     order: 0;
@@ -77,6 +79,10 @@
     font-size: 48px;
     line-height: 60px;
     /* identical to box height */
+
+    text-align: center;
+    width: 80%;
+    word-wrap: break-word;
 
     color: var(--c-black-100);
 
