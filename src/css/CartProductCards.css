@@ -1,0 +1,254 @@
+.CartCard {
+    /* CartItem */
+
+
+    box-sizing: border-box;
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+
+    width: 1024px;
+    height: 150px;
+
+    /* White 100% */
+
+    background: var(--c-black-100);
+    /* Disabled Gray */
+
+    border: 1px solid var(--c-gray-disabled);
+    border-radius: 26px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.CartCard .Left {
+    /* Left */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 22px;
+
+    width: 512px;
+    height: 150px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.CartCard .Left .LeftImage {
+    /* Image */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 10px;
+
+    width: 150px;
+    height: 150px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.Left .LeftTexts {
+    /* Texts */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 10px 0px;
+
+    width: 156px;
+    height: 66px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.LeftText .Name {
+    /* 1969 Ford Falcon */
+
+
+    width: 129px;
+    height: 20px;
+
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    /* identical to box height */
+
+
+    /* Black 100% */
+
+    color: var(--c-black-100);
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.LeftText .Vendor {
+    /* Vendor */
+
+
+    width: 136px;
+    height: 18px;
+
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    /* identical to box height */
+
+
+    /* Black 100% */
+
+    color: var(--c-black-100);
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.LeftText .Scale{
+    /* Scale */
+
+
+    width: 21px;
+    height: 18px;
+
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    /* identical to box height */
+
+
+    /* Black 100% */
+
+    color: var(--c-black-100);
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+
+.CartCard .Right {
+    /* Right */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+
+    width: 512px;
+    height: 40px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 1;
+}
+
+.Right .RightFrame {
+    /* Frame */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+
+    width: 120.5px;
+    height: 20px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.RightFrame .Text {
+    /* $159.99 */
+
+
+    width: 53px;
+    height: 20px;
+
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    /* identical to box height */
+
+
+    /* Black 100% */
+
+    color: var(--c-black-100);
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
