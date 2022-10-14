@@ -35,6 +35,11 @@
     background: var(--c-black-100);
 }
 
+.Button-yellow {
+    /* White 100% */
+    background: var(--c-yellow);
+}
+
 .Button .Text {
     font-family: 'Quicksand';
     font-style: normal;
@@ -53,6 +58,14 @@
     color: var(--c-white-100);
 }
 
+.Button-whiteBorder{
+    box-sizing: border-box;
+    border: 1px solid var(--c-gray-70);
+    border-radius: 30px;
+    color: var(--c-white-100);
+}
+
+
 .Button .Text-black {
     color: var(--c-black-100);
 }
@@ -62,11 +75,20 @@
     color: var(--c-yellow);
 }
 
+.Button .Text-gray{
+    color: var(--c-gray-disabled);
+}
 
 .Button:hover .Text{
     text-decoration-line: underline;
     color: var(--c-yellow);
 }
+
+.Button-yellow:hover .Text-black{
+    text-decoration-line: underline;
+    color: var(--c-white-100);
+}
+
 
 .Button:hover .InnerIcon {
     fill: var(--c-yellow);

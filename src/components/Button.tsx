@@ -4,8 +4,8 @@ import Icon from './Icon'
 type ButtonProps = {
     text: string,
     icon: string
-    buttonColor: "white" | "black" | "yellow" ,
-    textColor: "white" | "black" | "yellow",
+    buttonColor: "white" | "black" | "yellow" |"whiteBorder",
+    textColor: "white" | "black" | "yellow" | "gray",
 }
 
 function Button({ text, icon, buttonColor, textColor }: ButtonProps) {
