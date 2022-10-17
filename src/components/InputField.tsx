@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import '../css/InputField.css'
 
 type Text = {
@@ -6,6 +7,7 @@ type Text = {
 }
 
 function InputField({textL,textR} : Text) {
+
     return (
         <div className={"InputField"}>
             <div className='Text'>
@@ -16,9 +18,6 @@ function InputField({textL,textR} : Text) {
                     {textR}
                 </div>
             </div>
-            <input className='Field'>
-                    
-            </input>
         </div >
     )
 }
