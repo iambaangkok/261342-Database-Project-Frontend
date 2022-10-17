@@ -9,11 +9,11 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 14px 7px;
+    padding: 0px 0px;
     gap: 10px;
 
-    width: 382px;
-    height: 103px;
+    width: fit-content;
+    height: fit-content;
 
 
     /* Inside auto layout */
@@ -37,7 +37,7 @@
     gap: 10px;
 
     width: 368px;
-    height: 25px;
+    height: fit-content;
 
 
     /* Inside auto layout */
@@ -100,6 +100,34 @@
 
     /* Auto layout */
 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 0px 10px 10px;
+    gap: 10px;
+
+    width: 368px;
+    height: 40px;
+
+    /* Black 100% */
+
+    border: 1px solid #000000;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.InputField .PassWord {
+    /* PassWord */
+
+
+    box-sizing: border-box;
+
+    /* Auto layout */
+    -webkit-text-security: disc;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
