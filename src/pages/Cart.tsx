@@ -1,10 +1,25 @@
 import '../css/Cart.css'
 import axios from 'axios'
 import Button from '../components/Button';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import CartProductCards from '../components/CartProductCards';
+
+type CartProductCardsProps = {
+    productCode:number,
+    name: string,
+    scale: string,
+    vendor: string,
+    quantity: number,
+    price:number,
+    total: number,
+}
 
 function Cart(){
     var apiurl = ""
+
+    const [cartData,setCartData] = useState([
+        { productCode: 0,  productName: "NAME", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0}
+    ])
     const fetchData = async () => {
         const resp = await axios.get(apiurl);
         const data = resp.data;
@@ -12,7 +27,7 @@ function Cart(){
     }
 
     useEffect(() => {
-        // fetchData().catch(console.error);
+        fetchData().catch(console.error);
     }, [])
 
     return(
@@ -51,7 +66,10 @@ function Cart(){
                                 </div>
                             </div>
                         </div>
+
                     </div>
+
+                    <CartProductCards name={"Name"} vendor={"asdasdasd"} scale={"1:1000000"} quantity={0} price={0} total={0}  productCode={0} ></CartProductCards>
                     
                     <div className='SubTotal'>
                         <div className='Top'>

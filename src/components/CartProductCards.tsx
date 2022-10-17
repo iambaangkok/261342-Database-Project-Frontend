@@ -1,5 +1,5 @@
 import img1 from '../images/cc_01.jpg';
-import '../css/CartProductCard.css'
+import '../css/CartProductCards.css'
 import Button from './Button';
 
 type CartProductCardsProps = {
@@ -9,10 +9,10 @@ type CartProductCardsProps = {
     quantity: number,
     price:number,
     total: number,
-    productId:number
+    productCode:number
 }
 
-function CartProductCards ({name,scale,vendor,quantity,price,total}:CartProductCardsProps){
+function CartProductCards ({name,scale,vendor,quantity,price,total,productCode}:CartProductCardsProps){
  return(
     <div className="CartCard">
         <div className="Left">
@@ -25,13 +25,13 @@ function CartProductCards ({name,scale,vendor,quantity,price,total}:CartProductC
         </div>
         <div className="Right">
             <div className='RightFrame'>
-                <div className='Text'>{price}</div>
+                <div className='RightText'>{price}</div>
             </div>
             <div className='RightFrame'>
-                <div className='Text'>{quantity}</div>
+                <div className='RightText'>{quantity}</div>
             </div>
             <div className='RightFrame'>
-                <div className='Text'>{total}</div>
+                <div className='RightText'>{total}</div>
             </div>
             <div className='RightFrame'>
                 <Button text={"Remove"} icon={"remove"} buttonColor={"white"} textColor={"red"} ></Button>
