@@ -2,7 +2,7 @@ import {BsPersonFill} from 'react-icons/bs'
 import {BiSearch, BiCart} from 'react-icons/bi'
 import {AiOutlinePlus} from 'react-icons/ai'
 
-import {GrFormClose} from 'react-icons/gr'
+import {IoIosClose} from 'react-icons/io'
 import '../css/Icon.css'
 // import arrow_ios_back from '../icons/arrow ios back.svg'
 // import arrow_ios_forward from '../icons/arrow ios forward.svg'
@@ -64,7 +64,7 @@ function Icon({ type, iconColor }: IconProps) {
             ico = <AiOutlinePlus className="InnerIcon" fill={iconColor} size="100%"></AiOutlinePlus>
             break;
         case "remove":
-            ico = <GrFormClose className="InnerIcon" fill={iconColor} size="100%"></GrFormClose>
+            ico = <IoIosClose className="InnerIcon" fill={iconColor} size="100%"></IoIosClose>
             break;
     }
 

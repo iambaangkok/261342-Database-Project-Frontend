@@ -79,6 +79,15 @@
     color: var(--c-gray-disabled);
 }
 
+.Button .Text-red{
+    color: var(--c-red-100);
+}
+
+/* .Button .InnerIconRed {
+    fill: var(--c-red-100);
+} */
+
+
 .Button:hover .Text{
     text-decoration-line: underline;
     color: var(--c-yellow);

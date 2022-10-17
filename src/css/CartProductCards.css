@@ -12,12 +12,12 @@
     align-items: center;
     padding: 0px;
 
-    width: 1024px;
-    height: 150px;
+    width: fit-content;
+    height: fit-content;
 
     /* White 100% */
 
-    background: var(--c-black-100);
+    background: var(--c-white-100);
     /* Disabled Gray */
 
     border: 1px solid var(--c-gray-disabled);
@@ -65,7 +65,7 @@
     align-items: flex-start;
     padding: 0px;
     gap: 10px;
-
+    border-radius: 26px;
     width: 150px;
     height: 150px;
 
@@ -98,11 +98,11 @@
     flex-grow: 0;
 }
 
-.LeftText .Name {
+.LeftTexts .Name {
     /* 1969 Ford Falcon */
 
 
-    width: 129px;
+    width: fit-content;
     height: 20px;
 
     font-family: 'Quicksand';
@@ -125,11 +125,11 @@
     flex-grow: 0;
 }
 
-.LeftText .Vendor {
+.LeftTexts .Vendor {
     /* Vendor */
 
 
-    width: 136px;
+    width: fit-content;
     height: 18px;
 
     font-family: 'Quicksand';
@@ -152,11 +152,11 @@
     flex-grow: 0;
 }
 
-.LeftText .Scale{
+.LeftTexts .Scale {
     /* Scale */
 
 
-    width: 21px;
+    width: fit-content;
     height: 18px;
 
     font-family: 'Quicksand';
@@ -226,7 +226,7 @@
     flex-grow: 1;
 }
 
-.RightFrame .Text {
+.RightFrame .RightText {
     /* $159.99 */
 
 
