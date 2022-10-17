@@ -6,15 +6,17 @@ type ButtonProps = {
     icon: string
     buttonColor: "white" | "black" | "yellow" |"whiteBorder",
     textColor: "white" | "black" | "yellow" | "gray"| "red",
+    func: Function,
 }
 
-function Button({ text, icon, buttonColor, textColor }: ButtonProps) {
+function Button({ text, icon, buttonColor, textColor, func}: ButtonProps) {
     return (
-        <div className={"Button Button-" + buttonColor}>
+        <div className={"Button Button-" + buttonColor}
+            onClick={() => {func()}}>
             {icon !== "" ? 
                 <Icon type={icon} iconColor={textColor}></Icon> 
             :""}
-            
+
             {text !== "" ?
                 <div className={"Text Text-" + textColor}>
                     {text}

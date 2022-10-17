@@ -53,7 +53,7 @@ function Home() {
                                 {"Starting at $" + prices[0]}
                             </div>
                             <Link to="/product/productId">
-                                <Button text={"see more details"} icon={""} buttonColor={"black"} textColor={"white"} ></Button>
+                                <Button text={"see more details"} icon={""} buttonColor={"black"} textColor={"white"} func={()=>{}}></Button>
                             </Link>
                         </div>
                     </div>
@@ -76,7 +76,7 @@ function Home() {
                                 {"Starting at $" + prices[1]}
                             </div>
                             <Link to="/product/productId">
-                                <Button text={"see more details"} icon={""} buttonColor={"black"} textColor={"white"} ></Button>
+                                <Button text={"see more details"} icon={""} buttonColor={"black"} textColor={"white"} func={()=>{}}></Button>
                             </Link>
                         </div>
                     </div>
@@ -93,7 +93,7 @@ function Home() {
                                 {"Starting at $" + prices[2]}
                             </div>
                             <Link to="/product/productId">
-                                <Button text={"see more details"} icon={""} buttonColor={"black"} textColor={"white"} ></Button>
+                                <Button text={"see more details"} icon={""} buttonColor={"black"} textColor={"white"} func={()=>{}}></Button>
                             </Link>
                         </div>
                     </div>
