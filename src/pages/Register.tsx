@@ -5,7 +5,7 @@ import Button from '../components/Button';
 import InputField from '../components/InputField';
 import '../css/Register.css'
 
-const url = "http://127.0.0.1:8000/register";
+
 
 function Register() {
     const [username, setUsername] = useState("")
@@ -26,6 +26,7 @@ function Register() {
 
     const postData = async () => {
         try{
+            const url = "http://127.0.0.1:8000/register";
             const resp = await axios.post(url,{
                 username:username,
                 email:email,
@@ -41,6 +42,7 @@ function Register() {
                 city:city,
                 postalCode:postalCode
             });
+            return resp.data
             console.log(resp)
         }catch(e){
             console.log(e)
