@@ -5,32 +5,54 @@ import { useEffect, useState } from 'react';
 import CartProductCards from '../components/CartProductCards';
 
 type CartProductCardsProps = {
-    productCode:number,
+    productCode: number,
     name: string,
     scale: string,
     vendor: string,
     quantity: number,
-    price:number,
+    price: number,
     total: number,
 }
 
-function Cart(){
-    var apiurl = ""
+function Cart() {
+    var cartUrl = ""
+    var productUrl = "http://127.0.0.1:8000/products"
 
-    const [cartData,setCartData] = useState([
-        { productCode: 0,  productName: "NAME", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0}
+    const [cartList, setCartList] = useState<{ productCode: number, name: string, scale: string, vendor: string, quantity: number, price: number, total: number }[]>([])
+
+    function addToCart(productCode: number, name: string, scale: string, vendor: string, quantity: number, price: number, total: number) {
+        const newproduct = { productCode, name, scale, vendor, quantity, price, total }
+        const newData = [newproduct, ...cartList]
+        setCartList(newData)
+    }
+
+    const [productCart,setCart] = useState<{ productCode: number , quantity: number}[]>([
+        { productCode: 0, quantity: 1}
     ])
-    const fetchData = async () => {
-        const resp = await axios.get(apiurl);
-        const data = resp.data;
 
+    const [productsData, setProductsData] = useState([
+        { productCode: 0,  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
+        { productCode: 1,  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
+        { productCode: 2,  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
+    ])
+
+    const fetchCartData = async () => {
+        const resp = await axios.get(cartUrl);
+        const data = resp.data;
+        setCart(data)
+    }
+
+    const fetchProductData = async () => {
+        const resp = await axios.get(productUrl);
+        const data = resp.data;
+        setProductsData(data)
     }
 
     useEffect(() => {
-        fetchData().catch(console.error);
+        fetchCartData().catch(console.error);
     }, [])
 
-    return(
+    return (
         <div className="CartContainer">
             <div className="CartBody">
                 <div className="HeadContainer">
@@ -66,15 +88,16 @@ function Cart(){
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
-                    <CartProductCards name={"Name"} vendor={"asdasdasd"} scale={"1:1000000"} quantity={0} price={0} total={0}  productCode={0} ></CartProductCards>
-                    
+                    {productsData.filter((x) => x.productCode == productCart.productCode).map((x) => {
+                        return <CartProductCards name={x.productName} vendor={x.productLine} scale={x.productScale} quantity={x.quantityInStock} price={x.buyPrice} total={x.quantityInStock*x.buyPrice}  productCode={x.productCode} ></CartProductCards>
+                    })}
+
                     <div className='SubTotal'>
                         <div className='Top'>
                             <div className='SubTotalText'>
-                                SubTotal: 
+                                SubTotal:
                             </div>
                             <div className="SubTotalNumber">
                                 $ 455555
@@ -82,7 +105,7 @@ function Cart(){
                         </div>
                         <div className='Bottom'>
                             <div className='Frame'>
-                                <Button text={"Check Out"} icon={""} buttonColor={"yellow"} textColor={"black"} func={()=>{}}></Button>
+                                <Button text={"Check Out"} icon={""} buttonColor={"yellow"} textColor={"black"} func={() => { }}></Button>
                             </div>
                         </div>
                     </div>
@@ -91,5 +114,4 @@ function Cart(){
         </div>
     )
 }
-
 export default Cart
