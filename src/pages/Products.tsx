@@ -41,10 +41,10 @@ function Products() {
         { productCode: 11,  productName: "NAME  ",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0}
     ])
 
-    const [apiurl, setApiurl] = useState("http://127.0.0.1:8000/products?page=1");
+    const [apiurl, setApiurl] = useState("http://127.0.0.1:8000/api/products?page=1");
 
     const [prevPageUrl, setPrevPageUrl] = useState("");
-    const [pageUrl, setPageUrl] = useState("http://127.0.0.1:3000/products?page=1");
+    const [pageUrl, setPageUrl] = useState("http://127.0.0.1:3000/api/products?page=1");
     const [nextPageUrl, setNextPageUrl] = useState("");
 
     const [links, setLinks] = useState();
@@ -108,13 +108,13 @@ function Products() {
                 {prevPageUrl !== null ?
                     <Button text={""} icon={"arrow_back"} buttonColor={"white"} textColor={"black"} func={()=>{
                         setApiurl(prevPageUrl)
-                        navigate(String(prevPageUrl).replace("http://127.0.0.1:8000/products",""));
+                        navigate(String(prevPageUrl).replace("http://127.0.0.1:8000/api/products",""));
                     }}></Button>
                 :""}
                 {nextPageUrl !== null ?
                     <Button text={""} icon={"arrow_forward"} buttonColor={"white"} textColor={"black"} func={()=>{
                         setApiurl(nextPageUrl)
-                        navigate(String(nextPageUrl).replace("http://127.0.0.1:8000/products",""));
+                        navigate(String(nextPageUrl).replace("http://127.0.0.1:8000/api/products",""));
                     }}></Button>
                     
                 :""}

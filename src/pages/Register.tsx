@@ -1,11 +1,12 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import * as ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
 import InputField from '../components/InputField';
 import '../css/Register.css'
 
-const url = "http://127.0.0.1:8000/register";
+const apiurl = "http://127.0.0.1:8000/api/register";
 
 function Register() {
     const [username, setUsername] = useState("")
@@ -25,27 +26,36 @@ function Register() {
     const [postalCode, setPostalCode] = useState("")
 
     const postData = async () => {
-        try{
-            const resp = await axios.post(url,{
-                username:username,
-                email:email,
-                password:password,
-                firstName:firstName,
-                LastName:LastName,
-                phoneNumber:phoneNumber,
-                companyName:companyName,
-                addressLine1:addressLine1,
-                addressLine2:addressLine2,
-                country:country,
-                state:state,
-                city:city,
-                postalCode:postalCode
-            });
+
+
+        try {
+            axios.defaults.withCredentials = true;
+
+            const resp = await axios.post(apiurl, {
+                "username":username,
+                "email":email,
+                "password":password,
+                "password_confirmation":confirmPassword,
+
+                "customerName":companyName,
+                "contactFirstName":firstName,
+                "contactLastName":LastName,
+                "phone":phoneNumber,
+                "addressLine1":addressLine1,
+                "addressLine2":addressLine2,
+                "city":city,
+                "state":state,
+                "postalCode":postalCode,
+                "country":country,
+            })
             console.log(resp)
-        }catch(e){
+        } catch (e) {
             console.log(e)
         }
     }
+
+    useEffect(() => {
+    }, [username, email, password, firstName, LastName, phoneNumber, companyName, addressLine1, addressLine2, country, state, city, postalCode])
 
     return (
         <div className="Register">
@@ -132,12 +142,12 @@ function Register() {
 
                     <div className='CreateAccContainer'>
                         <Button text={"Create Account"} icon={""} buttonColor={"black"} textColor={"white"} func={() => {
-                            {if (password == confirmPassword){
+                            if (password === confirmPassword) {
                                 postData()
-                            }else{
+                            } else {
                                 alert("Password doesn't match")
                             }
-                            }}}></Button>
+                        }}></Button>
                     </div>
                     <div className='LoginAccContainer'>
                         <Link to='/login'>

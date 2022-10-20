@@ -12,7 +12,7 @@ import img3 from '../images/cc_02.jpg';
 
 function Home() {   
 
-    var apiurl = "http://127.0.0.1:8000/Random_product_3"
+    var apiurl = "http://127.0.0.1:8000/api/Random_product_3"
     const [names, setNames] = useState(["1952 Alpine Renault 1300", "1929 Texaco Curtiss Robin", "1936 Mercedes 500K Roadster"]) 
     const [prices, setPrices] = useState([134.99, 61.99, 50.99])
 
