@@ -26,11 +26,8 @@ function Register() {
     const [postalCode, setPostalCode] = useState("")
 
     const postData = async () => {
-
-
         try {
             axios.defaults.withCredentials = true;
-
             const resp = await axios.post(apiurl, {
                 "username":username,
                 "email":email,

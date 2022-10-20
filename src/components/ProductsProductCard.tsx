@@ -64,5 +64,4 @@ function ProductsProductCard(props : ProductsProductCardProps) {
         </div>
     )
 }
-
 export default ProductsProductCard
