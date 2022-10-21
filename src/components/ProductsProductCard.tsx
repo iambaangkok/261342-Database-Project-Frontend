@@ -8,7 +8,7 @@ import img1 from '../images/cc_01.jpg';
 
 
 type ProductsProductCardProps = {
-    productCode: number,
+    productCode: string,
     productName: string,
     productLine: string,
     productScale: string,
