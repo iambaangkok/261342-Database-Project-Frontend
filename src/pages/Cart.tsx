@@ -90,7 +90,7 @@ function Cart() {
                         </div>
                     </div>
 
-                    {productsData.filter((x) => x.productCode == productCart.productCode).map((x) => {
+                    {productsData.filter((x) => x.productCode == productCart[0].productCode).map((x) => {
                         return <CartProductCards name={x.productName} vendor={x.productLine} scale={x.productScale} quantity={x.quantityInStock} price={x.buyPrice} total={x.quantityInStock*x.buyPrice}  productCode={x.productCode} ></CartProductCards>
                     })}
 
