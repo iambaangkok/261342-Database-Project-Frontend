@@ -139,10 +139,16 @@ function Register() {
 
                     <div className='CreateAccContainer'>
                         <Button text={"Create Account"} icon={""} buttonColor={"black"} textColor={"white"} func={() => {
-                            if (password === confirmPassword) {
+                            if (password === confirmPassword && password.length >= 8) {
                                 postData()
                             } else {
-                                alert("Password doesn't match")
+                                if(password !== confirmPassword){
+                                    alert("Password doesn't match")
+                                }
+                                if(password.length < 8){
+                                    alert("Password less than 8 digit")
+                                }
+                                
                             }
                         }}></Button>
                     </div>
