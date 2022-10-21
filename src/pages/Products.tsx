@@ -84,23 +84,23 @@ function Products() {
             </div>
             <div className={"ProductsProductsContainer"}>
                 <div className={"ProductsProductsRow"}>
-                    {productsData.slice(0, 1 * COL).map((x) => {
-                        return <ProductsProductCard key={x.productCode} productCode={x.productCode} productName={x.productName} productLine={x.productLine} productScale={x.productScale} productVendor={x.productVendor} productDescription={x.productDescription} quantityInStock={x.quantityInStock} buyPrice={x.buyPrice} MSRP={x.MSRP}/>
+                    {productsData.slice(0, 1 * COL).map((x, index) => {
+                        return <ProductsProductCard key={index} productCode={x.productCode} productName={x.productName} productLine={x.productLine} productScale={x.productScale} productVendor={x.productVendor} productDescription={x.productDescription} quantityInStock={x.quantityInStock} buyPrice={x.buyPrice} MSRP={x.MSRP}/>
                     })}
                 </div>
                 <div className={"ProductsProductsRow"}>
-                    {productsData.slice(1 * COL, 2 * COL).map((x) => {
-                        return <ProductsProductCard key={x.productCode} productCode={x.productCode} productName={x.productName} productLine={x.productLine} productScale={x.productScale} productVendor={x.productVendor} productDescription={x.productDescription} quantityInStock={x.quantityInStock} buyPrice={x.buyPrice} MSRP={x.MSRP}/>
+                    {productsData.slice(1 * COL, 2 * COL).map((x, index) => {
+                        return <ProductsProductCard key={index} productCode={x.productCode} productName={x.productName} productLine={x.productLine} productScale={x.productScale} productVendor={x.productVendor} productDescription={x.productDescription} quantityInStock={x.quantityInStock} buyPrice={x.buyPrice} MSRP={x.MSRP}/>
                     })}
                 </div>
                 <div className={"ProductsProductsRow"}>
-                    {productsData.slice(2 * COL, 3 * COL).map((x) => {
-                        return <ProductsProductCard key={x.productCode} productCode={x.productCode} productName={x.productName} productLine={x.productLine} productScale={x.productScale} productVendor={x.productVendor} productDescription={x.productDescription} quantityInStock={x.quantityInStock} buyPrice={x.buyPrice} MSRP={x.MSRP}/>
+                    {productsData.slice(2 * COL, 3 * COL).map((x, index) => {
+                        return <ProductsProductCard key={index} productCode={x.productCode} productName={x.productName} productLine={x.productLine} productScale={x.productScale} productVendor={x.productVendor} productDescription={x.productDescription} quantityInStock={x.quantityInStock} buyPrice={x.buyPrice} MSRP={x.MSRP}/>
                     })}
                 </div>
                 <div className={"ProductsProductsRow"}>
-                    {productsData.slice(3 * COL, 4 * COL).map((x) => {
-                        return <ProductsProductCard key={x.productCode} productCode={x.productCode} productName={x.productName} productLine={x.productLine} productScale={x.productScale} productVendor={x.productVendor} productDescription={x.productDescription} quantityInStock={x.quantityInStock} buyPrice={x.buyPrice} MSRP={x.MSRP}/>
+                    {productsData.slice(3 * COL, 4 * COL).map((x, index) => {
+                        return <ProductsProductCard key={index} productCode={x.productCode} productName={x.productName} productLine={x.productLine} productScale={x.productScale} productVendor={x.productVendor} productDescription={x.productDescription} quantityInStock={x.quantityInStock} buyPrice={x.buyPrice} MSRP={x.MSRP}/>
                     })}
                 </div>
             </div>
