@@ -23,25 +23,25 @@ function Icon({ type, iconColor }: IconProps) {
 
     switch (type) {
         case "arrow_back":
-            ico = <IoChevronBack className="InnerIcon" fill={iconColor} size="100%"></IoChevronBack>
+            ico = <IoChevronBack className="InnerIcon" fill={iconColor} stroke={iconColor} size="100%"></IoChevronBack>
             break;
         case "arrow_forward":
-            ico = <IoChevronForward className="InnerIcon" fill={iconColor} size="100%"></IoChevronForward>
+            ico = <IoChevronForward className="InnerIcon" fill={iconColor} stroke={iconColor} size="100%"></IoChevronForward>
             break;
         case "person":
-            ico = <BsPersonFill className="InnerIcon" fill={iconColor} size="100%"></BsPersonFill>
+            ico = <BsPersonFill className="InnerIcon" fill={iconColor} stroke={iconColor} size="100%"></BsPersonFill>
             break;
         case "search_outline":
-            ico = <BiSearch className="InnerIcon" fill={iconColor} size="100%"></BiSearch>
+            ico = <BiSearch className="InnerIcon" fill={iconColor} stroke={iconColor} size="100%"></BiSearch>
             break;
         case "shopping_cart_outline":
-            ico = <BiCart className="InnerIcon" fill={iconColor} size="100%"></BiCart>
+            ico = <BiCart className="InnerIcon" fill={iconColor} stroke={iconColor} size="100%"></BiCart>
             break;
         case "outline_plus":
-            ico = <AiOutlinePlus className="InnerIcon" fill={iconColor} size="100%"></AiOutlinePlus>
+            ico = <AiOutlinePlus className="InnerIcon" fill={iconColor} stroke={iconColor} size="100%"></AiOutlinePlus>
             break;
         case "remove":
-            ico = <IoIosClose className="InnerIcon" fill={iconColor} size="100%"></IoIosClose>
+            ico = <IoIosClose className="InnerIcon" fill={iconColor} stroke={iconColor} size="100%"></IoIosClose>
             break;
     }
 

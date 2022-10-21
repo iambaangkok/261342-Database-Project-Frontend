@@ -110,14 +110,15 @@ function Products() {
                         setApiurl(prevPageUrl)
                         navigate(String(prevPageUrl).replace("http://127.0.0.1:8000/api/products",""));
                     }}></Button>
-                :""}
+                    :<Button text={""} icon={"arrow_back"} buttonColor={"white"} textColor={"white"} func={()=>{
+                    }}></Button>}
                 {nextPageUrl !== null ?
                     <Button text={""} icon={"arrow_forward"} buttonColor={"white"} textColor={"black"} func={()=>{
                         setApiurl(nextPageUrl)
                         navigate(String(nextPageUrl).replace("http://127.0.0.1:8000/api/products",""));
                     }}></Button>
-                    
-                :""}
+                    :<Button text={""} icon={"arrow_forward"} buttonColor={"white"} textColor={"white"} func={()=>{
+                    }}></Button>}
             </div>
         </div>
     )
