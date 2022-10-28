@@ -59,7 +59,7 @@ function Home() {
                             <div className={"Description"}>
                                 {"Starting at $" + prices[0]}
                             </div>
-                            <Link to={"/product?productCode="+productCodes[0]}>
+                            <Link to={"/product?productCode="+productCodes[0]} style={{ textDecoration: 'none' }}>
                                 <Button text={"see more details"} icon={""} buttonColor={"black"} textColor={"white"} func={()=>{}}></Button>
                             </Link>
                         </div>
@@ -82,7 +82,7 @@ function Home() {
                             <div className={"Description"}>
                                 {"Starting at $" + prices[1]}
                             </div>
-                            <Link to={"/product?productCode="+productCodes[1]}>
+                            <Link to={"/product?productCode="+productCodes[1]} style={{ textDecoration: 'none' }}>
                                 <Button text={"see more details"} icon={""} buttonColor={"black"} textColor={"white"} func={()=>{}}></Button>
                             </Link>
                         </div>
@@ -99,7 +99,7 @@ function Home() {
                             <div className={"Description"}>
                                 {"Starting at $" + prices[2]}
                             </div>
-                            <Link to={"/product?productCode="+productCodes[2]}>
+                            <Link to={"/product?productCode="+productCodes[2]} style={{ textDecoration: 'none' }}>
                                 <Button text={"see more details"} icon={""} buttonColor={"black"} textColor={"white"} func={()=>{}}></Button>
                             </Link>
                         </div>

@@ -45,11 +45,14 @@ function Register() {
                 "postalCode":postalCode,
                 "country":country,
             })
+            if(resp.status === 422){
+                alert(resp.data.message)
+            }
             console.log(resp)
             window.location.href = "/login"
         } catch (e) {
             console.log(e)
-            alert("email is already use")
+            alert("username or Email is already use")
         }
     }
 
@@ -155,7 +158,7 @@ function Register() {
                         }}></Button>
                     </div>
                     <div className='LoginAccContainer'>
-                        <Link to='/login'>
+                        <Link to='/login' style={{ textDecoration: 'none' }}>
                             <Button text={"Login"} icon={""} buttonColor={"whiteBorder"} textColor={"gray"} func={() => { }}></Button>
                         </Link>
                     </div>

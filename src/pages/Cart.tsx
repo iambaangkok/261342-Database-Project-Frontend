@@ -3,6 +3,7 @@ import axios from 'axios'
 import Button from '../components/Button';
 import { useEffect, useState } from 'react';
 import CartProductCards from '../components/CartProductCards';
+import { Link } from 'react-router-dom';
 
 type CartProductCardsProps = {
     productCode: number,
@@ -105,7 +106,9 @@ function Cart() {
                         </div>
                         <div className='Bottom'>
                             <div className='Frame'>
-                                <Button text={"Check Out"} icon={""} buttonColor={"yellow"} textColor={"black"} func={() => { }}></Button>
+                                <Link to="/payment" style={{ textDecoration: 'none' }}>
+                                    <Button text={"Check Out"} icon={""} buttonColor={"yellow"} textColor={"black"} func={() => { }}></Button>
+                                </Link>
                             </div>
                         </div>
                     </div>
