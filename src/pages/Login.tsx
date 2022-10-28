@@ -21,33 +21,33 @@ function Login() {
     const [token, setToken] = useState<string| null>(localStorage.getItem("Token"));
 
     const postData = async () => {
-        // try {
-        //     const resp = await axios.post(url, {
-        //         username: username,
-        //         password: password
-        //     });
-        //     console.log(resp)
-        // } catch (e) {
-        //     console.log(e)
-        //     alert("post Data fail")
-        // }
-        
-
+        try {
+            const resp = await axios.post(url, {
+                username: username,
+                password: password
+            });
+            console.log(resp)
+            var data = resp.data
+            setToken(data)
+            localStorage.setItem('Token', JSON.stringify(data))
+        } catch (e) {
+            console.log(e)
+            alert("post Data fail")
+        }
     }
 
     const postLogout = async () => {
-        // try {
-        //     const resp = await axios.post(logouturl, {
-        //         token:token
-        //     });
-        //     console.log(resp)
-        //     setToken(null)
-        // } catch (e) {
-        //     console.log(e)
-        //     alert("Logout fail")
-        // }
-        setToken(null)
-        localStorage.removeItem('Token')
+        try {
+            const resp = await axios.post(logouturl, {
+                token:token
+            });
+            console.log(resp)
+            setToken(null)
+            localStorage.removeItem('Token')
+        } catch (e) {
+            console.log(e)
+            alert("Logout fail")
+        }
     }
 
     const fetchData = async () => {
@@ -60,10 +60,6 @@ function Login() {
         //     console.log(e)
         //     alert("get Token fail")
         // }
-
-        var data = "1111"
-        setToken(data)
-        localStorage.setItem('Token', JSON.stringify(data))
     }
 
 
@@ -96,7 +92,7 @@ function Login() {
                                 {
                                     // if (check && username.length !== 0 && password.length !== 0) {
                                         postData()
-                                        fetchData()  
+                                        // fetchData()  
                                     // } else {
                                         // alert("Invalid email or password")
                                     // }
