@@ -79,11 +79,60 @@
     flex-grow: 0;
 }
 
+.Body .SubHeaderContainer {
+    /* HeaderContainer */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 17px 0px;
+    gap: 10px;
+
+    width: fit-content;
+    height: fit-content;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.SubHeaderContainer .Text {
+    /* Text */
+
+
+    width: fit-content;
+    height: 45px;
+
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 45px;
+    /* identical to box height */
+
+
+    color: var(--c-black-100);
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+}
+
 .HeaderContainer .Text {
     /* Text */
 
 
-    width: 94px;
+    width: fit-content;
     height: 45px;
 
     font-family: 'Quicksand';
