@@ -78,9 +78,9 @@ function Payment() {
                         </div>
                     </div>
 
-                    {productsData.filter((x) => x.productCode == productCart[0].productCode).map((x) => {
+                    {/* {productsData.filter((x) => x.productCode == productCart[0].productCode).map((x) => {
                         return <CartProductCards name={x.productName} vendor={x.productLine} scale={x.productScale} quantity={x.quantityInStock} price={x.buyPrice} total={x.quantityInStock*x.buyPrice}  productCode={x.productCode} remove={false}></CartProductCards>
-                    })}
+                    })} */}
 
                     <div className='SubTotal'>
                         <div className='Top'>
