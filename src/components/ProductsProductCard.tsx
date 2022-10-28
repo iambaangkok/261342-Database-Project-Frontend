@@ -8,6 +8,7 @@ import img1 from '../images/cc_01.jpg';
 
 
 type ProductsProductCardProps = {
+    refreshFunction: Function,
     productCode: string,
     productName: string,
     productLine: string,
@@ -46,6 +47,8 @@ function ProductsProductCard(props : ProductsProductCardProps) {
             
             var resp = await axios.post(url, body);
             setUpdateComponent(!updateComponent)
+
+            await   props.refreshFunction();
 
             return resp.data;
         }
