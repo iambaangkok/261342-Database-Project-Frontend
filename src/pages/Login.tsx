@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const url = "http://127.0.0.1:8000/login";
-const geturl = "";
+const geturl = "http://127.0.0.1:8000/login";
 
 function Login() {
     const [email, setEmail] = useState("");
@@ -32,6 +32,7 @@ function Login() {
             
         }catch(e){
             console.log(e)
+            alert("post Data fail")
         }
     }
 
@@ -40,8 +41,10 @@ function Login() {
             const resp1 = await axios.get(geturl);
             const data = await resp1.data;
             setToken(data);
+            window.location.href = "/products"
         }catch(e){
             console.log(e)
+            alert("get Token fail")
         }
     }
 
@@ -71,10 +74,9 @@ function Login() {
                     <div className="SignInButtonContainer">
                         <Button text={"Sign in"} icon={""} buttonColor={"black"} textColor={"white"} func={() => { 
                             {if(check && email.length !== 0 && password.length !== 0){
-                                setToken("111")
-                                // postData()
-                                // fetchData()
-                                window.location.href = "/products"
+                                postData()
+                                fetchData()
+                                
                             }else{
                                 alert("Invalid email or password")
                             }}

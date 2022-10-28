@@ -46,8 +46,10 @@ function Register() {
                 "country":country,
             })
             console.log(resp)
+            window.location.href = "/login"
         } catch (e) {
             console.log(e)
+            alert("email is already use")
         }
     }
 
