@@ -67,7 +67,7 @@ function Login() {
                         </div>
                         <div className="InputField">
                             <div className='InputField'>
-                                <InputField textL="email" textR="" />
+                                <InputField textL="username or email" textR="" />
                                 <input className='Field' onChange={(e) => setUsername(e.target.value)}></input>
                             </div>
                             <div className='InputField'>

@@ -15,34 +15,31 @@ type CartProductCardsProps = {
 }
 
 function Payment() {
-    var cartUrl = ""
-    var productUrl = "http://127.0.0.1:8000/products"
+    var cartUrl = "http://127.0.0.1:8000/api/showcart"
 
-    const [productCart,setCart] = useState<{ productCode: number , quantity: number}[]>([
-        { productCode: 0, quantity: 1}
+    const [productCart, setCart] = useState([
+        { productCode: "A", productName: "A", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantity: 0, MSRP: 0 },
     ])
 
-    const [productsData, setProductsData] = useState([
-        { productCode: 0,  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
-        { productCode: 1,  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
-        { productCode: 2,  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
-    ])
+    const [Subtotal, setSubTotal] = useState(0)
+    let total = 0
 
-    const fetchCartData = async () => {
-        const resp = await axios.get(cartUrl);
-        const data = resp.data;
+    const postToken = async () => {
+        const resp = await axios.post(cartUrl, {
+            remember_token: JSON.parse(localStorage.getItem("Token")!)
+        })
+        let data = resp.data
+        console.log(data)
         setCart(data)
     }
 
-    const fetchProductData = async () => {
-        const resp = await axios.get(productUrl);
-        const data = resp.data;
-        setProductsData(data)
-    }
+    useEffect(() => {
+        postToken().catch(console.error)
+    }, [])
 
     useEffect(() => {
-        fetchCartData().catch(console.error);
-    }, [])
+
+    }, [productCart])
 
     return (
         <div className="CartContainer">
@@ -78,9 +75,11 @@ function Payment() {
                         </div>
                     </div>
 
-                    {/* {productsData.filter((x) => x.productCode == productCart[0].productCode).map((x) => {
-                        return <CartProductCards name={x.productName} vendor={x.productLine} scale={x.productScale} quantity={x.quantityInStock} price={x.buyPrice} total={x.quantityInStock*x.buyPrice}  productCode={x.productCode} remove={false}></CartProductCards>
-                    })} */}
+                    {productCart.map((x,index) => {
+                        let sumTotal = parseFloat(Number(x.MSRP * x.quantity).toFixed(2))
+                        total += sumTotal
+                        return <CartProductCards key={index} name={x.productName} vendor={x.productLine} scale={x.productScale} quantity={x.quantity} price={x.MSRP} total={sumTotal} productCode={x.productCode} remove={false}></CartProductCards>
+                    })}
 
                     <div className='SubTotal'>
                         <div className='Top'>
@@ -88,7 +87,7 @@ function Payment() {
                                 SubTotal:
                             </div>
                             <div className="SubTotalNumber">
-                                $ 99999999
+                                $ {total}
                             </div>
                         </div>
                         <div className='Bottom'>
