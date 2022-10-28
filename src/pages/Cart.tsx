@@ -19,22 +19,18 @@ function Cart() {
     var cartUrl = ""
     var productUrl = "http://127.0.0.1:8000/products"
 
-    const [cartList, setCartList] = useState<{ productCode: number, name: string, scale: string, vendor: string, quantity: number, price: number, total: number }[]>([])
-
-    function addToCart(productCode: number, name: string, scale: string, vendor: string, quantity: number, price: number, total: number) {
-        const newproduct = { productCode, name, scale, vendor, quantity, price, total }
-        const newData = [newproduct, ...cartList]
-        setCartList(newData)
-    }
-
-    const [productCart,setCart] = useState<{ productCode: number , quantity: number}[]>([
-        { productCode: 0, quantity: 1}
+    const [productCart, setCart] = useState([
+        { productCode: 0, quantity: 1 },
+        { productCode: 2, quantity: 1 },
+        { productCode: 4, quantity: 1 }
     ])
 
     const [productsData, setProductsData] = useState([
-        { productCode: 0,  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
-        { productCode: 1,  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
-        { productCode: 2,  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
+        { productCode: 0, productName: "A", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantityInStock: 0, buyPrice: 0, MSRP: 0 },
+        { productCode: 1, productName: "B", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantityInStock: 0, buyPrice: 0, MSRP: 0 },
+        { productCode: 2, productName: "C", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantityInStock: 0, buyPrice: 0, MSRP: 0 },
+        { productCode: 3, productName: "D", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantityInStock: 0, buyPrice: 0, MSRP: 0 },
+        { productCode: 4, productName: "E", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantityInStock: 0, buyPrice: 0, MSRP: 0 },
     ])
 
     const fetchCartData = async () => {
@@ -91,9 +87,13 @@ function Cart() {
                         </div>
                     </div>
 
-                    {productsData.filter((x) => x.productCode == productCart[0].productCode).map((x) => {
-                        return <CartProductCards name={x.productName} vendor={x.productLine} scale={x.productScale} quantity={x.quantityInStock} price={x.buyPrice} total={x.quantityInStock*x.buyPrice}  productCode={x.productCode} remove={true}></CartProductCards>
+                    {productsData.filter((x) => productCart.map((x) => {x.productCode}).includes(x.productCode) ).map((x) => {
+                        return <CartProductCards name={x.productName} vendor={x.productLine} scale={x.productScale} quantity={x.quantityInStock} price={x.buyPrice} total={x.quantityInStock * x.buyPrice} productCode={x.productCode} remove={true}></CartProductCards>
                     })}
+
+                    {/* {productsData.map((x) => {
+                        return <CartProductCards name={x.productName} vendor={x.productLine} scale={x.productScale} quantity={x.quantityInStock} price={x.buyPrice} total={x.quantityInStock * x.buyPrice} productCode={x.productCode} remove={true}></CartProductCards>
+                    })} */}
 
                     <div className='SubTotal'>
                         <div className='Top'>

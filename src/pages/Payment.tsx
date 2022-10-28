@@ -18,14 +18,6 @@ function Payment() {
     var cartUrl = ""
     var productUrl = "http://127.0.0.1:8000/products"
 
-    const [cartList, setCartList] = useState<{ productCode: number, name: string, scale: string, vendor: string, quantity: number, price: number, total: number }[]>([])
-
-    function addToCart(productCode: number, name: string, scale: string, vendor: string, quantity: number, price: number, total: number) {
-        const newproduct = { productCode, name, scale, vendor, quantity, price, total }
-        const newData = [newproduct, ...cartList]
-        setCartList(newData)
-    }
-
     const [productCart,setCart] = useState<{ productCode: number , quantity: number}[]>([
         { productCode: 0, quantity: 1}
     ])
