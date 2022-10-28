@@ -22,6 +22,8 @@ type ProductsProductCardProps = {
 function ProductsProductCard(props : ProductsProductCardProps) {  
     var navigate = useNavigate();
 
+    const [updateComponent, setUpdateComponent] = useState<boolean>(true);
+
     const navigateToProductDetail = async () =>{
         var url = "http://127.0.0.1:3000/product?productCode=" + props.productCode
         console.log("NAV to " + url)
@@ -29,14 +31,29 @@ function ProductsProductCard(props : ProductsProductCardProps) {
     }
 
     const addToCart = async () =>{
-        var url = "http://127.0.0.1:8000/addToCart/"
-        var resp = await axios.post(url+props.productCode);
-        return resp.data;
+        var url = "http://127.0.0.1:8000/api/addToCart"
+
+        if(localStorage.getItem("Token") === null){
+            window.location.href = "http://127.0.0.1:3000/login"
+            return;
+        }else{
+            var body = {
+                productCode:props.productCode,
+                remember_token: JSON.parse(localStorage.getItem("Token")!)
+            }
+            
+            console.log(body)
+            
+            var resp = await axios.post(url, body);
+            setUpdateComponent(!updateComponent)
+
+            return resp.data;
+        }
     }
 
     useEffect(() => {
 
-    }, [props])
+    }, [props,updateComponent])
 
     return (
         <div className={"ProductCardContainer"}>

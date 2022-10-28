@@ -42,9 +42,33 @@ function Home() {
         setPrices(tPrices)
     }
 
+    const addToCart = async (productCode:string) =>{
+
+        var url = "http://127.0.0.1:8000/api/addToCart"
+
+        if(localStorage.getItem("Token") === null){
+            window.location.href = "http://127.0.0.1:3000/login"
+            return;
+        }else{
+            var body = {
+                productCode:productCode,
+                remember_token: JSON.parse(localStorage.getItem("Token")!)
+            }
+            
+            console.log(body)
+            
+            var resp = await axios.post(url, body);
+            // setUpdateComponent(!updateComponent)
+
+            return resp.data;
+        }
+    }
+
     useEffect(() => {
         fetchData().catch(console.error);
     }, [])
+
+    
 
 
     return (
@@ -60,7 +84,7 @@ function Home() {
                                 {"Starting at $" + prices[0]}
                             </div>
                             <Link to={"/product?productCode="+productCodes[0]} style={{ textDecoration: 'none' }}>
-                                <Button text={"see more details"} icon={""} buttonColor={"black"} textColor={"white"} func={()=>{}}></Button>
+                                <Button text={"see more details"} icon={""} buttonColor={"black"} textColor={"white"} func={()=>{addToCart(productCodes[0])}}></Button>
                             </Link>
                         </div>
                     </div>
@@ -83,7 +107,7 @@ function Home() {
                                 {"Starting at $" + prices[1]}
                             </div>
                             <Link to={"/product?productCode="+productCodes[1]} style={{ textDecoration: 'none' }}>
-                                <Button text={"see more details"} icon={""} buttonColor={"black"} textColor={"white"} func={()=>{}}></Button>
+                                <Button text={"see more details"} icon={""} buttonColor={"black"} textColor={"white"} func={()=>{addToCart(productCodes[1])}}></Button>
                             </Link>
                         </div>
                     </div>
@@ -100,7 +124,7 @@ function Home() {
                                 {"Starting at $" + prices[2]}
                             </div>
                             <Link to={"/product?productCode="+productCodes[2]} style={{ textDecoration: 'none' }}>
-                                <Button text={"see more details"} icon={""} buttonColor={"black"} textColor={"white"} func={()=>{}}></Button>
+                                <Button text={"see more details"} icon={""} buttonColor={"black"} textColor={"white"} func={()=>{addToCart(productCodes[2])}}></Button>
                             </Link>
                         </div>
                     </div>
