@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const url = "http://127.0.0.1:8000/login";
-const geturl = "http://127.0.0.1:8000/login";
+const url = "http://127.0.0.1:8000/api/login";
+const geturl = "http://127.0.0.1:8000/api/login";
 
 function Login() {
     const [email, setEmail] = useState("");
@@ -75,8 +75,7 @@ function Login() {
                         <Button text={"Sign in"} icon={""} buttonColor={"black"} textColor={"white"} func={() => { 
                             {if(check && email.length !== 0 && password.length !== 0){
                                 postData()
-                                fetchData()
-                                
+                                fetchData()  
                             }else{
                                 alert("Invalid email or password")
                             }}
