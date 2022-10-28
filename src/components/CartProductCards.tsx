@@ -16,22 +16,25 @@ type CartProductCardsProps = {
     remove: boolean
 }
 
-
+var RemoveUrl = ""
 
 function CartProductCards({ name, scale, vendor, quantity, price, total, productCode, remove }: CartProductCardsProps) {
-    
-    var RemoveUrl = ""
 
     const RemoveFromCart = async () => {
-        try {
-            const resp = await axios.post(RemoveUrl, {
-                productCode: productCode,
-                token: localStorage.getItem("Token")
-            });
-            console.log(resp)
-        } catch (e) {
-            console.log(e)
-            alert("Remove Fail")
+        if(localStorage.getItem("Token") === null){
+            window.location.href = "http://127.0.0.1:3000/login"
+            return;
+        }else{      
+            try {
+                const resp = await axios.post(RemoveUrl, {
+                    productCode: productCode,
+                    remember_token: JSON.parse(localStorage.getItem("Token")!)
+                });
+                console.log(resp)
+            } catch (e) {
+                console.log(e)
+                alert("Remove Fail")
+            }
         }
     }
 
@@ -60,7 +63,7 @@ function CartProductCards({ name, scale, vendor, quantity, price, total, product
                         <div className='RightFrame'>
                             <Button text={"Remove"} icon={"remove"} buttonColor={"white"} textColor={"red"} func={() => { RemoveFromCart() }}></Button>
                         </div>
-                        : " "}
+                        : ""}
             </div>
         </div>
     )
