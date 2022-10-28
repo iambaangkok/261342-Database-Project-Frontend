@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const url = "http://127.0.0.1:8000/api/login";
-const geturl = "http://127.0.0.1:8000/api/login";
 const logouturl = "http://127.0.0.1:8000/api/logout";
 
 function Login() {
@@ -30,13 +29,14 @@ function Login() {
             var data = resp.data
             setToken(data)
             localStorage.setItem('Token', JSON.stringify(data))
+            // window.location.href = "/products"
         } catch (e) {
             console.log(e)
-            alert("post Data fail")
+            alert("Invalid Email or Password")
         }
     }
 
-    const postLogout = async () => {
+    const postToken = async () => {
         try {
             const resp = await axios.post(logouturl, {
                 token:token
@@ -46,20 +46,8 @@ function Login() {
             localStorage.removeItem('Token')
         } catch (e) {
             console.log(e)
-            alert("Logout fail")
+            alert("post Token fail")
         }
-    }
-
-    const fetchData = async () => {
-        // try {
-        //     const resp1 = await axios.get(geturl);
-        //     const data = await resp1.data;
-        //     setToken(data);
-        //     window.location.href = "/products"
-        // } catch (e) {
-        //     console.log(e)
-        //     alert("get Token fail")
-        // }
     }
 
 
@@ -91,11 +79,8 @@ function Login() {
                             <Button text={"Sign in"} icon={""} buttonColor={"black"} textColor={"white"} func={() => {
                                 {
                                     // if (check && username.length !== 0 && password.length !== 0) {
-                                        postData()
-                                        // fetchData()  
-                                    // } else {
-                                        // alert("Invalid email or password")
-                                    // }
+                                        postData()  
+                                    // } 
                                 }
                             }}></Button>
                         </div>
@@ -109,20 +94,20 @@ function Login() {
                     <div className="Body">
                         <div className="HeaderContainer">
                             <div className="Text">
-                                Welcome
+                                You are logged in.
                             </div>
                         </div>
-                        <div className="SubHeaderContainer">
+                        {/* <div className="SubHeaderContainer">
                             <div className="Text">
                                 Username: sssssss
                             </div>
                             <div className="Text">
                                 Email: ssssssss@gmail.com
                             </div>
-                        </div>
+                        </div> */}
                         <div className="CreateAccContainer">
                             <Button text={"Logout"} icon={""} buttonColor={"black"} textColor={"white"} func={() => { 
-                                postLogout()
+                                postToken()
                             }}></Button>
                         </div>
                     </div>
