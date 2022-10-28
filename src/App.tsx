@@ -18,6 +18,7 @@ import Register from './pages/Register';
 import Home from './pages/Home';
 import Products from './pages/Products';
 import Cart from './pages/Cart';
+import ProductDetails from './pages/ProductDetails';
 
 function App() {
     return (
@@ -28,6 +29,10 @@ function App() {
                     <Routes>
                         <Route path="/products" element={
                             <Products/>
+                        }>
+                        </Route>
+                        <Route path="/product" element={
+                            <ProductDetails/>
                         }>
                         </Route>
                         <Route path="/orders" element={
@@ -51,6 +56,10 @@ function App() {
                         }>
                         </Route>
                         <Route path="/" element={
+                            <Home />
+                        }>
+                        </Route>
+                        <Route path="*" element={
                             <Home />
                         }>
                         </Route>
