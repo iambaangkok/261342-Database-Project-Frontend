@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios'
-import '../css/Products.css'
+import '../css/ProductDetails.css'
 import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import Button from '../components/Button';
 
@@ -42,7 +42,11 @@ function ProductDetails() {
     const [apiurl, setApiurl] = useState("http://127.0.0.1:8000/api/productdetails?productCode=");
 
 
-    const [links, setLinks] = useState();
+    const addToCart = async () => {
+        var url = "http://127.0.0.1:8000/addToCart/"
+        var resp = await axios.post(url + productData.productCode);
+        return resp.data;
+    }
 
     const fetchData = async () => {
         var productCode = searchParams.get("productCode")
@@ -68,12 +72,48 @@ function ProductDetails() {
 
 
     return (
-        <div className={"ProductsBody"}>
-            <div className={"ProductsHeaderContainer"}>
+        <div className={"ProductDetailsBody"}>
+            <div className={"ProductDetailsBodyHeader"}>
                 Product Details
             </div>
-            <div className={"ProductsProductsContainer"}>
-
+            <div className={"ProductDetailsLR"}>
+                <img className={"ProductDetailsLRImage"} src={img1} alt={img1} ></img>
+                <div className={"ProductDetailsLRRight"}>
+                    <div className={"ProductDetailsLRRightTexts"}>
+                        <div className={""}>
+                            <span style={{ fontWeight: 700 }}>Code: </span> {productData.productCode}
+                        </div>
+                        <div className={""}>
+                            <span style={{ fontWeight: 700 }}>Name: </span> {productData.productName}
+                        </div>
+                        <div className={""}>
+                            <span style={{ fontWeight: 700 }}>Line: </span> {productData.productLine}
+                        </div>
+                        <div className={""}>
+                            <span style={{ fontWeight: 700 }}>Scale: </span> {productData.productScale}
+                        </div>
+                        <div className={""}>
+                            <span style={{ fontWeight: 700 }}>Vendor: </span> {productData.productVendor}
+                        </div>
+                        <div className={""}>
+                            <span style={{ fontWeight: 700 }}>Currently in stock: </span> {productData.quantityInStock}
+                        </div>
+                        <div className={""}>
+                            <span style={{ fontWeight: 700 }}>Price: </span> ${productData.MSRP}
+                        </div>
+                    </div>
+                    <div className={"ProductDetailsLRRightButtons"}>
+                        <Link to="/cart">
+                            <Button text={"BUY NOW"} icon={"shopping_cart_outline"} buttonColor={"yellow"} textColor={"black"} func={() => { }}></Button>
+                        </Link>
+                        <Button text={"Add to cart"} icon={"shopping_cart_outline"} buttonColor={"yellow"} textColor={"black"} func={() => {
+                            addToCart();
+                        }}></Button>
+                    </div>
+                </div>
+            </div>
+            <div className={"ProductDetailsBot"}>
+                {productData.productCode}
             </div>
         </div>
     )
