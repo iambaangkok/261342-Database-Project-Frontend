@@ -16,42 +16,22 @@ type CartProductCardsProps = {
 }
 
 function Cart() {
-    var cartUrl = ""
-    var productUrl = "http://127.0.0.1:8000/api/products?page=1"
-    var TokenUrl = "";
+    var cartUrl = "http://127.0.0.1:8000/api/showcart"
+    // var productUrl = "http://127.0.0.1:8000/api/products?page=1"
 
     const [productCart, setCart] = useState([
-        { productCode: "S10_1678", quantity: 1 },
-        { productCode: "S10_1949", quantity: 1 },
-        { productCode: "S10_2016", quantity: 1 }
+        {  productCode: "A", productName: "A", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantity: 0,  MSRP: 0 },
     ])
 
-    const [productsData, setProductsData] = useState([
-        { productCode: "0", productName: "A", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantityInStock: 0, buyPrice: 0, MSRP: 0 },
-        { productCode: "1", productName: "B", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantityInStock: 0, buyPrice: 0, MSRP: 0 },
-        { productCode: "2", productName: "C", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantityInStock: 0, buyPrice: 0, MSRP: 0 },
-        { productCode: "3", productName: "D", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantityInStock: 0, buyPrice: 0, MSRP: 0 },
-        { productCode: "4", productName: "E", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantityInStock: 0, buyPrice: 0, MSRP: 0 },
-    ])
+    // const [productsData, setProductsData] = useState([
+    //     { productCode: "0", productName: "A", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantityInStock: 0, buyPrice: 0, MSRP: 0 },
+    //     { productCode: "1", productName: "B", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantityInStock: 0, buyPrice: 0, MSRP: 0 },
+    //     { productCode: "2", productName: "C", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantityInStock: 0, buyPrice: 0, MSRP: 0 },
+    //     { productCode: "3", productName: "D", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantityInStock: 0, buyPrice: 0, MSRP: 0 },
+    //     { productCode: "4", productName: "E", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantityInStock: 0, buyPrice: 0, MSRP: 0 },
+    // ])
 
-    const [token, setToken] = useState<string| null>(localStorage.getItem("Token"));
-    let total = 0;
-
-    const postToken = async () => {
-        try {
-            const resp = await axios.post(TokenUrl, {
-                token:token
-            });
-            console.log(resp)
-        } catch (e) {
-            console.log(e)
-            alert("post Token fail")
-        }
-    }
-
-    // useEffect(() => {
-    //     postToken
-    // },[])
+   const [Subtotal,setSubTotal] = useState(0)
 
     const fetchCartData = async () => {
         const resp = await axios.get(cartUrl);
@@ -59,20 +39,13 @@ function Cart() {
         setCart(data)
     }
 
-    const fetchProductData = async () => {
-        const resp = await axios.get(productUrl);
-        const data = resp.data;
-        setProductsData(data.data)
-    }
-
     useEffect(() => {
-        // fetchCartData().catch(console.error);
-        fetchProductData().catch(console.error)
+        //  fetchCartData().catch(console.error);
     }, [])
 
     useEffect(()=>{
 
-    },[productsData])
+    },[productCart])
 
     return (
         <div className="CartContainer">
@@ -111,10 +84,11 @@ function Cart() {
                             </div>
                         </div>
                     </div>
-
-                    {productsData.filter(x => productCart.map(a => {return a.productCode}).includes(x.productCode)).map((x,index) => {
-                            return <CartProductCards key={index} name={x.productName} vendor={x.productLine} scale={x.productScale} quantity={x.quantityInStock} price={x.buyPrice} total={x.quantityInStock * x.buyPrice} productCode={x.productCode} remove={true}></CartProductCards>
-                        })}
+                    {/* {productCart.map((x) => {
+                        {setSubTotal(Subtotal + (x.MSRP*x.quantity))}
+                        return <CartProductCards name={x.productName} vendor={x.productLine} scale={x.productScale} quantity={x.quantity} price={x.MSRP} total={x.quantity * x.MSRP} productCode={x.productCode} remove={true}></CartProductCards>
+                    })} */}
+                    
 
                     <div className='SubTotal'>
                         <div className='Top'>
@@ -122,8 +96,7 @@ function Cart() {
                                 SubTotal:
                             </div>
                             <div className="SubTotalNumber">
-                            0
-                            
+                                {Subtotal}
                             </div>
                         </div>
                         <div className='Bottom'>
