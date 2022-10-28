@@ -91,7 +91,7 @@ function Cart() {
                     </div>
 
                     {productsData.filter((x) => x.productCode == productCart[0].productCode).map((x) => {
-                        return <CartProductCards name={x.productName} vendor={x.productLine} scale={x.productScale} quantity={x.quantityInStock} price={x.buyPrice} total={x.quantityInStock*x.buyPrice}  productCode={x.productCode} ></CartProductCards>
+                        return <CartProductCards name={x.productName} vendor={x.productLine} scale={x.productScale} quantity={x.quantityInStock} price={x.buyPrice} total={x.quantityInStock*x.buyPrice}  productCode={x.productCode} remove={true}></CartProductCards>
                     })}
 
                     <div className='SubTotal'>

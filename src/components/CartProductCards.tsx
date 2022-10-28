@@ -10,9 +10,11 @@ type CartProductCardsProps = {
     price:number,
     total: number,
     productCode:number
+    remove:boolean
 }
 
-function CartProductCards ({name,scale,vendor,quantity,price,total,productCode}:CartProductCardsProps){
+function CartProductCards ({name,scale,vendor,quantity,price,total,productCode,remove}:CartProductCardsProps){
+    
  return(
     <div className="CartCard">
         <div className="Left">
@@ -33,9 +35,12 @@ function CartProductCards ({name,scale,vendor,quantity,price,total,productCode}:
             <div className='RightFrame'>
                 <div className='RightText'>{total}</div>
             </div>
-            <div className='RightFrame'>
-                <Button text={"Remove"} icon={"remove"} buttonColor={"white"} textColor={"red"} func={()=>{}}></Button>
-            </div>
+            {
+                remove == true?  
+                <div className='RightFrame'>
+                    <Button text={"Remove"} icon={"remove"} buttonColor={"white"} textColor={"red"} func={()=>{}}></Button>
+                </div>
+            :" "}     
         </div>
     </div>
  )
