@@ -13,6 +13,7 @@ import img3 from '../images/cc_02.jpg';
 function Home() {   
 
     var apiurl = "http://127.0.0.1:8000/api/Random_product_3"
+    const [productCodes, setProductCodes] = useState(["A","B","C"])
     const [names, setNames] = useState(["1952 Alpine Renault 1300", "1929 Texaco Curtiss Robin", "1936 Mercedes 500K Roadster"]) 
     const [prices, setPrices] = useState([134.99, 61.99, 50.99])
 
@@ -21,7 +22,13 @@ function Home() {
         const data = resp.data;
         console.log(resp)
         console.log(data)
-        // un-comment these once API is ready to be fetched
+        
+        var tProductCodes = ["","",""]
+        tProductCodes[0] = data[0].productCode
+        tProductCodes[1] = data[1].productCode
+        tProductCodes[2] = data[2].productCode
+        setProductCodes(tProductCodes)
+
         var tNames = ["","",""]
         tNames[0] = data[0].productName
         tNames[1] = data[1].productName
@@ -52,7 +59,7 @@ function Home() {
                             <div className={"Description"}>
                                 {"Starting at $" + prices[0]}
                             </div>
-                            <Link to="/product/productId">
+                            <Link to={"/product?productCode="+productCodes[0]}>
                                 <Button text={"see more details"} icon={""} buttonColor={"black"} textColor={"white"} func={()=>{}}></Button>
                             </Link>
                         </div>
@@ -75,7 +82,7 @@ function Home() {
                             <div className={"Description"}>
                                 {"Starting at $" + prices[1]}
                             </div>
-                            <Link to="/product/productId">
+                            <Link to={"/product?productCode="+productCodes[1]}>
                                 <Button text={"see more details"} icon={""} buttonColor={"black"} textColor={"white"} func={()=>{}}></Button>
                             </Link>
                         </div>
@@ -92,7 +99,7 @@ function Home() {
                             <div className={"Description"}>
                                 {"Starting at $" + prices[2]}
                             </div>
-                            <Link to="/product/productId">
+                            <Link to={"/product?productCode="+productCodes[2]}>
                                 <Button text={"see more details"} icon={""} buttonColor={"black"} textColor={"white"} func={()=>{}}></Button>
                             </Link>
                         </div>

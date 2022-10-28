@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios'
 import '../css/ProductsProductCard.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from './Button';
 
 import img1 from '../images/cc_01.jpg';
@@ -19,13 +19,24 @@ type ProductsProductCardProps = {
     MSRP: number,
 }
 
-function ProductsProductCard(props : ProductsProductCardProps) {   
+function ProductsProductCard(props : ProductsProductCardProps) {  
+    var navigate = useNavigate();
+
+    const navigateToProductDetail = async () =>{
+        var url = "http://127.0.0.1:3000/product?productCode=" + props.productCode
+        console.log("NAV to " + url)
+        window.location.href = url
+    }
 
     const addToCart = async () =>{
         var url = "http://127.0.0.1:8000/addToCart/"
         var resp = await axios.post(url+props.productCode);
         return resp.data;
     }
+
+    useEffect(() => {
+
+    }, [props])
 
     return (
         <div className={"ProductCardContainer"}>
@@ -55,7 +66,7 @@ function ProductsProductCard(props : ProductsProductCardProps) {
                     </div>
                 </div>
                 <div className={"ProductCardButtons"}>
-                    <Button text={"See details"} icon={""} buttonColor={"whiteBorder"} textColor={"black"} func={()=>{}}></Button>
+                    <Button text={"See details"} icon={""} buttonColor={"whiteBorder"} textColor={"black"} func={()=>{navigateToProductDetail()}}></Button>
                     <Button text={"Add to cart"} icon={"shopping_cart_outline"} buttonColor={"yellow"} textColor={"black"} func={()=>{
                         addToCart();
                     }}></Button>

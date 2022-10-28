@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios'
 import '../css/Products.css'
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import Button from '../components/Button';
 
 import img1 from '../images/cc_01.jpg';
@@ -19,10 +19,11 @@ type ProductsProductCardProps = {
 }
 
 
-function ProductDetails(productCode: string) {
+function ProductDetails() {
 
     var location = useLocation();
     var navigate = useNavigate();
+    const [searchParams, setSearchParams] = useSearchParams();
 
     const [productData, setProductData] = useState<ProductsProductCardProps>(
         {
@@ -38,13 +39,19 @@ function ProductDetails(productCode: string) {
         },
     )
 
-    const [apiurl, setApiurl] = useState("http://127.0.0.1:8000/api/productdetails?id=" + productCode);
+    const [apiurl, setApiurl] = useState("http://127.0.0.1:8000/api/productdetails?productCode=");
 
 
     const [links, setLinks] = useState();
 
     const fetchData = async () => {
-        const resp = await axios.get(apiurl);
+        var productCode = searchParams.get("productCode")
+        console.log(productCode)
+
+        var tApiurl = apiurl + productCode
+        console.log(tApiurl)
+
+        const resp = await axios.get(tApiurl);
         const data = await resp.data;
 
         console.log(data)
@@ -56,7 +63,7 @@ function ProductDetails(productCode: string) {
 
     useEffect(() => {
         fetchData().catch(console.error);
-    }, [apiurl])
+    }, [])
 
 
 
