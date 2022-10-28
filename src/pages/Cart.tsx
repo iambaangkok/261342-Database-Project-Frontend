@@ -18,6 +18,7 @@ type CartProductCardsProps = {
 function Cart() {
     var cartUrl = ""
     var productUrl = "http://127.0.0.1:8000/products"
+    var TokenUrl = "";
 
     const [productCart, setCart] = useState([
         { productCode: 0, quantity: 1 },
@@ -32,6 +33,24 @@ function Cart() {
         { productCode: 3, productName: "D", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantityInStock: 0, buyPrice: 0, MSRP: 0 },
         { productCode: 4, productName: "E", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantityInStock: 0, buyPrice: 0, MSRP: 0 },
     ])
+
+    const [token, setToken] = useState<string| null>(localStorage.getItem("Token"));
+
+    const postToken = async () => {
+        try {
+            const resp = await axios.post(TokenUrl, {
+                token:token
+            });
+            console.log(resp)
+        } catch (e) {
+            console.log(e)
+            alert("post Token fail")
+        }
+    }
+
+    // useEffect(() => {
+    //     postToken
+    // },[])
 
     const fetchCartData = async () => {
         const resp = await axios.get(cartUrl);
@@ -87,13 +106,13 @@ function Cart() {
                         </div>
                     </div>
 
-                    {productsData.filter((x) => productCart.map((x) => {x.productCode}).includes(x.productCode) ).map((x) => {
-                        return <CartProductCards name={x.productName} vendor={x.productLine} scale={x.productScale} quantity={x.quantityInStock} price={x.buyPrice} total={x.quantityInStock * x.buyPrice} productCode={x.productCode} remove={true}></CartProductCards>
-                    })}
-
-                    {/* {productsData.map((x) => {
+                    {/* {productsData.filter((x) => productCart.map((x) => {x.productCode}).includes(x.productCode) ).map((x) => {
                         return <CartProductCards name={x.productName} vendor={x.productLine} scale={x.productScale} quantity={x.quantityInStock} price={x.buyPrice} total={x.quantityInStock * x.buyPrice} productCode={x.productCode} remove={true}></CartProductCards>
                     })} */}
+
+                    {productsData.map((x) => {
+                        return <CartProductCards name={x.productName} vendor={x.productLine} scale={x.productScale} quantity={x.quantityInStock} price={x.buyPrice} total={x.quantityInStock * x.buyPrice} productCode={x.productCode} remove={true}></CartProductCards>
+                    })}
 
                     <div className='SubTotal'>
                         <div className='Top'>
