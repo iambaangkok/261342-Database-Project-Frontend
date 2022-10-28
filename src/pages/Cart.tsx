@@ -20,32 +20,29 @@ function Cart() {
     // var productUrl = "http://127.0.0.1:8000/api/products?page=1"
 
     const [productCart, setCart] = useState([
-        {  productCode: "A", productName: "A", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantity: 0,  MSRP: 0 },
+        { productCode: "A", productName: "A", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantity: 0, MSRP: 0 },
     ])
 
-    // const [productsData, setProductsData] = useState([
-    //     { productCode: "0", productName: "A", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantityInStock: 0, buyPrice: 0, MSRP: 0 },
-    //     { productCode: "1", productName: "B", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantityInStock: 0, buyPrice: 0, MSRP: 0 },
-    //     { productCode: "2", productName: "C", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantityInStock: 0, buyPrice: 0, MSRP: 0 },
-    //     { productCode: "3", productName: "D", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantityInStock: 0, buyPrice: 0, MSRP: 0 },
-    //     { productCode: "4", productName: "E", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantityInStock: 0, buyPrice: 0, MSRP: 0 },
-    // ])
+    const [Subtotal, setSubTotal] = useState(0)
+    let total = 0
 
-   const [Subtotal,setSubTotal] = useState(0)
-
-    const fetchCartData = async () => {
-        const resp = await axios.get(cartUrl);
-        const data = resp.data;
+    const postToken = async () => {
+        const resp = await axios.post(cartUrl, {
+            remember_token: JSON.parse(localStorage.getItem("Token")!)
+        })
+        let data = resp.data
+        console.log(data)
         setCart(data)
     }
 
     useEffect(() => {
-        //  fetchCartData().catch(console.error);
+        postToken().catch(console.error)
     }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
 
-    },[productCart])
+    }, [productCart])
+
 
     return (
         <div className="CartContainer">
@@ -84,19 +81,18 @@ function Cart() {
                             </div>
                         </div>
                     </div>
-                    {/* {productCart.map((x) => {
-                        {setSubTotal(Subtotal + (x.MSRP*x.quantity))}
-                        return <CartProductCards name={x.productName} vendor={x.productLine} scale={x.productScale} quantity={x.quantity} price={x.MSRP} total={x.quantity * x.MSRP} productCode={x.productCode} remove={true}></CartProductCards>
-                    })} */}
-                    
-
+                    {productCart.map((x) => {
+                        let sumTotal = parseFloat(Number(x.MSRP * x.quantity).toFixed(2))
+                        total += sumTotal
+                        return <CartProductCards name={x.productName} vendor={x.productLine} scale={x.productScale} quantity={x.quantity} price={x.MSRP} total={sumTotal} productCode={x.productCode} remove={true}></CartProductCards>
+                    })}
                     <div className='SubTotal'>
                         <div className='Top'>
                             <div className='SubTotalText'>
                                 SubTotal:
                             </div>
                             <div className="SubTotalNumber">
-                                {Subtotal}
+                                $ {total} 
                             </div>
                         </div>
                         <div className='Bottom'>
