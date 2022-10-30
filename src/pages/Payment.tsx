@@ -78,7 +78,7 @@ function Payment() {
                     {productCart.map((x,index) => {
                         let sumTotal = parseFloat(Number(x.MSRP * x.quantity).toFixed(2))
                         total += sumTotal
-                        return <CartProductCards key={index} name={x.productName} vendor={x.productLine} scale={x.productScale} quantity={x.quantity} price={x.MSRP} total={sumTotal} productCode={x.productCode} remove={false}></CartProductCards>
+                        return <CartProductCards key={index} refreshFunction={() => postToken()} name={x.productName} vendor={x.productLine} scale={x.productScale} quantity={x.quantity} price={x.MSRP} total={sumTotal} productCode={x.productCode} remove={false}></CartProductCards>
                     })}
 
                     <div className='SubTotal'>

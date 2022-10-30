@@ -17,31 +17,35 @@ type CartProductCardsProps = {
 
 function Cart() {
     var cartUrl = "http://127.0.0.1:8000/api/showcart"
-    // var productUrl = "http://127.0.0.1:8000/api/products?page=1"
 
     const [productCart, setCart] = useState([
         { productCode: "A", productName: "A", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantity: 0, MSRP: 0 },
     ])
 
-    const [Subtotal, setSubTotal] = useState(0)
     let total = 0
 
     const postToken = async () => {
-        const resp = await axios.post(cartUrl, {
-            remember_token: JSON.parse(localStorage.getItem("Token")!)
-        })
-        let data = resp.data
-        console.log(data)
-        setCart(data)
+        if (localStorage.getItem("Token") === null) {
+            window.location.href = "http://127.0.0.1:3000/login"
+            return
+        } else {
+            const resp = await axios.post(cartUrl, {
+                remember_token: JSON.parse(localStorage.getItem("Token")!)
+            })
+            let data = resp.data
+            console.log(data)
+            setCart(data)
+            return resp.data;
+        }
     }
 
     useEffect(() => {
         postToken().catch(console.error)
-    }, [])
+    }, [cartUrl])
 
     useEffect(() => {
 
-    }, [productCart])
+    }, [productCart,setCart])
 
 
     return (
@@ -81,10 +85,10 @@ function Cart() {
                             </div>
                         </div>
                     </div>
-                    {productCart.map((x) => {
+                    {productCart.map((x,index) => {
                         let sumTotal = parseFloat(Number(x.MSRP * x.quantity).toFixed(2))
                         total += sumTotal
-                        return <CartProductCards name={x.productName} vendor={x.productLine} scale={x.productScale} quantity={x.quantity} price={x.MSRP} total={sumTotal} productCode={x.productCode} remove={true}></CartProductCards>
+                        return <CartProductCards key={index} refreshFunction={()=>(postToken())} name={x.productName} vendor={x.productLine} scale={x.productScale} quantity={x.quantity} price={x.MSRP} total={sumTotal} productCode={x.productCode} remove={true}></CartProductCards>
                     })}
                     <div className='SubTotal'>
                         <div className='Top'>
@@ -92,7 +96,7 @@ function Cart() {
                                 SubTotal:
                             </div>
                             <div className="SubTotalNumber">
-                                $ {total} 
+                                $ {parseFloat(Number(total).toFixed(2))}
                             </div>
                         </div>
                         <div className='Bottom'>

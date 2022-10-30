@@ -3,9 +3,10 @@ import '../css/CartProductCards.css'
 import Button from './Button';
 import axios from 'axios';
 import Products from '../pages/Products';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type CartProductCardsProps = {
+    refreshFunction: Function,
     name: string,
     scale: string,
     vendor: string,
@@ -16,10 +17,11 @@ type CartProductCardsProps = {
     remove: boolean
 }
 
-var RemoveUrl = ""
+var RemoveUrl = "http://127.0.0.1:8000/api/removeproductincart"
 
-function CartProductCards({ name, scale, vendor, quantity, price, total, productCode, remove }: CartProductCardsProps) {
+function CartProductCards(props: CartProductCardsProps) {
 
+    
     const RemoveFromCart = async () => {
         if(localStorage.getItem("Token") === null){
             window.location.href = "http://127.0.0.1:3000/login"
@@ -27,10 +29,12 @@ function CartProductCards({ name, scale, vendor, quantity, price, total, product
         }else{      
             try {
                 const resp = await axios.post(RemoveUrl, {
-                    productCode: productCode,
+                    productCode: props.productCode,
                     remember_token: JSON.parse(localStorage.getItem("Token")!)
                 });
+                await props.refreshFunction()
                 console.log(resp)
+                return resp.data;
             } catch (e) {
                 console.log(e)
                 alert("Remove Fail")
@@ -38,28 +42,31 @@ function CartProductCards({ name, scale, vendor, quantity, price, total, product
         }
     }
 
+    useEffect(() => {
+    }, [RemoveFromCart])
+
     return (
         <div className="CartCard">
             <div className="Left">
                 <img className="LeftImage" src={img1} alt={img1}></img>
                 <div className='LeftTexts'>
-                    <div className='Name'>{name}</div>
-                    <div className='Vendor'>{vendor}</div>
-                    <div className='Scale'>{scale}</div>
+                    <div className='Name'>{props.name}</div>
+                    <div className='Vendor'>{props.vendor}</div>
+                    <div className='Scale'>{props.scale}</div>
                 </div>
             </div>
             <div className="Right">
                 <div className='RightFrame'>
-                    <div className='RightText'>{price}</div>
+                    <div className='RightText'>{props.price}</div>
                 </div>
                 <div className='RightFrame'>
-                    <div className='RightText'>{quantity}</div>
+                    <div className='RightText'>{props.quantity}</div>
                 </div>
                 <div className='RightFrame'>
-                    <div className='RightText'>{total}</div>
+                    <div className='RightText'>{props.total}</div>
                 </div>
                 {
-                    remove == true ?
+                    props.remove == true ?
                         <div className='RightFrame'>
                             <Button text={"Remove"} icon={"remove"} buttonColor={"white"} textColor={"red"} func={() => { RemoveFromCart() }}></Button>
                         </div>
