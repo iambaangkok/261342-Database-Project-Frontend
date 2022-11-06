@@ -21,11 +21,9 @@ type ProductsProductCardProps = {
 
 function ProductDetails() {
 
-    var location = useLocation();
-    var navigate = useNavigate();
     const [searchParams, setSearchParams] = useSearchParams();
 
-    const [productData, setProductData] = useState<ProductsProductCardProps>(
+    const [productData, setProductData] = useState(
         {
             productCode: "PRODUCTCODE",
             productName: "NAME",
@@ -36,40 +34,58 @@ function ProductDetails() {
             quantityInStock: 0,
             buyPrice: 0,
             MSRP: 0
-        },
+        }
     )
 
-    const [apiurl, setApiurl] = useState("http://127.0.0.1:8000/api/productdetails?productCode=");
-
-
     const addToCart = async () => {
-        var url = "http://127.0.0.1:8000/addToCart/"
-        var resp = await axios.post(url + productData.productCode);
-        return resp.data;
+        var addToCartURL = "http://127.0.0.1:8000/api/addToCart"
+
+        if(localStorage.getItem("Token") === null){
+            window.location.href = "http://127.0.0.1:3000/login"
+            return;
+        }else{
+            var body = {
+                productCode:productData.productCode,
+                remember_token: JSON.parse(localStorage.getItem("Token")!)
+            }
+            
+            console.log(body)
+            
+            var resp = await axios.post(addToCartURL, body);
+
+            return resp.data;
+        }
     }
 
     const fetchData = async () => {
+        var fetchApiUrl = "http://127.0.0.1:8000/api/product?productCode=";
+
+        console.log(productData)
+
         var productCode = searchParams.get("productCode")
         console.log(productCode)
 
-        var tApiurl = apiurl + productCode
-        console.log(tApiurl)
+        var apiurl = fetchApiUrl + productCode
+        console.log(apiurl)
 
-        const resp = await axios.get(tApiurl);
+        const resp = await axios.get(apiurl);
+        console.log(resp)
         const data = await resp.data;
 
         console.log(data)
 
         // Assign value to productsData
-        var tProductData = data.data
+        var tProductData = data
         setProductData(tProductData);
     }
 
     useEffect(() => {
         fetchData().catch(console.error);
     }, [])
+    useEffect(() => {
+    }, [productData])
 
-
+    
 
     return (
         <div className={"ProductDetailsBody"}>
@@ -113,7 +129,7 @@ function ProductDetails() {
                 </div>
             </div>
             <div className={"ProductDetailsBot"}>
-                {productData.productCode}
+                {productData.productDescription}
             </div>
         </div>
     )
