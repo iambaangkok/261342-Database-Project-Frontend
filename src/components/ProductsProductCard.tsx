@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Button from './Button';
 
 import img1 from '../images/cc_01.jpg';
+import Quantity from './Quantity';
 
 
 type ProductsProductCardProps = {
@@ -25,6 +26,7 @@ function ProductsProductCard(props : ProductsProductCardProps) {
 
     const [updateComponent, setUpdateComponent] = useState<boolean>(true);
 
+
     const navigateToProductDetail = async () =>{
         var url = "http://127.0.0.1:3000/product?productCode=" + props.productCode
         console.log("NAV to " + url)
@@ -40,7 +42,8 @@ function ProductsProductCard(props : ProductsProductCardProps) {
         }else{
             var body = {
                 productCode:props.productCode,
-                remember_token: JSON.parse(localStorage.getItem("Token")!)
+                remember_token: JSON.parse(localStorage.getItem("Token")!),
+                quantity:1
             }
             
             console.log(body)
@@ -53,6 +56,8 @@ function ProductsProductCard(props : ProductsProductCardProps) {
             return resp.data;
         }
     }
+
+
 
     useEffect(() => {
 
