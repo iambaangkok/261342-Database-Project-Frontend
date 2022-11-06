@@ -10,7 +10,11 @@ type QuantityType = {
 
 function Quantity(props:QuantityType) {
 
-    const [value, setValue] = useState<number>(props.startingValue)
+    const [value, setValue] = useState<number>(1)
+
+    const updateValue = () =>{
+        setValue(props.startingValue)
+    }
 
     const increment = () => {
         setValue(value+1)
@@ -24,7 +28,10 @@ function Quantity(props:QuantityType) {
 
     useEffect(() => {
         props.exportValueFunction(value)
+        updateValue()
     }, [])
+
+    useEffect(()=>{updateValue()},[props.startingValue])
 
     useEffect(() => {
         props.exportValueFunction(value)
