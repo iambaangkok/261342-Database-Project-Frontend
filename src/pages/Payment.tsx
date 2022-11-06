@@ -22,11 +22,14 @@ function Payment() {
     ])
 
     const [Subtotal, setSubTotal] = useState(0)
+    const [checkNumber, setCheck] = useState(0)
     let total = 0
 
     const postToken = async () => {
         const resp = await axios.post(cartUrl, {
-            remember_token: JSON.parse(localStorage.getItem("Token")!)
+            remember_token: JSON.parse(localStorage.getItem("Token")!),
+            totalAmount : Subtotal,
+            checkNumber : checkNumber,
         })
         let data = resp.data
         console.log(data)
@@ -36,6 +39,11 @@ function Payment() {
     useEffect(() => {
         postToken().catch(console.error)
     }, [])
+
+
+    useEffect(() => {
+        setSubTotal(total)
+    }, [total])
 
     useEffect(() => {
 
@@ -87,7 +95,7 @@ function Payment() {
                                 SubTotal:
                             </div>
                             <div className="SubTotalNumber">
-                                $ {total}
+                                $ {parseFloat(Number(total).toFixed(2))}
                             </div>
                         </div>
                         <div className='Bottom'>
