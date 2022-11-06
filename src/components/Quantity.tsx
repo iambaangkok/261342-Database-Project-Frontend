@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import '../css/Quantity.css'
 
 type QuantityType = {
+    startingValue:number,
     exportValueFunction:Function,
     incrementFunction:Function,
     decrementFunction:Function
@@ -9,7 +10,7 @@ type QuantityType = {
 
 function Quantity(props:QuantityType) {
 
-    const [value, setValue] = useState<number>(1)
+    const [value, setValue] = useState<number>(props.startingValue)
 
     const increment = () => {
         setValue(value+1)
