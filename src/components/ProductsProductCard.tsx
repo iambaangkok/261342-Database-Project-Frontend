@@ -6,6 +6,7 @@ import Button from './Button';
 
 import img1 from '../images/cc_01.jpg';
 import Quantity from './Quantity';
+import PopUp from './PopUp';
 
 
 type ProductsProductCardProps = {
@@ -21,37 +22,49 @@ type ProductsProductCardProps = {
     MSRP: number,
 }
 
-function ProductsProductCard(props : ProductsProductCardProps) {  
+function ProductsProductCard(props: ProductsProductCardProps) {
     var navigate = useNavigate();
 
     const [updateComponent, setUpdateComponent] = useState<boolean>(true);
 
+    const [isOpen, setIsOpen] = useState(false)
 
-    const navigateToProductDetail = async () =>{
+    const [alertText, setAlert] = useState("")
+
+    const togglePopup = () => {
+        setIsOpen(!isOpen)
+    }
+
+
+    const navigateToProductDetail = async () => {
         var url = "http://127.0.0.1:3000/product?productCode=" + props.productCode
         console.log("NAV to " + url)
         window.location.href = url
     }
 
-    const addToCart = async () =>{
+    const addToCart = async () => {
         var url = "http://127.0.0.1:8000/api/addToCart"
 
-        if(localStorage.getItem("Token") === null){
+        if (localStorage.getItem("Token") === null) {
             window.location.href = "http://127.0.0.1:3000/login"
             return;
-        }else{
+        } else {
             var body = {
-                productCode:props.productCode,
+                productCode: props.productCode,
                 remember_token: JSON.parse(localStorage.getItem("Token")!),
-                quantity:1
+                quantity: 1
             }
-            
+
             console.log(body)
-            
+            setAlert(props.productCode + " is Add to cart")
+            togglePopup();
+            setTimeout(() => {
+                setIsOpen(false);
+            }, 1000);
             var resp = await axios.post(url, body);
             setUpdateComponent(!updateComponent)
 
-            await   props.refreshFunction();
+            await props.refreshFunction();
 
             return resp.data;
         }
@@ -61,10 +74,12 @@ function ProductsProductCard(props : ProductsProductCardProps) {
 
     useEffect(() => {
 
-    }, [props,updateComponent])
+    }, [props, updateComponent])
+
 
     return (
         <div className={"ProductCardContainer"}>
+            {isOpen && <PopUp handleClose={() => { togglePopup(); }} headText="Add to cart success" contentText={alertText}></PopUp>}
             <img className={"ProductCardImage"} src={img1} alt={img1} ></img>
             <div className={"ProductCardBottomContainer"}>
                 <div className={"ProductCardTextsContainer"}>
@@ -86,13 +101,13 @@ function ProductsProductCard(props : ProductsProductCardProps) {
                             {props.quantityInStock + " available"}
                         </div>
                         <div className={"ProductCardTextsBottomPrice"}>
-                            {"$ " +props.MSRP}
+                            {"$ " + props.MSRP}
                         </div>
                     </div>
                 </div>
                 <div className={"ProductCardButtons"}>
-                    <Button text={"See details"} icon={""} buttonColor={"whiteBorder"} textColor={"black"} func={()=>{navigateToProductDetail()}}></Button>
-                    <Button text={"Add to cart"} icon={"shopping_cart_outline"} buttonColor={"yellow"} textColor={"black"} func={()=>{
+                    <Button text={"See details"} icon={""} buttonColor={"whiteBorder"} textColor={"black"} func={() => { navigateToProductDetail() }}></Button>
+                    <Button text={"Add to cart"} icon={"shopping_cart_outline"} buttonColor={"yellow"} textColor={"black"} func={() => {
                         addToCart();
                     }}></Button>
                 </div>
