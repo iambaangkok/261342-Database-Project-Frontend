@@ -127,8 +127,8 @@ function ProductDetails() {
                         </div>
                     </div>
                     <div className={"ProductDetailsLRRightButtons"}>
-                        <Link to="/cart">
-                            <Button text={"BUY NOW"} icon={"shopping_cart_outline"} buttonColor={"yellow"} textColor={"black"} func={() => { }}></Button>
+                        <Link to="/cart" style={{ textDecoration: 'none' }}>
+                            <Button text={"BUY NOW"}  icon={"shopping_cart_outline"} buttonColor={"yellow"} textColor={"black"} func={() => { }}></Button>
                         </Link>
 
                         <Quantity startingValue={1} exportValueFunction={getQuantityValue} incrementFunction={()=>{}} decrementFunction={()=>{}}></Quantity>
