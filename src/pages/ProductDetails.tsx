@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'reac
 import Button from '../components/Button';
 
 import img1 from '../images/cc_01.jpg';
+import Quantity from '../components/Quantity';
 
 type ProductsProductCardProps = {
     productCode: string,
@@ -37,6 +38,8 @@ function ProductDetails() {
         }
     )
 
+    const [quantityValue, setQuantityValue] = useState<number>(1)
+
     const addToCart = async () => {
         var addToCartURL = "http://127.0.0.1:8000/api/addToCart"
 
@@ -46,7 +49,8 @@ function ProductDetails() {
         }else{
             var body = {
                 productCode:productData.productCode,
-                remember_token: JSON.parse(localStorage.getItem("Token")!)
+                remember_token: JSON.parse(localStorage.getItem("Token")!),
+                quantity:quantityValue
             }
             
             console.log(body)
@@ -79,11 +83,15 @@ function ProductDetails() {
         setProductData(tProductData);
     }
 
+    const getQuantityValue = (quantityValue:number) => {
+        setQuantityValue(quantityValue)
+    }
+
     useEffect(() => {
         fetchData().catch(console.error);
     }, [])
     useEffect(() => {
-    }, [productData])
+    }, [productData, quantityValue])
 
     
 
@@ -122,6 +130,8 @@ function ProductDetails() {
                         <Link to="/cart">
                             <Button text={"BUY NOW"} icon={"shopping_cart_outline"} buttonColor={"yellow"} textColor={"black"} func={() => { }}></Button>
                         </Link>
+
+                        <Quantity exportValueFunction={getQuantityValue}></Quantity>
                         <Button text={"Add to cart"} icon={"shopping_cart_outline"} buttonColor={"yellow"} textColor={"black"} func={() => {
                             addToCart();
                         }}></Button>

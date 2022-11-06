@@ -52,7 +52,8 @@ function Home() {
         }else{
             var body = {
                 productCode:productCode,
-                remember_token: JSON.parse(localStorage.getItem("Token")!)
+                remember_token: JSON.parse(localStorage.getItem("Token")!),
+                quantity:1
             }
             
             console.log(body)
