@@ -61,13 +61,13 @@ function MyOrdersOrderCard(props: MyOrdersOrderCardProps) {
                     </a>
                 </div>
                 <div className='MyOrdersRightFrame'>
-                    <div className='MyOrdersRightText'>{props.orderDate}</div>
+                    <div className='MyOrdersRightText'>{props.orderDate.slice(0,10)}</div>
                 </div>
                 <div className='MyOrdersRightFrame'>
-                    <div className='MyOrdersRightText'>{props.requiredDate}</div>
+                    <div className='MyOrdersRightText'>{props.requiredDate.slice(0,10)}</div>
                 </div>
                 <div className='MyOrdersRightFrame'>
-                    <div className='MyOrdersRightText'>{props.shippedDate}</div>
+                    <div className='MyOrdersRightText'>{props.shippedDate.slice(0,10)}</div>
                 </div>
                 <div className='MyOrdersRightFrame'>
                     <div className='MyOrdersRightText'>{props.status}</div>

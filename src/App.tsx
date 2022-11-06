@@ -22,6 +22,7 @@ import ProductDetails from './pages/ProductDetails';
 import Payment from './pages/Payment';
 import MyOrders from './pages/MyOrders';
 import OrderDetails from './pages/OrderDetails';
+import Search from './pages/Search';
 
 function App() {
     return (
@@ -47,7 +48,7 @@ function App() {
                         }>
                         </Route>
                         <Route path="/search" element={
-                            "SEARCH"
+                            <Search/>
                         }>
                         </Route>
                         <Route path="/login" element={
