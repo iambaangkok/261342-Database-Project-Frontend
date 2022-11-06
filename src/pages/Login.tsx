@@ -5,6 +5,7 @@ import Button from "../components/Button";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import PopUp from "../components/PopUp";
 
 const url = "http://127.0.0.1:8000/api/login";
 const logouturl = "http://127.0.0.1:8000/api/logout";
@@ -13,46 +14,54 @@ function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [check, setcheck] = useState(true);
-    let pdata: string| null;
+    let pdata: string | null;
+
+    const [isOpen, setIsOpen] = useState(false)
+
+    const [alertText, setAlert] = useState("")
+
+    const togglePopup = () => {
+        setIsOpen(!isOpen)
+    }
 
 
 
-    const [token, setToken] = useState<string| null>(localStorage.getItem("Token"));
+    const [token, setToken] = useState<string | null>(localStorage.getItem("Token"));
 
     const postData = async () => {
-        try {
+
             const resp = await axios.post(url, {
                 username: username,
                 password: password
-            });
+            }).then((resp) => {
             console.log(resp)
             var data = resp.data
             setToken(data)
             localStorage.setItem('Token', JSON.stringify(data))
-            // window.location.href = "/products"
-        } catch (e) {
-            console.log(e)
-            alert("Invalid Email or Password")
-        }
+            }).catch((error) => {
+                setAlert(error.response.data.message)
+                togglePopup()
+                console.log(error)
+            })
+            
     }
 
     const postToken = async () => {
-        try {
-            const resp = await axios.post(logouturl, {
-                token:token
-            });
-            console.log(resp)
+        const resp = await axios.post(logouturl, {
+            token: token
+        }).then(() => {
             setToken(null)
             localStorage.removeItem('Token')
-        } catch (e) {
-            console.log(e)
-            alert("post Token fail")
-        }
+        }).catch((error) => {
+            setAlert(error.response.data.message)
+            togglePopup()
+            console.log(error)
+        })
     }
 
 
     useEffect(() => {
-    }, [setToken,token])
+    }, [setToken, token])
 
 
     return (
@@ -65,6 +74,9 @@ function Login() {
                                 Login
                             </div>
                         </div>
+
+                        {isOpen && <PopUp handleClose={togglePopup} headText="Login Fail" contentText={alertText}></PopUp>}
+
                         <div className="InputField">
                             <div className='InputField'>
                                 <InputField textL="username or email" textR="" />
@@ -79,7 +91,7 @@ function Login() {
                             <Button text={"Sign in"} icon={""} buttonColor={"black"} textColor={"white"} func={() => {
                                 {
                                     // if (check && username.length !== 0 && password.length !== 0) {
-                                        postData()  
+                                    postData()
                                     // } 
                                 }
                             }}></Button>
@@ -90,7 +102,7 @@ function Login() {
                             </Link>
                         </div>
                     </div>
-                    : 
+                    :
                     <div className="Body">
                         <div className="HeaderContainer">
                             <div className="Text">
@@ -106,12 +118,12 @@ function Login() {
                             </div>
                         </div> */}
                         <div className="CreateAccContainer">
-                            <Button text={"Logout"} icon={""} buttonColor={"black"} textColor={"white"} func={() => { 
+                            <Button text={"Logout"} icon={""} buttonColor={"black"} textColor={"white"} func={() => {
                                 postToken()
                             }}></Button>
                         </div>
                     </div>
-                    }
+                }
             </div>
         </div>
     );

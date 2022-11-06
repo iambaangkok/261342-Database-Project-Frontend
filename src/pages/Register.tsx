@@ -4,6 +4,7 @@ import * as ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
 import InputField from '../components/InputField';
+import PopUp from '../components/PopUp';
 import '../css/Register.css'
 
 const apiurl = "http://127.0.0.1:8000/api/register";
@@ -25,8 +26,15 @@ function Register() {
     const [city, setCity] = useState("")
     const [postalCode, setPostalCode] = useState("")
 
+    const [isOpen,setIsOpen] = useState(false)
+
+    const [alertText,setAlert] = useState("")
+
+    const togglePopup = () =>{
+        setIsOpen(!isOpen)
+    }
+
     const postData = async () => {
-        try {
             axios.defaults.withCredentials = true;
             const resp = await axios.post(apiurl, {
                 "username":username,
@@ -44,16 +52,13 @@ function Register() {
                 "state":state,
                 "postalCode":postalCode,
                 "country":country,
+            }).then(() => {
+                window.location.href = "/login"
             })
-            if(resp.status === 422){
-                alert(resp.data.message)
-            }
-            console.log(resp)
-            window.location.href = "/login"
-        } catch (e) {
-            console.log(e)
-            alert("username or Email is already use")
-        }
+            .catch((error) => {
+                setAlert(error.response.data.message)
+                togglePopup()
+            })
     }
 
     useEffect(() => {
@@ -68,7 +73,7 @@ function Register() {
                             Create an account
                         </div>
                     </div>
-
+                    {isOpen && <PopUp handleClose={togglePopup} headText="Register Fail" contentText={alertText}></PopUp>}
                     <div className='InputContainer'>
                         <div className='InputField'>
                             <div className='HeadText'>
@@ -164,6 +169,8 @@ function Register() {
                     </div>
                 </div>
             </div>
+            
+
         </div>
     );
 }
