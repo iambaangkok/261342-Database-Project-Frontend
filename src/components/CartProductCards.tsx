@@ -32,72 +32,62 @@ function CartProductCards(props: CartProductCardsProps) {
 
     const [alertText, setAlert] = useState("")
 
-    const [refresh,setRefresh] = useState(false)
+    const [refresh, setRefresh] = useState(false)
 
     const togglePopup = () => {
         setIsOpen(!isOpen)
     }
 
-    const doRefresh = () =>{
-        setRefresh(!refresh)
-    }
-
     const RemoveAll = async () => {
-        if(localStorage.getItem("Token") === null){
+        if (localStorage.getItem("Token") === null) {
             window.location.href = "http://127.0.0.1:3000/login"
             return;
-        }else{      
-                const resp = await axios.post(RemoveAllUrl, {
-                    productCode: props.productCode,
-                    remember_token: JSON.parse(localStorage.getItem("Token")!)
-                }).then((resp)=>{
-                    props.refreshFunction()
-                    console.log(resp)
-                    doRefresh()
-                    return resp.data;
-                }).catch((error)=>{
-                    setAlert(error.data.message)
-                    togglePopup()
-                })
-        }   
+        } else {
+            const resp = await axios.post(RemoveAllUrl, {
+                productCode: props.productCode,
+                remember_token: JSON.parse(localStorage.getItem("Token")!)
+            }).then((resp) => {
+                props.refreshFunction()
+                console.log(resp)
+            }).catch((error) => {
+                setAlert(error.data.message)
+                togglePopup()
+            })
+        }
     }
 
     const RemoveFromCart = async () => {
-        if(localStorage.getItem("Token") === null){
+        if (localStorage.getItem("Token") === null) {
             window.location.href = "http://127.0.0.1:3000/login"
             return;
-        }else{      
-                const resp = await axios.post(RemoveUrl, {
-                    productCode: props.productCode,
-                    remember_token: JSON.parse(localStorage.getItem("Token")!)
-                }).then((resp)=>{
-                    props.refreshFunction()
-                    console.log(resp)
-                    doRefresh()
-                    return resp.data;
-                }).catch((error)=>{
-                    setAlert(error.data.message)
-                    togglePopup()
-                })
-        }   
+        } else {
+            const resp = await axios.post(RemoveUrl, {
+                productCode: props.productCode,
+                remember_token: JSON.parse(localStorage.getItem("Token")!)
+            }).then((resp) => {
+                props.refreshFunction()
+                console.log(resp)
+            }).catch((error) => {
+                setAlert(error.data.message)
+                togglePopup()
+            })
+        }
     }
 
     const addToCart = async () => {
         var addToCartURL = "http://127.0.0.1:8000/api/addToCart"
-        if(localStorage.getItem("Token") === null){
+        if (localStorage.getItem("Token") === null) {
             window.location.href = "http://127.0.0.1:3000/login"
             return;
-        }else{
+        } else {
             const resp = await axios.post(addToCartURL, {
-                productCode:props.productCode,
+                productCode: props.productCode,
                 remember_token: JSON.parse(localStorage.getItem("Token")!),
-                quantity:1
-            }).then((resp)=>{
+                quantity: 1
+            }).then((resp) => {
                 props.refreshFunction()
                 console.log(resp)
-                doRefresh()
-                return resp.data;
-            }).catch((error)=>{
+            }).catch((error) => {
                 setAlert(error.data.message)
                 togglePopup()
             })
@@ -125,12 +115,13 @@ function CartProductCards(props: CartProductCardsProps) {
                     <div className='RightText'>
                         {props.showSelectQuantity == true ?
                             <div className='CartQuantity'>
-                            <Quantity exportValueFunction={setQuantityValue}
-                            incrementFunction={() => { addToCart(); } }
-                            decrementFunction={() => { if (props.quantity != 1) { RemoveFromCart(); } } } 
-                            startingValue={props.quantity}></Quantity>
-                        </div>
-                        :
+                                <Quantity
+                                    exportValueFunction={setQuantityValue}
+                                    incrementFunction={() => { addToCart(); }}
+                                    decrementFunction={() => { if (props.quantity != 1) { RemoveFromCart(); } }}
+                                    startingValue={props.quantity}></Quantity>
+                            </div>
+                            :
                             props.quantity
                         }
                     </div>
@@ -140,9 +131,9 @@ function CartProductCards(props: CartProductCardsProps) {
                 </div>
                 {props.remove == true ?
                     <div className='RightFrame'>
-                        <Button text={"Remove"} icon={"remove"} buttonColor={"white"} textColor={"red"} func={() => { RemoveAll() }}></Button>
+                        <Button text={"Remove"} icon={"remove"} buttonColor={"white"} textColor={"red"} func={() => { RemoveAll();}}></Button>
                     </div>
-                : ""}
+                    : ""}
             </div>
         </div>
     )
