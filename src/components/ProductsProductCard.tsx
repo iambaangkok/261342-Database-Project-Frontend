@@ -56,7 +56,7 @@ function ProductsProductCard(props: ProductsProductCardProps) {
             }
 
             console.log(body)
-            setAlert(props.productCode + " is Add to cart")
+            setAlert(props.productName + " is Add to cart")
             togglePopup();
             setTimeout(() => {
                 setIsOpen(false);

@@ -6,6 +6,7 @@ import Button from '../components/Button';
 
 import img1 from '../images/cc_01.jpg';
 import Quantity from '../components/Quantity';
+import PopUp from '../components/PopUp';
 
 type ProductsProductCardProps = {
     productCode: string,
@@ -38,6 +39,14 @@ function ProductDetails() {
         }
     )
 
+    const [isOpen, setIsOpen] = useState(false)
+
+    const [alertText, setAlert] = useState("")
+
+    const togglePopup = () => {
+        setIsOpen(!isOpen)
+    }
+
     const [quantityValue, setQuantityValue] = useState<number>(1)
 
     const addToCart = async () => {
@@ -52,7 +61,11 @@ function ProductDetails() {
                 remember_token: JSON.parse(localStorage.getItem("Token")!),
                 quantity:quantityValue
             }
-            
+            setAlert(productData.productName + " is Add to cart")
+            togglePopup();
+            setTimeout(() => {
+                setIsOpen(false);
+            }, 1000);
             console.log(body)
             
             var resp = await axios.post(addToCartURL, body);
@@ -100,6 +113,7 @@ function ProductDetails() {
             <div className={"ProductDetailsBodyHeader"}>
                 Product Details
             </div>
+            {isOpen && <PopUp handleClose={() => { togglePopup(); }} headText="Add to cart success" contentText={alertText}></PopUp>}
             <div className={"ProductDetailsLR"}>
                 <img className={"ProductDetailsLRImage"} src={img1} alt={img1} ></img>
                 <div className={"ProductDetailsLRRight"}>
