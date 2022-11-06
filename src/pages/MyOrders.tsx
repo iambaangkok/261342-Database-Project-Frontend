@@ -4,22 +4,26 @@ import Button from '../components/Button';
 import { useEffect, useState } from 'react';
 import CartProductCards from '../components/CartProductCards';
 import { Link } from 'react-router-dom';
+import MyOrdersOrderCard from '../components/MyOrdersOrderCard';
 
-type CartProductCardsProps = {
-    productCode: string,
-    name: string,
-    scale: string,
-    vendor: string,
-    quantity: number,
-    price: number,
-    total: number,
+type OrderCardProps = {
+    orderNumber: number,
+    orderDate: string,
+    requiredDate: string,
+    shippedDate: string,
+    status: string,
+    comments: string,
+    customerNumber: number,
 }
 
 function MyOrders() {
-    var fetchDataUrl = "http://127.0.0.1:8000/api/showcart"
+    var fetchDataUrl = "http://127.0.0.1:8000/api/orders"
 
-    const [myOrders, setMyOrders] = useState([
-        { productCode: "A", productName: "A", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantity: 0, MSRP: 0 },
+    const [myOrders, setMyOrders] = useState<OrderCardProps[]>([
+        { orderNumber: 0, orderDate: "date", requiredDate: "date", shippedDate: "date", status: "Shipped", comments: "-", customerNumber: 0 },
+        { orderNumber: 0, orderDate: "date", requiredDate: "date", shippedDate: "date", status: "Shipped", comments: "-", customerNumber: 0 },
+        { orderNumber: 0, orderDate: "date", requiredDate: "date", shippedDate: "date", status: "Shipped", comments: "-", customerNumber: 0 },
+        { orderNumber: 0, orderDate: "date", requiredDate: "date", shippedDate: "date", status: "Shipped", comments: "-", customerNumber: 0 },
     ])
 
     let total = 0
@@ -45,7 +49,7 @@ function MyOrders() {
 
     useEffect(() => {
 
-    }, [myOrders,setMyOrders])
+    }, [myOrders, setMyOrders])
 
 
     return (
@@ -57,12 +61,13 @@ function MyOrders() {
 
                 <div className='MyOrdersItem'>
                     <div className="MyOrdersColumNames">
-                        <div className='MyOrdersLeft'>
-                            <div className='MyOrdersTextProduct'>
-                                Order Number	
-                            </div>
-                        </div>
+
                         <div className='MyOrdersRight'>
+                        <div className='MyOrdersTextFrame'>
+                                <div className='MyOrdersText'>
+                                    Order Number
+                                </div>
+                            </div>
                             <div className='MyOrdersTextFrame'>
                                 <div className='MyOrdersText'>
                                     Order Date
@@ -83,33 +88,31 @@ function MyOrders() {
                                     Status
                                 </div>
                             </div>
+                            <div className='MyOrdersTextFrame'>
+                                <div className='MyOrdersText'>
+                                    Cancel
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    {myOrders.map((x,index) => {
-                        let sumTotal = parseFloat(Number(x.MSRP * x.quantity).toFixed(2))
-                        total += sumTotal
-                        return <CartProductCards key={index} refreshFunction={()=>(fetchData())} name={x.productName} vendor={x.productLine} scale={x.productScale} quantity={x.quantity} price={x.MSRP} total={sumTotal} productCode={x.productCode} remove={true}></CartProductCards>
+                    {myOrders.map((x, index) => {
+                        // let sumTotal = parseFloat(Number(x.MSRP * x.quantity).toFixed(2))
+                        // total += sumTotal
+                        return <MyOrdersOrderCard key={index} 
+                            refreshFunction={() => (fetchData())}
+                            orderNumber={x.orderNumber}
+                            orderDate={x.orderDate}
+                            requiredDate={x.requiredDate}
+                            shippedDate={x.shippedDate}
+                            status={x.status}
+                            comments={x.comments}
+                            customerNumber={x.customerNumber}
+                            remove={true} />
                     })}
-                    <div className='MyOrdersSubTotal'>
-                        <div className='MyOrdersTop'>
-                            <div className='MyOrdersSubTotalText'>
-                                SubTotal:
-                            </div>
-                            <div className="MyOrdersSubTotalNumber">
-                                $ {parseFloat(Number(total).toFixed(2))}
-                            </div>
-                        </div>
-                        <div className='MyOrdersBottom'>
-                            <div className='MyOrdersFrame'>
-                                <Link to="/payment" style={{ textDecoration: 'none' }}>
-                                    <Button text={"Check Out"} icon={""} buttonColor={"yellow"} textColor={"black"} func={() => { }}></Button>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 export default MyOrders
