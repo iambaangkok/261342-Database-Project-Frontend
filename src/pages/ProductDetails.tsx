@@ -131,7 +131,7 @@ function ProductDetails() {
                             <Button text={"BUY NOW"} icon={"shopping_cart_outline"} buttonColor={"yellow"} textColor={"black"} func={() => { }}></Button>
                         </Link>
 
-                        <Quantity exportValueFunction={getQuantityValue}></Quantity>
+                        <Quantity exportValueFunction={getQuantityValue} incrementFunction={()=>{}} decrementFunction={()=>{}}></Quantity>
                         <Button text={"Add to cart"} icon={"shopping_cart_outline"} buttonColor={"yellow"} textColor={"black"} func={() => {
                             addToCart();
                         }}></Button>

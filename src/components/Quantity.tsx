@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react';
 import '../css/Quantity.css'
 
 type QuantityType = {
-    exportValueFunction:Function
+    exportValueFunction:Function,
+    incrementFunction:Function,
+    decrementFunction:Function
 }
 
 function Quantity(props:QuantityType) {
@@ -29,11 +31,17 @@ function Quantity(props:QuantityType) {
     return (
         <div>
             <div className="quantity-input">
-                <button className="quantity-input__modifier quantity-input__modifier--left" onClick={decrement}>
+                <button className="quantity-input__modifier quantity-input__modifier--left" onClick={() => {
+                    decrement();
+                    props.decrementFunction();
+                }}>
                     &mdash;
                 </button>
                 <input className="quantity-input__screen" type="text" value={value} readOnly/>
-                <button className="quantity-input__modifier quantity-input__modifier--right" onClick={increment}>
+                <button className="quantity-input__modifier quantity-input__modifier--right" onClick={() => {
+                    increment();
+                    props.incrementFunction();
+                }}>
                     &#xff0b;
                 </button>
             </div>
