@@ -1,0 +1,426 @@
+@import 'GlobalStyles.css';
+
+.MyOrdersContainer {
+    /* Container */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+
+    width: 100%;
+    height: 100%;
+
+    /* White 100% */
+
+    background: var(--c-white-100);
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.MyOrdersBody {
+    /* Body */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 140px 0px;
+
+    width: 1024px;
+    height: fit-content;
+
+    /* White 100% */
+
+    background: var(--c-white-100);
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.MyOrdersBody .MyOrdersHeadContainer {
+    /* HeaderContainer */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 17px 56px;
+    gap: 10px;
+
+    width: 246px;
+    height: 79px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.MyOrdersBody .MyOrdersHeadContainer .MyOrdersText {
+    width: 134px;
+    height: 45px;
+
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 45px;
+    /* identical to box height */
+
+
+    color: var(--c-black-100);
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.MyOrdersBody .MyOrdersItem {
+    /* MyOrdersItems */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 17px 0px;
+    gap: 10px;
+
+    width: 1024px;
+    height: fit-content;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.MyOrdersItem .MyOrdersColumNames {
+    /* ColumnNames */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+
+    width: 1024px;
+    height: 20px;
+
+    /* White 100% */
+
+    background: var(--c-white-100);
+    border-radius: 26px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.MyOrdersColumNames .MyOrdersLeft {
+    /* Left */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 22px;
+
+    width: 512px;
+    height: 20px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.MyOrdersLeft .MyOrdersTextProduct {
+    /* Product */
+
+
+    width: 58px;
+    height: 20px;
+
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    /* identical to box height */
+
+
+    /* Black 100% */
+
+    color: var(--c-black-100);
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.MyOrdersColumNames .MyOrdersRight {
+    /* Right */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+
+    width: 512px;
+    height: 20px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 1;
+}
+
+.MyOrdersRight .MyOrdersTextFrame {
+    /* Frame */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+
+    width: 120.5px;
+    height: 20px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.MyOrdersTextFrame .MyOrdersText {
+    /* Unit Price */
+
+
+    width: fit-content;
+    height: 20px;
+
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    /* identical to box height */
+
+
+    /* Black 100% */
+
+    color: var(--c-black-100);
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.MyOrdersMyOrdersItem .MyOrdersSubTotal {
+    /* SubTotal */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 16px;
+
+    width: 512px;
+    height: 101px;
+
+    /* White 100% */
+
+    background: var(--c-white-100);
+    border-radius: 26px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 5;
+    flex-grow: 0;
+}
+
+.MyOrdersSubTotal .MyOrdersTop {
+    /* Top */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 22px;
+
+    width: 512px;
+    height: 45px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.MyOrdersSubTotal .MyOrdersTop .MyOrdersSubTotalText {
+    /* Sub Total: */
+
+
+    width: fit-content;
+    height: 45px;
+
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 45px;
+    /* identical to box height */
+
+
+    /* Black 100% */
+
+    color: var(--c-black-100);
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.MyOrdersSubTotal .MyOrdersTop .MyOrdersSubTotalNumber {
+    /* $4560.27 */
+
+
+    width: fit-content;
+    height: 45px;
+
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 45px;
+    /* identical to box height */
+
+
+    /* Black 100% */
+
+    color: var(--c-black-100);
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.MyOrdersSubTotal .MyOrdersBottom {
+    /* Bottom */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+
+    width: 512px;
+    height: 40px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.MyOrdersSubTotal .MyOrdersBottom .MyOrdersFrame {
+    /* Frame */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+
+    width: 512px;
+    height: 40px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
