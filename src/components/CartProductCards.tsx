@@ -1,5 +1,6 @@
 import img1 from '../images/cc_01.jpg';
 import '../css/CartProductCards.css'
+import '../css/Quantity.css'
 import Button from './Button';
 import axios from 'axios';
 import Products from '../pages/Products';
@@ -29,8 +30,14 @@ function CartProductCards(props: CartProductCardsProps) {
 
     const [alertText, setAlert] = useState("")
 
+    const [refresh,setRefresh] = useState(false)
+
     const togglePopup = () => {
         setIsOpen(!isOpen)
+    }
+
+    const doRefresh = () =>{
+        setRefresh(!refresh)
     }
 
     const RemoveFromCart = async () => {
@@ -38,53 +45,49 @@ function CartProductCards(props: CartProductCardsProps) {
             window.location.href = "http://127.0.0.1:3000/login"
             return;
         }else{      
-            
                 const resp = await axios.post(RemoveUrl, {
                     productCode: props.productCode,
                     remember_token: JSON.parse(localStorage.getItem("Token")!)
                 }).then((resp)=>{
                     props.refreshFunction()
                     console.log(resp)
+                    doRefresh()
                     return resp.data;
                 }).catch((error)=>{
                     setAlert(error.data.message)
                     togglePopup()
                 })
-                
-        }
+        }   
     }
 
     const addToCart = async () => {
         var addToCartURL = "http://127.0.0.1:8000/api/addToCart"
-
         if(localStorage.getItem("Token") === null){
             window.location.href = "http://127.0.0.1:3000/login"
             return;
         }else{
-            var body = {
+            const resp = await axios.post(addToCartURL, {
                 productCode:props.productCode,
                 remember_token: JSON.parse(localStorage.getItem("Token")!),
                 quantity:1
-            }
-            
-            console.log(body)
-            
-            var resp = await axios.post(addToCartURL, body);
-
-            return resp.data;
+            }).then((resp)=>{
+                props.refreshFunction()
+                console.log(resp)
+                doRefresh()
+                return resp.data;
+            }).catch((error)=>{
+                setAlert(error.data.message)
+                togglePopup()
+            })
         }
     }
 
     useEffect(() => {
-    }, [addToCart,RemoveFromCart])
-
-    useEffect(() => {
-    }, [props.quantity])
+    }, [refresh])
 
     return (
         <div className="CartCard">
             <div className="Left">
-                {isOpen && <PopUp handleClose={togglePopup} headText="Remove Fail" contentText={alertText}></PopUp>}
                 <img className="LeftImage" src={img1} alt={img1}></img>
                 <div className='LeftTexts'>
                     <div className='Name'>{props.name}</div>
@@ -98,22 +101,23 @@ function CartProductCards(props: CartProductCardsProps) {
                 </div>
                 <div className='RightFrame'>
                     <div className='RightText'>
-                        {/* {props.quantity} */}
-                        <Quantity exportValueFunction={setQuantityValue}
-                        incrementFunction={() => { addToCart(); } }
-                        decrementFunction={() => { if (props.quantity != 1) { RemoveFromCart(); } } } 
-                        startingValue={props.quantity}></Quantity>
+                        {props.quantity} /////
+                        <div className='CartQuantity'>
+                            <Quantity exportValueFunction={setQuantityValue}
+                            incrementFunction={() => { addToCart(); } }
+                            decrementFunction={() => { if (props.quantity != 1) { RemoveFromCart(); } } } 
+                            startingValue={props.quantity}></Quantity>
+                        </div>
                     </div>
                 </div>
                 <div className='RightFrame'>
                     <div className='RightText'>{props.total}</div>
                 </div>
-                {
-                    props.remove == true ?
-                        <div className='RightFrame'>
-                            <Button text={"Remove"} icon={"remove"} buttonColor={"white"} textColor={"red"} func={() => { RemoveFromCart() }}></Button>
-                        </div>
-                        : ""}
+                {props.remove == true ?
+                    <div className='RightFrame'>
+                        <Button text={"Remove"} icon={"remove"} buttonColor={"white"} textColor={"red"} func={() => { RemoveFromCart() }}></Button>
+                    </div>
+                : ""}
             </div>
         </div>
     )

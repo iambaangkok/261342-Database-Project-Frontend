@@ -7,19 +7,19 @@ import { Link } from 'react-router-dom';
 
 type CartProductCardsProps = {
     productCode: string,
-    name: string,
-    scale: string,
-    vendor: string,
+    productName: string,
+    productLine: string,
+    productScale: string,
+    productVendor: string,
+    productDescription: string,
     quantity: number,
-    price: number,
-    total: number,
+    MSRP: number,
 }
 
 function Cart() {
     var cartUrl = "http://127.0.0.1:8000/api/showcart"
 
-    const [productCart, setCart] = useState([
-        { productCode: "A", productName: "A", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantity: 0, MSRP: 0 },
+    const [productCart, setCart] = useState<CartProductCardsProps[]>([
     ])
 
     let total = 0
@@ -35,7 +35,7 @@ function Cart() {
             let data = resp.data
             console.log(data)
             setCart(data)
-            return resp.data;
+            
         }
     }
 
@@ -45,7 +45,7 @@ function Cart() {
 
     useEffect(() => {
 
-    }, [productCart,setCart,postToken])
+    }, [productCart])
 
 
     return (

@@ -1,3 +1,4 @@
+@import 'Cart.css';
 .quantity-input {
     display: flex;
     justify-content: center;
@@ -48,4 +49,30 @@
     border-top: 0 solid #dbdbdb;
     border-bottom: 0 solid #dbdbdb;
     text-align: center;
+  }
+
+  .CartQuantity .quantity-input .quantity-input__screen {
+    width: 1rem;
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 400;
+    padding: 0.5rem;
+    font-size: 16px;
+    border: 0;
+    border-top: 0 solid #dbdbdb;
+    border-bottom: 0 solid #dbdbdb;
+    text-align: center;
+  }
+
+  .CartQuantity .quantity-input .quantity-input__modifier {
+    padding: 0.5rem;
+    width: fit-content;
+    font-weight: 600;
+    font-size: 16px;
+    background: #f3f3f3;
+    color: #888;
+    border: 0 solid #dbdbdb;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+    cursor: pointer;
   }
