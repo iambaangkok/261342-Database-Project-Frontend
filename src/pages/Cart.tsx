@@ -4,6 +4,7 @@ import Button from '../components/Button';
 import { useEffect, useState } from 'react';
 import CartProductCards from '../components/CartProductCards';
 import { Link } from 'react-router-dom';
+import PopUp from '../components/PopUp';
 
 type CartProductCardsProps = {
     productCode: string,
@@ -24,6 +25,14 @@ function Cart() {
 
     let total = 0
 
+    const [isOpen, setIsOpen] = useState(false)
+
+    const [alertText, setAlert] = useState("")
+
+    const togglePopup = () => {
+        setIsOpen(!isOpen)
+    }
+
     const postToken = async () => {
         if (localStorage.getItem("Token") === null) {
             window.location.href = "http://127.0.0.1:3000/login"
@@ -31,10 +40,15 @@ function Cart() {
         } else {
             const resp = await axios.post(cartUrl, {
                 remember_token: JSON.parse(localStorage.getItem("Token")!)
+            }).then((resp) => {
+                let data = resp.data
+                console.log(data)
+                setCart(data)
+            }).catch((error)=>{
+                setAlert(error.data)
+                togglePopup()
             })
-            let data = resp.data
-            console.log(data)
-            setCart(data)
+
         }
     }
 
@@ -53,7 +67,7 @@ function Cart() {
                 <div className="HeadContainer">
                     <div className='Text'>My Cart</div>
                 </div>
-
+                {isOpen && <PopUp handleClose={togglePopup} headText={"Cart is Empty"} contentText={alertText}></PopUp>}
                 <div className='CartItem'>
                     <div className="ColumNames">
                         <div className='Left'>
@@ -84,10 +98,10 @@ function Cart() {
                             </div>
                         </div>
                     </div>
-                    {productCart.map((x,index) => {
+                    {productCart.map((x, index) => {
                         let sumTotal = parseFloat(Number(x.MSRP * x.quantity).toFixed(2))
                         total += sumTotal
-                        return <CartProductCards key={index} refreshFunction={()=>(postToken())} name={x.productName} vendor={x.productLine} scale={x.productScale} quantity={x.quantity} price={x.MSRP} total={sumTotal} productCode={x.productCode} remove={true} showSelectQuantity={true}></CartProductCards>
+                        return <CartProductCards key={index} refreshFunction={() => (postToken())} name={x.productName} vendor={x.productLine} scale={x.productScale} quantity={x.quantity} price={x.MSRP} total={sumTotal} productCode={x.productCode} remove={true} showSelectQuantity={true}></CartProductCards>
                     })}
                     <div className='SubTotal'>
                         <div className='Top'>
@@ -100,9 +114,15 @@ function Cart() {
                         </div>
                         <div className='Bottom'>
                             <div className='Frame'>
-                                <Link to="/payment" style={{ textDecoration: 'none' }}>
-                                    <Button text={"Check Out"} icon={""} buttonColor={"yellow"} textColor={"black"} func={() => { }}></Button>
-                                </Link>
+                                    <Button text={"Check Out"} icon={""} buttonColor={"yellow"} textColor={"black"} func={() => {
+                                        if(productCart.length === 0){
+                                            setAlert("Please add some products before clicking Check out.")
+                                            togglePopup()
+                                            {<Link to="/payment" style={{ textDecoration: 'none' } }></Link>}
+                                        }else{
+                                            window.location.href = "http://127.0.0.1:3000/payment"
+                                        }
+                                    }}></Button>
                             </div>
                         </div>
                     </div>

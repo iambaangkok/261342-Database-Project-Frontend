@@ -32,8 +32,6 @@ function CartProductCards(props: CartProductCardsProps) {
 
     const [alertText, setAlert] = useState("")
 
-    const [refresh, setRefresh] = useState(false)
-
     const togglePopup = () => {
         setIsOpen(!isOpen)
     }
@@ -95,7 +93,7 @@ function CartProductCards(props: CartProductCardsProps) {
     }
 
     useEffect(() => {
-    }, [refresh])
+    }, [])
 
     return (
         <div className="CartCard">
