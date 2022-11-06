@@ -87,7 +87,7 @@ function Payment() {
                 <div className="HeadContainer">
                     <div className='Text'>Payment</div>
                 </div>
-                {isOpen && <PopUp handleClose={togglePopup} headText={popUpH} contentText={alertText}></PopUp>}
+                {isOpen && <PopUp handleClose={()=>{togglePopup(); window.location.href = "http://127.0.0.1:3000/orders"}} headText={popUpH} contentText={alertText}></PopUp>}
                 <div className='PaymentItem'>
                     <div className="ColumNames">
                         <div className='Left'>
