@@ -4,7 +4,14 @@ import '../css/ProductDetails.css'
 import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import Button from '../components/Button';
 
-import img1 from '../images/cc_01.jpg';
+import classiccars from '../images/classiccars.jpg';
+import motorcycles from '../images/motorcycles.jpg';
+import planes from '../images/planes.jpg';
+import ships from '../images/ships.jpg';
+import trains from '../images/trains.jpg';
+import trucksandbuses from '../images/trucksandbuses.jpg';
+import vintagecars from '../images/vintagecars.jpg';
+
 import Quantity from '../components/Quantity';
 import PopUp from '../components/PopUp';
 
@@ -106,7 +113,20 @@ function ProductDetails() {
     useEffect(() => {
     }, [productData, quantityValue])
 
-    
+    var categoryImg = classiccars;
+    if(productData.productLine === "Motorcycles"){
+        categoryImg = motorcycles;
+    }else if(productData.productLine === "Planes"){
+        categoryImg = planes;
+    }else if(productData.productLine === "Ships"){
+        categoryImg = ships;
+    }else if(productData.productLine === "Trains"){
+        categoryImg = trains;
+    }else if(productData.productLine === "Trucks and Buses"){
+        categoryImg = trucksandbuses;
+    }else if(productData.productLine === "Vintage Cars"){
+        categoryImg = vintagecars;
+    }
 
     return (
         <div className={"ProductDetailsBody"}>
@@ -115,7 +135,7 @@ function ProductDetails() {
             </div>
             {isOpen && <PopUp handleClose={() => { togglePopup(); }} headText="Add to cart success" contentText={alertText}></PopUp>}
             <div className={"ProductDetailsLR"}>
-                <img className={"ProductDetailsLRImage"} src={img1} alt={img1} ></img>
+                <img className={"ProductDetailsLRImage"} src={categoryImg} alt={categoryImg} ></img>
                 <div className={"ProductDetailsLRRight"}>
                     <div className={"ProductDetailsLRRightTexts"}>
                         <div className={""}>

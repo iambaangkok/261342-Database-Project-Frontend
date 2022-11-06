@@ -4,9 +4,17 @@ import '../css/Home.css'
 import { Link } from 'react-router-dom';
 import Button from '../components/Button';
 
-import img1 from '../images/cc_01.jpg';
-import img2 from '../images/p_01.jpg';
-import img3 from '../images/cc_02.jpg';
+// import img1 from '../images/cc_01.jpg';
+// import img2 from '../images/p_01.jpg';
+// import img3 from '../images/cc_02.jpg';
+
+import classiccars from '../images/classiccars.jpg';
+import motorcycles from '../images/motorcycles.jpg';
+import planes from '../images/planes.jpg';
+import ships from '../images/ships.jpg';
+import trains from '../images/trains.jpg';
+import trucksandbuses from '../images/trucksandbuses.jpg';
+import vintagecars from '../images/vintagecars.jpg';
 
 
 
@@ -16,6 +24,7 @@ function Home() {
     const [productCodes, setProductCodes] = useState(["A","B","C"])
     const [names, setNames] = useState(["1952 Alpine Renault 1300", "1929 Texaco Curtiss Robin", "1936 Mercedes 500K Roadster"]) 
     const [prices, setPrices] = useState([134.99, 61.99, 50.99])
+    const [lines, setLines] = useState<string[]>(["","",""])
 
     const fetchData = async () => {
         const resp = await axios.get(apiurl);
@@ -34,6 +43,12 @@ function Home() {
         tNames[1] = data[1].productName
         tNames[2] = data[2].productName
         setNames(tNames)
+
+        var tLines = ["","",""]
+        tLines[0] = data[0].productLine
+        tLines[1] = data[1].productLine
+        tLines[2] = data[2].productLine
+        setLines(tLines)
 
         var tPrices = [0,0,0]
         tPrices[0] = data[0].MSRP
@@ -69,6 +84,25 @@ function Home() {
         fetchData().catch(console.error);
     }, [])
 
+    const getCatImg = (pl:string) =>{
+        var categoryImg = classiccars;
+        if(pl === "Motorcycles"){
+            categoryImg = motorcycles;
+        }else if(pl === "Planes"){
+            categoryImg = planes;
+        }else if(pl === "Ships"){
+            categoryImg = ships;
+        }else if(pl === "Trains"){
+            categoryImg = trains;
+        }else if(pl === "Trucks and Buses"){
+            categoryImg = trucksandbuses;
+        }else if(pl === "Vintage Cars"){
+            categoryImg = vintagecars;
+        }
+
+        return categoryImg
+    }
+
     
 
 
@@ -91,12 +125,12 @@ function Home() {
                     </div>
                 </div>
                 <div className={"Image"}>
-                    <img className={"ActualImage"} src={img1} alt={img1} ></img>
+                    <img className={"ActualImage"} src={getCatImg(lines[0])} alt={getCatImg(lines[0])} ></img>
                 </div>
             </div>
             <div className={"FeaturedProduct"}>
                 <div className={"Image"}>
-                    <img className={"ActualImage"} src={img2} alt={img2} ></img>
+                    <img className={"ActualImage"} src={getCatImg(lines[1])} alt={getCatImg(lines[1])} ></img>
                 </div>
                 <div className={"HomeText"}>
                     <div className={"Container"}>
@@ -131,7 +165,7 @@ function Home() {
                     </div>
                 </div>
                 <div className={"Image"}>
-                    <img className={"ActualImage"} src={img3} alt={img3} ></img>
+                    <img className={"ActualImage"} src={getCatImg(lines[2])} alt={getCatImg(lines[2])} ></img>
                 </div>
             </div>
         </div>

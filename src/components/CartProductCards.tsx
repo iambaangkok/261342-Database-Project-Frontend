@@ -1,4 +1,11 @@
-import img1 from '../images/cc_01.jpg';
+import classiccars from '../images/classiccars.jpg';
+import motorcycles from '../images/motorcycles.jpg';
+import planes from '../images/planes.jpg';
+import ships from '../images/ships.jpg';
+import trains from '../images/trains.jpg';
+import trucksandbuses from '../images/trucksandbuses.jpg';
+import vintagecars from '../images/vintagecars.jpg';
+
 import '../css/CartProductCards.css'
 import '../css/Quantity.css'
 import Button from './Button';
@@ -13,6 +20,7 @@ type CartProductCardsProps = {
     name: string,
     scale: string,
     vendor: string,
+    productLine:string,
     quantity: number,
     price: number,
     total: number,
@@ -95,10 +103,29 @@ function CartProductCards(props: CartProductCardsProps) {
     useEffect(() => {
     }, [])
 
+    const getCatImg = (pl:string) =>{
+        var categoryImg = classiccars;
+        if(pl === "Motorcycles"){
+            categoryImg = motorcycles;
+        }else if(pl === "Planes"){
+            categoryImg = planes;
+        }else if(pl === "Ships"){
+            categoryImg = ships;
+        }else if(pl === "Trains"){
+            categoryImg = trains;
+        }else if(pl === "Trucks and Buses"){
+            categoryImg = trucksandbuses;
+        }else if(pl === "Vintage Cars"){
+            categoryImg = vintagecars;
+        }
+
+        return categoryImg
+    }
+
     return (
         <div className="CartCard">
             <div className="Left">
-                <img className="LeftImage" src={img1} alt={img1}></img>
+                <img className="LeftImage" src={getCatImg(props.productLine)} alt={getCatImg(props.productLine)}></img>
                 <div className='LeftTexts'>
                     <div className='Name'>{props.name}</div>
                     <div className='Vendor'>{props.vendor}</div>
