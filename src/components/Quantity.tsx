@@ -27,6 +27,7 @@ function Quantity(props:QuantityType) {
     }, [])
 
     useEffect(() => {
+        props.exportValueFunction(value)
     }, [value])
 
     return (
