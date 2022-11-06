@@ -31,7 +31,7 @@ function Payment() {
 
     const [alertText, setAlert] = useState("")
 
-    const [popUpH,setPopupHead] = useState("")
+    const [popUpH, setPopupHead] = useState("Payment Fail")
 
     const togglePopup = () => {
         setIsOpen(!isOpen)
@@ -61,16 +61,15 @@ function Payment() {
             checkNumber: checkNumber,
         }).then((resp) => {
             console.log(resp)
-            setAlert("")
+            setAlert("Payment is success")
             setPopupHead(resp.data)
             togglePopup()
+        }).catch((error) => {
+            setAlert(error.response.data)
+            setPopupHead("Payment Fail")
+            togglePopup()
+            console.log(error)
         })
-            .catch((error) => {
-                setAlert(error.response.data)
-                setPopupHead("Payment Fail")
-                togglePopup()
-                console.log(error)
-            })
     }
 
     useEffect(() => {
@@ -146,7 +145,11 @@ function Payment() {
                                     if (checkNumber.length > 8) {
                                         setAlert("Check number must have at most 8 characters")
                                         togglePopup()
-                                    } else {
+                                    }else if (checkNumber.length === 0) {
+                                        setAlert("Check number can't be empty")
+                                        togglePopup()
+                                    }
+                                    else {
                                         postData()
                                     }
                                 }}></Button>
