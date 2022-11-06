@@ -129,7 +129,7 @@ function Payment() {
                                 SubTotal:
                             </div>
                             <div className="SubTotalNumber">
-                                $ {total}
+                                $ {parseFloat(Number(total).toFixed(2))}
                             </div>
                         </div>
                         <div className='Mid'>
