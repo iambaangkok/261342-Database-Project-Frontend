@@ -157,7 +157,7 @@ function Register() {
                                     togglePopup()
                                 }
                                 if(password.length < 8){
-                                    setAlert("Password must be at least 8 digit")
+                                    setAlert("Password must be at least 8 characters")
                                     togglePopup()
                                 }
                                 
