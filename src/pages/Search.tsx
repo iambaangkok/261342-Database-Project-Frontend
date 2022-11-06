@@ -19,6 +19,13 @@ type ProductsProductCardProps = {
     MSRP: number,
 }
 
+type ProductLineProps = {
+    productLine: string,
+    textDescription: string,
+    htmpDescription: string,
+    image: string
+}
+
 const COL = 3;
 
 function Search() {
@@ -28,22 +35,34 @@ function Search() {
 
     const [searchParams, setSearchParams] = useSearchParams();
 
-    const [productsData, setProductsData] = useState([
-        { productCode: "CODE",  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
-        { productCode: "CODE",  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
-        { productCode: "CODE",  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
-        { productCode: "CODE",  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
-        { productCode: "CODE",  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
-        { productCode: "CODE",  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
-        { productCode: "CODE",  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
-        { productCode: "CODE",  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
-        { productCode: "CODE",  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
-        { productCode: "CODE",  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
-        { productCode: "CODE",  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
-        { productCode: "CODE",  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0}
+    const [productsData, setProductsData] = useState<ProductsProductCardProps[]>([
+        // { productCode: "CODE",  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
+        // { productCode: "CODE",  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
+        // { productCode: "CODE",  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
     ])
 
+    const [productLines, setProductLines] = useState<string>("");
+
     const fetchData = async () => {
+        //// productLines
+        const productLinesApiURL = "http://127.0.0.1:8000/api/productlines"
+        const resp1 = await axios.get(productLinesApiURL);
+        const data1 = await resp1.data;
+
+        console.log(resp1)
+        var PLs : ProductLineProps[] = data1;
+
+        var tempPL = ""
+
+
+        PLs.forEach((e:ProductLineProps) => {
+            tempPL += e.productLine + ", "
+        });
+
+        setProductLines(tempPL);
+
+
+        //// productsData
         const fetchDataURL = "http://127.0.0.1:8000/api/search?searchKey="
         const apiURL = fetchDataURL + searchParams.get("searchKey")
 
@@ -53,7 +72,7 @@ function Search() {
         const data = await resp.data;
 
         console.log(data)
-        
+
         setProductsData(data);
     }
 
@@ -68,6 +87,13 @@ function Search() {
         <div className={"ProductsBody"}>
             <div className={"ProductsHeaderContainer"}>
                 {"Search Key: " + searchParams.get("searchKey")}
+                <br></br>
+                <div style={{  fontWeight: 400, fontSize: 18, wordWrap:"break-word"}}>{
+                    "You can search the following search keys to search that category: "
+                } </div>
+                <div style={{  fontWeight: 400, fontSize: 18, wordWrap:"break-word"}}>{
+                    productLines
+                } </div>
             </div>
             <div className={"ProductsProductsContainer"}>
                 <div className={"ProductsProductsRow"}>

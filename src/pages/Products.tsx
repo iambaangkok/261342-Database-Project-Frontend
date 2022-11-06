@@ -19,6 +19,13 @@ type ProductsProductCardProps = {
     MSRP: number,
 }
 
+type ProductLineProps = {
+    productLine: string,
+    textDescription: string,
+    htmpDescription: string,
+    image: string
+}
+
 const COL = 3;
 
 function Products() {
@@ -26,20 +33,13 @@ function Products() {
     var location = useLocation();   
     var navigate = useNavigate();
 
-    const [productsData, setProductsData] = useState([
-        { productCode: "CODE",  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
-        { productCode: "CODE",  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
-        { productCode: "CODE",  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
-        { productCode: "CODE",  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
-        { productCode: "CODE",  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
-        { productCode: "CODE",  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
-        { productCode: "CODE",  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
-        { productCode: "CODE",  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
-        { productCode: "CODE",  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
-        { productCode: "CODE",  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
-        { productCode: "CODE",  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
-        { productCode: "CODE",  productName: "NAME  ",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0}
+    const [productsData, setProductsData] = useState<ProductsProductCardProps[]>([
+        // { productCode: "CODE",  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
+        // { productCode: "CODE",  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
+        // { productCode: "CODE",  productName: "NAME",  productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR",productDescription: "DESC",quantityInStock: 0,buyPrice: 0,MSRP: 0},
     ])
+
+    const [productLines, setProductLines] = useState<string>("");
 
     const [apiurl, setApiurl] = useState("http://127.0.0.1:8000/api/products?page=1");
 
@@ -50,8 +50,28 @@ function Products() {
     const [links, setLinks] = useState();
 
     const fetchData = async () => {
+        //// productLines
+        const productLinesApiURL = "http://127.0.0.1:8000/api/productlines"
+        const resp1 = await axios.get(productLinesApiURL);
+        const data1 = await resp1.data;
+
+        console.log(resp1)
+        var PLs : ProductLineProps[] = data1;
+
+        var tempPL = ""
+
+
+        PLs.forEach((e:ProductLineProps) => {
+            tempPL += e.productLine + ", "
+        });
+
+        setProductLines(tempPL);
+
+
+        //// productsData
         const resp = await axios.get(apiurl);
         const data = await resp.data;
+
 
         setPrevPageUrl(data.prev_page_url);
         setNextPageUrl(data.next_page_url);
@@ -75,13 +95,20 @@ function Products() {
     useEffect(() => {
         console.log(prevPageUrl)
         console.log(nextPageUrl)
-    }, [apiurl, prevPageUrl, nextPageUrl, productsData])
+    }, [apiurl, prevPageUrl, nextPageUrl, productsData, productLines])
 
     return (
         <div className={"ProductsBody"}>
             <div className={"ProductsHeaderContainer"}>
-                Our Models
+                Our Models <br></br>
+                <div style={{  fontWeight: 400, fontSize: 18, wordWrap:"break-word"}}>{
+                    "You can search the following search keys to search that category: "
+                } </div>
+                <div style={{  fontWeight: 400, fontSize: 18, wordWrap:"break-word"}}>{
+                    productLines
+                } </div>
             </div>
+                
             <div className={"ProductsProductsContainer"}>
                 <div className={"ProductsProductsRow"}>
                     {productsData.slice(0, 1 * COL).map((x, index) => {

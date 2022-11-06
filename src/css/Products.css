@@ -29,8 +29,7 @@
     gap: 10px;
 
     width: fit-content;
-    height: 79px;
-
+    height: fit-content;
     /* Text */
     font-family: 'Quicksand';
     font-style: normal;
