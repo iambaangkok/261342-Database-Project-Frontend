@@ -64,7 +64,6 @@ function Payment() {
             setAlert("")
             setPopupHead(resp.data)
             togglePopup()
-            // window.location.href = "http://127.0.0.1:3000/login"
         })
             .catch((error) => {
                 setAlert(error.response.data)
@@ -76,10 +75,7 @@ function Payment() {
 
     useEffect(() => {
         postToken();
-           
     }, [])
-
-
 
     useEffect(() => {
     }, [productCart])

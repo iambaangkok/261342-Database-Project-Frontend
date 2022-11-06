@@ -35,7 +35,6 @@ function Cart() {
             let data = resp.data
             console.log(data)
             setCart(data)
-            
         }
     }
 
