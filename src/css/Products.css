@@ -28,7 +28,7 @@
     padding: 17px 56px;
     gap: 10px;
 
-    width: 305px;
+    width: fit-content;
     height: 79px;
 
     /* Text */

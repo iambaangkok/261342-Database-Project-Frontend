@@ -8,7 +8,6 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 
 function Navbar() {
-    let navigate = useNavigate();
 
     const useMatchPath = (path:string) =>{
         let location = useLocation();
