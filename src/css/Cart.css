@@ -62,7 +62,7 @@
     padding: 17px 56px;
     gap: 10px;
 
-    width: 246px;
+    width: fit-content;
     height: 79px;
 
 
@@ -74,7 +74,7 @@
 }
 
 .CartBody .HeadContainer .Text {
-    width: 134px;
+    width: fit-content;
     height: 45px;
 
     font-family: 'Quicksand';

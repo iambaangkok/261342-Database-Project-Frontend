@@ -1,0 +1,232 @@
+.MyOrdersCard {
+    /* CartItem */
+
+
+    box-sizing: border-box;
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+
+    width: 1024px;
+    height: fit-content;
+
+    /* White 100% */
+
+    background: var(--c-white-100);
+    /* Disabled Gray */
+
+    border: 1px solid var(--c-gray-disabled);
+    border-radius: 26px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.MyOrdersCard .MyOrdersLeft {
+    /* Left */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 22px;
+
+    width: 100%;
+    height: 150px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.MyOrdersLeft .MyOrdersLeftTexts {
+    /* Texts */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 10px 0px;
+
+    width: fit-content;
+    height: 66px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 1;
+}
+
+.MyOrdersLeftTexts .MyOrdersName {
+    /* 1969 Ford Falcon */
+
+
+    width: fit-content;
+    height: 20px;
+
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    /* identical to box height */
+
+
+    /* Black 100% */
+
+    color: var(--c-black-100);
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.MyOrdersLeftTexts .MyOrdersVendor {
+    /* Vendor */
+
+
+    width: fit-content;
+    height: 18px;
+
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    /* identical to box height */
+
+
+    /* Black 100% */
+
+    color: var(--c-black-100);
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.MyOrdersLeftTexts .MyOrdersScale {
+    /* Scale */
+
+
+    width: fit-content;
+    height: 18px;
+
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    /* identical to box height */
+
+
+    /* Black 100% */
+
+    color: var(--c-black-100);
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+
+.MyOrdersCard .MyOrdersRight {
+    /* Right */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+
+    width: 512px;
+    height: 80px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 1;
+}
+
+.MyOrdersRight .MyOrdersRightFrame {
+    /* Frame */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+
+    width: 120.5px;
+    height: 20px;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.MyOrdersRightFrame .MyOrdersRightText {
+    /* $159.99 */
+
+
+    width: fit-content;
+    height: 20px;
+
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    /* identical to box height */
+
+
+    /* Black 100% */
+
+    color: var(--c-black-100);
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
