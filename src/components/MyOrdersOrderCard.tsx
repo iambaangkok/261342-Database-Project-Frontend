@@ -4,6 +4,8 @@ import Button from './Button';
 import axios from 'axios';
 import Products from '../pages/Products';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { stringify } from 'querystring';
 
 type MyOrdersOrderCardProps = {
     refreshFunction: Function,
@@ -21,6 +23,8 @@ type MyOrdersOrderCardProps = {
 
 
 function MyOrdersOrderCard(props: MyOrdersOrderCardProps) {
+    const orderDetailURL = "http://127.0.0.1:3000/order?orderNumber="
+
     const cancelOrder = async () => {
         var cancelOrderUrl = "http://127.0.0.1:8000/api/cancelOrder"
 
@@ -52,7 +56,9 @@ function MyOrdersOrderCard(props: MyOrdersOrderCardProps) {
         <div className="MyOrdersCard">
             <div className="MyOrdersRight">
                 <div className='MyOrdersRightFrame'>
+                    <a href={orderDetailURL+props.orderNumber}>
                     <div className='MyOrdersRightText'>{props.orderNumber}</div>
+                    </a>
                 </div>
                 <div className='MyOrdersRightFrame'>
                     <div className='MyOrdersRightText'>{props.orderDate}</div>
