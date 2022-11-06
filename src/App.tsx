@@ -20,6 +20,7 @@ import Products from './pages/Products';
 import Cart from './pages/Cart';
 import ProductDetails from './pages/ProductDetails';
 import Payment from './pages/Payment';
+import MyOrders from './pages/MyOrders';
 
 function App() {
     return (
@@ -37,7 +38,7 @@ function App() {
                         }>
                         </Route>
                         <Route path="/orders" element={
-                            "ORDERS"
+                            <MyOrders/>
                         }>
                         </Route>
                         <Route path="/search" element={
