@@ -1,9 +1,9 @@
-import {BsPersonFill} from 'react-icons/bs'
-import {BiSearch, BiCart} from 'react-icons/bi'
-import {AiOutlinePlus} from 'react-icons/ai'
-import {GrFormClose} from 'react-icons/gr'
-import {IoChevronBack, IoChevronForward} from 'react-icons/io5'
-import {IoIosClose} from 'react-icons/io'
+import { BsPersonFill } from 'react-icons/bs'
+import { BiSearch, BiCart } from 'react-icons/bi'
+import { AiOutlinePlus } from 'react-icons/ai'
+import { GrFormClose } from 'react-icons/gr'
+import { IoChevronBack, IoChevronForward } from 'react-icons/io5'
+import { IoIosClose, IoMdCloseCircleOutline } from 'react-icons/io'
 import '../css/Icon.css'
 // import arrow_ios_back from '../icons/arrow ios back.svg'
 // import arrow_ios_forward from '../icons/arrow ios forward.svg'
@@ -43,9 +43,12 @@ function Icon({ type, iconColor }: IconProps) {
         case "remove":
             ico = <IoIosClose className="InnerIcon" fill={iconColor} stroke={iconColor} size="100%"></IoIosClose>
             break;
+        case "Close":
+            ico = <IoMdCloseCircleOutline className="InnerIcon" fill={iconColor} stroke={iconColor} size="100%"></IoMdCloseCircleOutline>
+            break;
     }
 
-    
+
 
     return (
         <div className={"Icon Icon-" + iconColor}>
