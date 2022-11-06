@@ -61,7 +61,6 @@ function MyOrders() {
 
                 <div className='MyOrdersItem'>
                     <div className="MyOrdersColumNames">
-
                         <div className='MyOrdersRight'>
                         <div className='MyOrdersTextFrame'>
                                 <div className='MyOrdersText'>

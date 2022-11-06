@@ -175,7 +175,7 @@
     /* Product */
 
 
-    width: 58px;
+    width: fit-content;
     height: 20px;
 
     font-family: 'Quicksand';

@@ -4,13 +4,14 @@ import Button from '../components/Button';
 import { useEffect, useState } from 'react';
 import CartProductCards from '../components/CartProductCards';
 import { Link, useSearchParams } from 'react-router-dom';
+import OrderDetailsCard from '../components/OrderDetailsCard';
 
-type CartProductCardsProps = {
+type OrderDetailsProps = {
     productCode: string,
     name: string,
     scale: string,
     vendor: string,
-    quantity: number,
+    quantityOrdered: number,
     price: number,
     total: number,
 }
@@ -20,13 +21,13 @@ function OrderDetails() {
     const [searchParams, setSearchParams] = useSearchParams();
 
     const [orderDetails, setOrderDetails] = useState([
-        { productCode: "A", productName: "A", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantity: 0, MSRP: 0 },
+        { productCode: "A", quantityOrdered: 0, priceEach: 0 },
     ])
 
     let total = 0
 
     const fetchData = async () => {
-        var orderDetailsURL = "http://127.0.0.1:8000/api/order"
+        var orderDetailsURL = "http://127.0.0.1:8000/api/order?orderNumber="
 
         if (localStorage.getItem("Token") === null) {
             window.location.href = "http://127.0.0.1:3000/login"
@@ -34,11 +35,10 @@ function OrderDetails() {
         } else {
             var orderNumber = searchParams.get("orderNumber")
             
-            var apiurl = orderDetailsURL + orderNumber
+            var apiurl = orderDetailsURL
 
-            const resp = await axios.post(apiurl, {
-                remember_token: JSON.parse(localStorage.getItem("Token")!)
-            })
+            const resp = await axios.get(apiurl+orderNumber)
+            console.log(resp)
             let data = resp.data
             setOrderDetails(data)
         }
@@ -62,12 +62,12 @@ function OrderDetails() {
 
                 <div className='CartItem'>
                     <div className="ColumNames">
-                        <div className='Left'>
-                            <div className='TextProduct'>
-                                Product
-                            </div>
-                        </div>
                         <div className='Right'>
+                            <div className='TextFrame'>
+                                <div className='Text'>
+                                    Product Code
+                                </div>
+                            </div>
                             <div className='TextFrame'>
                                 <div className='Text'>
                                     Unit Price
@@ -86,9 +86,9 @@ function OrderDetails() {
                         </div>
                     </div>
                     {orderDetails.map((x,index) => {
-                        let sumTotal = parseFloat(Number(x.MSRP * x.quantity).toFixed(2))
+                        let sumTotal = parseFloat(Number(x.priceEach * x.quantityOrdered).toFixed(2))
                         total += sumTotal
-                        return <CartProductCards key={index} refreshFunction={()=>(fetchData())} name={x.productName} vendor={x.productLine} scale={x.productScale} quantity={x.quantity} price={x.MSRP} total={sumTotal} productCode={x.productCode} remove={false}></CartProductCards>
+                        return <OrderDetailsCard key={index} refreshFunction={()=>(fetchData())} quantityOrdered={x.quantityOrdered} priceEach={x.priceEach} total={sumTotal} productCode={x.productCode} remove={false}></OrderDetailsCard>
                     })}
                     <div className='SubTotal'>
                         <div className='Top'>

@@ -7,23 +7,20 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { stringify } from 'querystring';
 
-type MyOrdersOrderCardProps = {
+type OrderDetailsCardProps = {
     refreshFunction: Function,
 
-    orderNumber: number,
-    orderDate: string,
-    requiredDate: string,
-    shippedDate: string,
-    status: string,
-    comments: string,
-    customerNumber: number,
+    productCode:string,
+    quantityOrdered: number,
+    priceEach: number,
+    total: number,
 
     remove: boolean
 }
 
 
-function MyOrdersOrderCard(props: MyOrdersOrderCardProps) {
-    const orderDetailURL = "http://127.0.0.1:3000/order?orderNumber="
+function OrderDetailsCard(props: OrderDetailsCardProps) {
+    const orderDetailURL = "http://127.0.0.1:3000/product?productCode="
 
     const cancelOrder = async () => {
         var cancelOrderUrl = "http://127.0.0.1:8000/api/cancelOrder"
@@ -34,7 +31,7 @@ function MyOrdersOrderCard(props: MyOrdersOrderCardProps) {
         }else{      
             try {
                 const resp = await axios.post(cancelOrderUrl, {
-                    orderNumber: props.orderNumber,
+                    productCode: props.productCode,
                     remember_token: JSON.parse(localStorage.getItem("Token")!)
                 });
                 await props.refreshFunction()
@@ -56,32 +53,22 @@ function MyOrdersOrderCard(props: MyOrdersOrderCardProps) {
         <div className="MyOrdersCard">
             <div className="MyOrdersRight">
                 <div className='MyOrdersRightFrame'>
-                    <a href={orderDetailURL+props.orderNumber} target="_blank">
-                    <div className='MyOrdersRightText'>{props.orderNumber}</div>
+                    <a href={orderDetailURL+props.productCode} target="_blank">
+                    <div className='MyOrdersRightText'>{props.productCode}</div>
                     </a>
                 </div>
                 <div className='MyOrdersRightFrame'>
-                    <div className='MyOrdersRightText'>{props.orderDate}</div>
+                    <div className='MyOrdersRightText'>{props.priceEach}</div>
                 </div>
                 <div className='MyOrdersRightFrame'>
-                    <div className='MyOrdersRightText'>{props.requiredDate}</div>
+                    <div className='MyOrdersRightText'>{props.quantityOrdered}</div>
                 </div>
                 <div className='MyOrdersRightFrame'>
-                    <div className='MyOrdersRightText'>{props.shippedDate}</div>
+                    <div className='MyOrdersRightText'>{props.total}</div>
                 </div>
-                <div className='MyOrdersRightFrame'>
-                    <div className='MyOrdersRightText'>{props.status}</div>
-                </div>
-                {
-                    props.status != "Shipped" && props.status != "Cancelled" ?
-                        <div className='MyOrdersRightFrame'>
-                            <Button text={"Cancel Order"} icon={"remove"} buttonColor={"white"} textColor={"red"} func={() => { cancelOrder() }}></Button>
-                        </div>
-                        : <div className='MyOrdersRightFrame'>
-                        <div className='MyOrdersRightText'>{}</div>
-                    </div>}
+
             </div>
         </div>
     )
 }
-export default MyOrdersOrderCard
+export default OrderDetailsCard
