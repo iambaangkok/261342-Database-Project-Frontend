@@ -1,6 +1,6 @@
 @import 'GlobalStyles.css';
 
-.CartContainer {
+.PaymentContainer {
     /* Container */
 
 
@@ -25,7 +25,7 @@
     flex-grow: 0;
 }
 
-.CartBody {
+.PaymentBody {
     /* Body */
 
 
@@ -50,7 +50,7 @@
     flex-grow: 0;
 }
 
-.CartBody .HeadContainer {
+.PaymentBody .HeadContainer {
     /* HeaderContainer */
 
 
@@ -62,7 +62,7 @@
     padding: 17px 56px;
     gap: 10px;
 
-    width: fit-content;
+    width: 246px;
     height: 79px;
 
 
@@ -73,8 +73,8 @@
     flex-grow: 0;
 }
 
-.CartBody .HeadContainer .Text {
-    width: fit-content;
+.PaymentBody .HeadContainer .Text {
+    width: 134px;
     height: 45px;
 
     font-family: 'Quicksand';
@@ -95,8 +95,8 @@
     flex-grow: 0;
 }
 
-.CartBody .CartItem {
-    /* CartItems */
+.PaymentBody .PaymentItem {
+    /* PaymentItems */
 
 
     /* Auto layout */
@@ -120,7 +120,7 @@
     flex-grow: 0;
 }
 
-.CartItem .ColumNames {
+.PaymentItem .ColumNames {
     /* ColumnNames */
 
 
@@ -175,7 +175,7 @@
     /* Product */
 
 
-    width: fit-content;
+    width: 58px;
     height: 20px;
 
     font-family: 'Quicksand';
@@ -272,7 +272,7 @@
     flex-grow: 0;
 }
 
-.CartItem .SubTotal {
+.PaymentItem .SubTotal {
     /* SubTotal */
 
 
@@ -474,5 +474,58 @@
 
     flex: none;
     order: 0;
+    flex-grow: 0;
+}
+
+.PaymentInputField {
+    /* InputField */
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px 0px;
+    gap: 10px;
+
+    width: fit-content;
+    height: fit-content;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.PaymentInputField .PaymentField {
+    /* Field */
+
+
+    box-sizing: border-box;
+
+    /* Auto layout */
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 0px 10px 10px;
+    gap: 10px;
+
+    width: 200px;
+    height: 40px;
+
+    /* Black 100% */
+
+    border: 1px solid #000000;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
     flex-grow: 0;
 }

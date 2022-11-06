@@ -99,7 +99,9 @@
     box-sizing: border-box;
 
     /* Auto layout */
-
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-size: 20px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
