@@ -13,10 +13,11 @@ type MyOrdersOrderCardProps = {
     orderNumber: number,
     orderDate: string,
     requiredDate: string,
-    shippedDate: string,
+    shippedDate: string|null,
     status: string,
     comments: string,
     customerNumber: number,
+    checkNumber:string|null,
 
     remove: boolean
 }
@@ -67,13 +68,13 @@ function MyOrdersOrderCard(props: MyOrdersOrderCardProps) {
                     <div className='MyOrdersRightText'>{props.requiredDate.slice(0,10)}</div>
                 </div>
                 <div className='MyOrdersRightFrame'>
-                    <div className='MyOrdersRightText'>{props.shippedDate.slice(0,10)}</div>
+                    <div className='MyOrdersRightText'>{props.shippedDate != null ? props.shippedDate.slice(0,10):""}</div>
                 </div>
                 <div className='MyOrdersRightFrame'>
                     <div className='MyOrdersRightText'>{props.status}</div>
                 </div>
-                {
-                    props.status != "Shipped" && props.status != "Cancelled" ?
+                {   true ?
+                    // props.status != "Shipped" && props.status != "Cancelled" ?
                         <div className='MyOrdersRightFrame'>
                             <Button text={"Cancel Order"} icon={"remove"} buttonColor={"white"} textColor={"red"} func={() => { cancelOrder() }}></Button>
                         </div>

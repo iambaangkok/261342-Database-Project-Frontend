@@ -10,20 +10,21 @@ type OrderCardProps = {
     orderNumber: number,
     orderDate: string,
     requiredDate: string,
-    shippedDate: string,
+    shippedDate: string|null,
     status: string,
     comments: string,
     customerNumber: number,
+    checkNumber:string|null,
 }
 
 function MyOrders() {
     var fetchDataUrl = "http://127.0.0.1:8000/api/orders"
 
     const [myOrders, setMyOrders] = useState<OrderCardProps[]>([
-        { orderNumber: 0, orderDate: "date", requiredDate: "date", shippedDate: "date", status: "Shipped", comments: "-", customerNumber: 0 },
-        { orderNumber: 0, orderDate: "date", requiredDate: "date", shippedDate: "date", status: "Shipped", comments: "-", customerNumber: 0 },
-        { orderNumber: 0, orderDate: "date", requiredDate: "date", shippedDate: "date", status: "Shipped", comments: "-", customerNumber: 0 },
-        { orderNumber: 0, orderDate: "date", requiredDate: "date", shippedDate: "date", status: "Shipped", comments: "-", customerNumber: 0 },
+        { orderNumber: 0, orderDate: "date", requiredDate: "date", shippedDate: "date", status: "Shipped", comments: "-", customerNumber: 0 , checkNumber:"A"},
+        { orderNumber: 0, orderDate: "date", requiredDate: "date", shippedDate: "date", status: "Shipped", comments: "-", customerNumber: 0 , checkNumber:"A"},
+        { orderNumber: 0, orderDate: "date", requiredDate: "date", shippedDate: "date", status: "Shipped", comments: "-", customerNumber: 0 , checkNumber:"A"},
+        { orderNumber: 0, orderDate: "date", requiredDate: "date", shippedDate: "date", status: "Shipped", comments: "-", customerNumber: 0 , checkNumber:"A"},
     ])
 
     let total = 0
@@ -37,7 +38,7 @@ function MyOrders() {
                 remember_token: JSON.parse(localStorage.getItem("Token")!)
             })
             let data = resp.data
-            // console.log(data)
+            console.log(resp)
             setMyOrders(data)
             return resp.data;
         }
@@ -106,6 +107,7 @@ function MyOrders() {
                             status={x.status}
                             comments={x.comments}
                             customerNumber={x.customerNumber}
+                            checkNumber={x.checkNumber}
                             remove={true} />
                     })}
                     
