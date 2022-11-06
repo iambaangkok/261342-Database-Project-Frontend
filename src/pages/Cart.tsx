@@ -45,7 +45,7 @@ function Cart() {
 
     useEffect(() => {
 
-    }, [productCart,setCart])
+    }, [productCart,setCart,postToken])
 
 
     return (
