@@ -18,7 +18,7 @@ type CartProductCardsProps = {
 
 function Payment() {
     var cartUrl = "http://127.0.0.1:8000/api/showcart"
-    var paymentUrl = ""
+    var paymentUrl = "http://127.0.0.1:8000/api/payment"
 
     const [productCart, setCart] = useState([
         { productCode: "A", productName: "A", productLine: "LINE", productScale: "SCALE", productVendor: "VENDOR", productDescription: "DESC", quantity: 0, MSRP: 0 },
@@ -112,7 +112,7 @@ function Payment() {
                     {productCart.map((x, index) => {
                         let sumTotal = parseFloat(Number(x.MSRP * x.quantity).toFixed(2))
                         total += sumTotal
-                        return <CartProductCards key={index} refreshFunction={() => postToken()} name={x.productName} vendor={x.productLine} scale={x.productScale} quantity={x.quantity} price={x.MSRP} total={sumTotal} productCode={x.productCode} remove={false}></CartProductCards>
+                        return <CartProductCards key={index} refreshFunction={() => postToken()} name={x.productName} vendor={x.productLine} scale={x.productScale} quantity={x.quantity} price={x.MSRP} total={sumTotal} productCode={x.productCode} remove={false} showSelectQuantity={false}></CartProductCards>
                     })}
 
                     <div className='SubTotal'>
