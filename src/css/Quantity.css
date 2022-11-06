@@ -57,7 +57,7 @@
   }
 
   .CartQuantity .quantity-input .quantity-input__screen {
-    width: 1rem;
+    width: 40px;
     font-family: 'Quicksand';
     font-style: normal;
     font-weight: 400;
