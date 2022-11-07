@@ -26,7 +26,11 @@ function SearchBar() {
             action="submit" method="get"
             onSubmit={e => { e.preventDefault(); }}>
                 <div className="SearchBoxContainer">
-                    <input className="SearchBox" onChange={(e) => setSearchKey(e.target.value)} >
+                    <input className="SearchBox" onChange={(e) => setSearchKey(e.target.value)} onKeyPress={event => {
+                if (event.key === 'Enter') {
+                    navigateToSearch()
+                }
+              }}>
 
                     </input>
                 </div>
